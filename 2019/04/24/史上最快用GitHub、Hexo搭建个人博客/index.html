@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Ruby,CocoaPods,">
+  <meta name="keywords" content="个人博客,Hexo,GitHub Page,">
 
 
 
@@ -77,28 +77,26 @@
 
 
 
-<meta name="description" content="安装CocoaPods第一步起因:重装系统后需要重新安装CocoaPods网上搜了下发现很多都过时了，已经不能用了。而且taobao Gems源已经停止服务，现在有ruby-china提供服PS：”$”开头表示需要在终端下执行">
-<meta name="keywords" content="Ruby,CocoaPods">
+<meta name="description" content="一. 准备工作 电脑一台(本文是基于Mac) 安装Git 安装Node.js GitHub账号一枚  如果读者电脑上已经装了git、Node、并且有GitHub账号，那么搭建个人博客绝对不超过抽一支烟的时间。 二. 安装git1. 在 Mac 上安装 Git，官方给了有两种方式。最容易的当属使用图形化的 Git 安装工具，界面如图，下载地址在下：Git GUI下载地址 2. 另一种是通过 MacP">
+<meta name="keywords" content="个人博客,Hexo,GitHub Page">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac最新安装Ruby">
-<meta property="og:url" content="http://yoursite.com/2017/06/20/Mac安装Ruby/index.html">
+<meta property="og:title" content="史上最快用GitHub、Hexo搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/index.html">
 <meta property="og:site_name" content="骑马纵天下">
-<meta property="og:description" content="安装CocoaPods第一步起因:重装系统后需要重新安装CocoaPods网上搜了下发现很多都过时了，已经不能用了。而且taobao Gems源已经停止服务，现在有ruby-china提供服PS：”$”开头表示需要在终端下执行">
+<meta property="og:description" content="一. 准备工作 电脑一台(本文是基于Mac) 安装Git 安装Node.js GitHub账号一枚  如果读者电脑上已经装了git、Node、并且有GitHub账号，那么搭建个人博客绝对不超过抽一支烟的时间。 二. 安装git1. 在 Mac 上安装 Git，官方给了有两种方式。最容易的当属使用图形化的 Git 安装工具，界面如图，下载地址在下：Git GUI下载地址 2. 另一种是通过 MacP">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-51b0b8a595a988c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-26b650f938b479ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-8e3524ac28801dbf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-e4c16747263e4e95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-a0b49914b4f14a16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-cd3974a429ad4f39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-60966048cb410d23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-9634b38d061115df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-a33e6c65ea475612.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-24T09:03:02.386Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-1e929e624824823a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-9a653654705d4ffa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-ef57502fb47dcdd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-574540fe71d392bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-9bba4e1269ef014d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-0f8c20910a0f37a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-29d8508f3f70deaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-24T13:53:31.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac最新安装Ruby">
-<meta name="twitter:description" content="安装CocoaPods第一步起因:重装系统后需要重新安装CocoaPods网上搜了下发现很多都过时了，已经不能用了。而且taobao Gems源已经停止服务，现在有ruby-china提供服PS：”$”开头表示需要在终端下执行">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1483397-51b0b8a595a988c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="史上最快用GitHub、Hexo搭建个人博客">
+<meta name="twitter:description" content="一. 准备工作 电脑一台(本文是基于Mac) 安装Git 安装Node.js GitHub账号一枚  如果读者电脑上已经装了git、Node、并且有GitHub账号，那么搭建个人博客绝对不超过抽一支烟的时间。 二. 安装git1. 在 Mac 上安装 Git，官方给了有两种方式。最容易的当属使用图形化的 Git 安装工具，界面如图，下载地址在下：Git GUI下载地址 2. 另一种是通过 MacP">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1483397-1e929e624824823a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -128,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/20/Mac安装Ruby/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/">
 
 
 
 
 
-  <title>Mac最新安装Ruby | 骑马纵天下</title>
+  <title>史上最快用GitHub、Hexo搭建个人博客 | 骑马纵天下</title>
   
 
 
@@ -313,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/Mac安装Ruby/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="leon">
@@ -330,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac最新安装Ruby</h1>
+          <h1 class="post-title" itemprop="name headline">史上最快用GitHub、Hexo搭建个人博客</h1>
         
 
         <div class="post-meta">
@@ -342,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T00:00:00+08:00">
-                2017-06-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-24T00:00:00+08:00">
+                2019-04-24
               </time>
             
 
@@ -365,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ruby/" itemprop="url" rel="index">
-                    <span itemprop="name">Ruby</span>
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
                   </a>
                 </span>
 
@@ -383,8 +381,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/20/Mac安装Ruby/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/06/20/Mac安装Ruby/" itemprop="commentCount"></span>
+                <a href="/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -392,7 +390,7 @@
 
           
           
-             <span id="/2017/06/20/Mac安装Ruby/" class="leancloud_visitors" data-flag-title="Mac最新安装Ruby">
+             <span id="/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/" class="leancloud_visitors" data-flag-title="史上最快用GitHub、Hexo搭建个人博客">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,33 +421,69 @@
       
 
       
-        <h1 id="安装CocoaPods第一步"><a href="#安装CocoaPods第一步" class="headerlink" title="安装CocoaPods第一步"></a>安装CocoaPods第一步</h1><p>起因:重装系统后需要重新安装CocoaPods网上搜了下发现很多都过时了，已经不能用了。而且taobao Gems源已经停止服务，现在有ruby-china提供服<br>PS：”$”开头表示需要在终端下执行<br><a id="more"></a></p>
-<h2 id="1-安装RVM"><a href="#1-安装RVM" class="headerlink" title="1.安装RVM"></a>1.安装RVM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L https://get.rvm.io | bash -s stable</span><br></pre></td></tr></table></figure>
-<p>期间可能需要输入密码(我安装时没有提示，密码就是开机密码输入时密码不会显示直接输入完成就可以)，等待一段时间将安装好(大概五六分钟)。<br><img src="http://upload-images.jianshu.io/upload_images/1483397-51b0b8a595a988c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装RVM"></p>
-<h2 id="2-载入RVM环境"><a href="#2-载入RVM环境" class="headerlink" title="2.载入RVM环境"></a>2.载入RVM环境</h2><p><strong>若打开新终端窗口则不用执行</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~/.rvm/scripts/rvm</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-26b650f938b479ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="载入RVM环境"></p>
-<h2 id="3-检查RVM是否安装好"><a href="#3-检查RVM是否安装好" class="headerlink" title="3.检查RVM是否安装好"></a>3.检查RVM是否安装好</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm -v</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-8e3524ac28801dbf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h2 id="4-安装Ruby"><a href="#4-安装Ruby" class="headerlink" title="4.安装Ruby"></a>4.安装Ruby</h2><h3 id="1-gt-列出已知的ruby版本"><a href="#1-gt-列出已知的ruby版本" class="headerlink" title="1&gt;列出已知的ruby版本"></a>1&gt;列出已知的ruby版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list known</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-e4c16747263e4e95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="列出已知的ruby版本"></p>
-<h3 id="2-gt-选择2-0-0版本进行安装-其他版本也可以"><a href="#2-gt-选择2-0-0版本进行安装-其他版本也可以" class="headerlink" title="2&gt;选择2.0.0版本进行安装(其他版本也可以)"></a>2&gt;选择2.0.0版本进行安装(其他版本也可以)</h3><p><strong>等待下载(途中需要按回车确定安装路径、还要输入密码)、编译。完成之后Ruby、Ruby Gems就安装好了</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm install 2.0.0</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-a0b49914b4f14a16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="选择2.0.0版本进行安装"></p>
-<h3 id="3-gt-查询已安装的ruby"><a href="#3-gt-查询已安装的ruby" class="headerlink" title="3&gt;查询已安装的ruby"></a>3&gt;查询已安装的ruby</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-cd3974a429ad4f39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查询已安装的ruby"></p>
-<h3 id="4-gt-卸载已安装的版本-若已经安装过ruby）"><a href="#4-gt-卸载已安装的版本-若已经安装过ruby）" class="headerlink" title="4&gt;卸载已安装的版本(若已经安装过ruby）"></a>4&gt;卸载已安装的版本(若已经安装过ruby）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm remove [版本号]</span><br></pre></td></tr></table></figure>
-<h2 id="4-设置Ruby版本"><a href="#4-设置Ruby版本" class="headerlink" title="4.设置Ruby版本"></a>4.设置Ruby版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm 2.0.0 —default</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-60966048cb410d23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置Ruby版本"><br><strong>检查是否安装好了</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm -v</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-9634b38d061115df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="检查"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem -v</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-a33e6c65ea475612.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="检查"></p>
-<h2 id="5-更换Ruby源"><a href="#5-更换Ruby源" class="headerlink" title="5.更换Ruby源"></a>5.更换Ruby源</h2><p><strong>我们需要来修改更换Ruby源，国内镜像源 taobao 源 已经停止维护了（由于国内被墙）所以要把源切换至ruby-china</strong></p>
-<h3 id="1-gt-检测Ruby源"><a href="#1-gt-检测Ruby源" class="headerlink" title="1&gt;检测Ruby源"></a>1&gt;检测Ruby源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources -l</span><br></pre></td></tr></table></figure>
-<p><strong>检查结果：（ 如果电脑没安装过 CocoaPods，此时应该是默认 ruby 源 ）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:~ jijiucheng$ gem sources -l</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line">https://rubygems.org/</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-gt-移除-ruby-源"><a href="#2-gt-移除-ruby-源" class="headerlink" title="2&gt;移除 ruby 源"></a>2&gt;移除 ruby 源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --remove https://rubygems.org/</span><br></pre></td></tr></table></figure>
-<h3 id="3-gt-移除结果："><a href="#3-gt-移除结果：" class="headerlink" title="3&gt;移除结果："></a>3&gt;移除结果：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:local jijiucheng$ gem sources --remove https://rubygems.org/</span><br><span class="line">https://rubygems.org/ removed from sources</span><br></pre></td></tr></table></figure>
-<p><strong>替换添加国内镜像源 ruby-china 源，因为上面已经提到国内镜像源 taobao 源 已经停止维护了，所以此处替换的是 ruby-china 源，且尽量确保只有一个 ruby-china 源</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --add https://gems.ruby-china.org</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-gt-替换结果："><a href="#4-gt-替换结果：" class="headerlink" title="4&gt;替换结果："></a>4&gt;替换结果：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:local jijiucheng$ gem sources --add https://gems.ruby-china.org</span><br><span class="line">https://gems.ruby-china.org added to sources</span><br></pre></td></tr></table></figure>
-<h3 id="5-gt-再次检查此时的-ruby-源：（-已经变成了-ruby-china-源-）"><a href="#5-gt-再次检查此时的-ruby-源：（-已经变成了-ruby-china-源-）" class="headerlink" title="5&gt;再次检查此时的 ruby 源：（ 已经变成了 ruby-china 源 ）"></a>5&gt;再次检查此时的 ruby 源：（ 已经变成了 ruby-china 源 ）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:local jijiucheng$ gem sources -l</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line">https://gems.ruby-china.org</span><br></pre></td></tr></table></figure>
-<!--more-->
+        <h3 id="一-准备工作"><a href="#一-准备工作" class="headerlink" title="一. 准备工作"></a>一. 准备工作</h3><ul>
+<li>电脑一台(本文是基于Mac)</li>
+<li>安装Git</li>
+<li>安装Node.js</li>
+<li>GitHub账号一枚</li>
+</ul>
+<p>如果读者电脑上已经装了git、Node、并且有GitHub账号，那么搭建个人博客绝对不超过抽一支烟的时间。</p>
+<h3 id="二-安装git"><a href="#二-安装git" class="headerlink" title="二. 安装git"></a>二. 安装git</h3><h5 id="1-在-Mac-上安装-Git，官方给了有两种方式。最容易的当属使用图形化的-Git-安装工具，界面如图，下载地址在下："><a href="#1-在-Mac-上安装-Git，官方给了有两种方式。最容易的当属使用图形化的-Git-安装工具，界面如图，下载地址在下：" class="headerlink" title="1. 在 Mac 上安装 Git，官方给了有两种方式。最容易的当属使用图形化的 Git 安装工具，界面如图，下载地址在下："></a>1. 在 Mac 上安装 Git，官方给了有两种方式。最容易的当属使用图形化的 Git 安装工具，界面如图，下载地址在下：</h5><p><a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">Git GUI下载地址</a><br><img src="https://upload-images.jianshu.io/upload_images/1483397-1e929e624824823a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="git安装"></p>
+<h5 id="2-另一种是通过-MacPorts-http-www-macports-org-安装。如果已经装好了-MacPorts，用下面的命令安装-Git："><a href="#2-另一种是通过-MacPorts-http-www-macports-org-安装。如果已经装好了-MacPorts，用下面的命令安装-Git：" class="headerlink" title="2. 另一种是通过 MacPorts (http://www.macports.org) 安装。如果已经装好了 MacPorts，用下面的命令安装 Git："></a>2. 另一种是通过 MacPorts <code>(http://www.macports.org)</code> 安装。如果已经装好了 MacPorts，用下面的命令安装 Git：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo port install git-core +svn +doc +bash_completion +gitweb</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>译注：还有一种是使用 <code>homebrew（https://github.com/mxcl/homebrew）：brew install git</code>。</p>
+</blockquote>
+<p><a href="https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git" target="_blank" rel="noopener">安装git官网教程</a></p>
+<h3 id="三-安装Nodejs"><a href="#三-安装Nodejs" class="headerlink" title="三. 安装Nodejs"></a>三. 安装Nodejs</h3><p>安装Nodejs也有两种方式GUI和终端命令</p>
+<h5 id="1-GUI下载地址"><a href="#1-GUI下载地址" class="headerlink" title="1. GUI下载地址"></a>1. GUI下载地址</h5><p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Nodejs安装包下载地址</a></p>
+<h5 id="2-终端执行命令"><a href="#2-终端执行命令" class="headerlink" title="2. 终端执行命令"></a>2. 终端执行命令</h5><p>先安装nvm，这是Nodejs版本管理器，可以轻松切换Nodejs版本。 </p>
+<ol>
+<li>curl方式安装nvm.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash</span><br></pre></td></tr></table></figure>
+<p>下面是nvm部分输出，重点在最后，只有执行最后几条命令nvm才算安装完成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100 11329  100 11329    0     0   4130      0  0:00:02  0:00:02 --:--:--  4130</span><br><span class="line">=&gt; Downloading nvm from git to &apos;/Users/huanghaipo/.nvm&apos;</span><br><span class="line">=&gt; Initialized empty Git repository in /Users/huanghaipo/.nvm/.git/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">=&gt; Appending nvm source string to /Users/huanghaipo/.bashrc</span><br><span class="line">=&gt; bash_completion source string already in /Users/huanghaipo/.bashrc</span><br><span class="line">=&gt; Close and reopen your terminal to start using nvm or run the following to use it now:</span><br><span class="line">//这里是执行命令</span><br><span class="line">export NVM_DIR=&quot;/Users/leon/.nvm&quot;</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</span><br></pre></td></tr></table></figure></p>
+<p>根据提示执行命令load nvm,最后几条命令每个人的都不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ export NVM_DIR=&quot;/Users/leon/.nvm&quot;</span><br><span class="line">$ [ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;</span><br><span class="line">$ nvm</span><br></pre></td></tr></table></figure>
+<p>使用nvm安装node<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install node</span><br></pre></td></tr></table></figure></p>
+<p>验证node及npm版本，如果有下方输出证明安装成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">v11.14.0</span><br><span class="line">$ npm -v</span><br><span class="line">6.7.0</span><br></pre></td></tr></table></figure>
+<h3 id="四-创建Github域名和仓库"><a href="#四-创建Github域名和仓库" class="headerlink" title="四. 创建Github域名和仓库"></a>四. 创建Github域名和仓库</h3><h5 id="1-注册GitHub账号"><a href="#1-注册GitHub账号" class="headerlink" title="1. 注册GitHub账号"></a>1. 注册GitHub账号</h5><p>注册<a href="https://github.com/" target="_blank" rel="noopener">Github</a>账号，Username很重要，域名将是账号名加.github.io，<code>username.github.io</code>。<br><img src="https://upload-images.jianshu.io/upload_images/1483397-9a653654705d4ffa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="注册账号"></p>
+<h5 id="2-创建仓库"><a href="#2-创建仓库" class="headerlink" title="2. 创建仓库"></a>2. 创建仓库</h5><p>注册账号后我们需要创建一个存储网站数据的仓库，点击首页右上角加号，点击<code>New repository</code>按钮创建仓库。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1483397-ef57502fb47dcdd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建仓库1"></p>
+<p> <code>Respository name</code> 中的<code>username.github.io</code> 的<code>username</code> 一定与前面的<strong>Owner</strong> 一致，记住<code>username</code>后面会用到。<br><img src="https://upload-images.jianshu.io/upload_images/1483397-574540fe71d392bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建仓库2"></p>
+<p>到此准备工作已经全部完成了。接下来就是安装hexo了。</p>
+<h3 id="五-安装Hexo"><a href="#五-安装Hexo" class="headerlink" title="五. 安装Hexo"></a>五. 安装Hexo</h3><p>以上工作全部完成我们就可以安装<code>Hexo</code>了。一个崭新的博客将要出现。</p>
+<h5 id="1-执行下方命令安装hexo"><a href="#1-执行下方命令安装hexo" class="headerlink" title="1. 执行下方命令安装hexo"></a>1. 执行下方命令安装<code>hexo</code></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>安装完成后我们就可以初始化博客了，如果想要把文件放到某个目录下先cd到指定目录下在执行下方命令，如果没有指定目录默认是的你的个人主目录下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//username就是你刚才仓库的名称</span><br><span class="line">$ hexo init username.github.io</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1483397-9bba4e1269ef014d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件路径"></p>
+<h5 id="2-配置博客设置"><a href="#2-配置博客设置" class="headerlink" title="2. 配置博客设置"></a>2. 配置博客设置</h5><p>初始化博客后我们需要修改配置文件已达到想要的效果如名字、主题等。</p>
+<p><strong>主题安装</strong></p>
+<p>为了美观我们安装一个火热的主题。先cd到刚才生成的目录下执行下方命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd username.github.io</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
+<p><strong>基础设置</strong></p>
+<p>找到<code>_config.yml</code>文件<code>username.github.io/_config.yml</code>修改下方基础配置保存修改。 <strong>注意_config.yml中配置项的冒号后面要用空格隔开，再跟内容否则启动服务时会报错。</strong><br><img src="https://upload-images.jianshu.io/upload_images/1483397-0f8c20910a0f37a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件路径"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: huanghaipo    //博客的名字</span><br><span class="line">author: huanghaipo  //你的名字</span><br><span class="line">language: zh-Hans    //语言 中文</span><br><span class="line">theme: next   //刚刚安装的主题名称</span><br><span class="line">deploy:</span><br><span class="line">type: git    //Github发布</span><br><span class="line">repo: https://github.com/username/username.github.io.git    // 刚创建的Github仓库链接也可以选择ssh</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-编写文章"><a href="#3-编写文章" class="headerlink" title="3. 编写文章"></a>3. 编写文章</h5><p>前期工作已近基本完成，接下来我们可以写文章了。发布就可以得到一枚个人博客，首先新建一个.md文件，命名为firstEssay.md，写入下方内容。放到<code>username.github.io/source/_posts</code>文件下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> ---</span><br><span class="line"> title: 我的第一篇文章</span><br><span class="line"> ---</span><br><span class="line">**我的第一篇文章**</span><br></pre></td></tr></table></figure></p>
+<p>或者cd到你的博客文件夹执行下方命令行会得到一个<code>md</code>文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post &quot;这是测试新建md文档&quot;      //名字随便取</span><br></pre></td></tr></table></figure>
+<p>执行完以上命令，得到md文件，内容如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 这是测试新建md文档</span><br><span class="line">date: 2019-04-24 10:20:50       </span><br><span class="line">tags:                            //博客标签</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<h5 id="4-启动测试"><a href="#4-启动测试" class="headerlink" title="4. 启动测试"></a>4. 启动测试</h5><p>启动服务，直接浏览器中输入<code>https://localhost:4000</code><a href="https://localhost:4000" target="_blank" rel="noopener">或者直接点击我</a> 访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-安装hexo-deployer-git自动部署发布工具"><a href="#5-安装hexo-deployer-git自动部署发布工具" class="headerlink" title="5. 安装hexo-deployer-git自动部署发布工具"></a>5. 安装hexo-deployer-git自动部署发布工具</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<h5 id="6-发布"><a href="#6-发布" class="headerlink" title="6.发布"></a>6.发布</h5><p>以上步骤都完成后，我们就可以把生成的静态网页文件发布到Github上。以后直接通过连接就可以访问这个博客了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">命令解释</span><br><span class="line">hexo clean   //清除缓存文件 (db.json) 和已生成的静态文件 (public)</span><br><span class="line">hexo g       //生成缓存和静态文件</span><br><span class="line">hexo d       //重新部署到服务器</span><br></pre></td></tr></table></figure>
+<p>如果你使用的是HTTP可能会让你输入账号密码，输入正确后，稍等片刻，就会吧文件上传到Github上，然后直接访问刚才<code>username.github.io</code>就能看到自己的博客了。如果有新的文章只需要放到<code>username.github.io/source/_posts</code>下然后执行上面的命令就OK了。</p>
+<p><strong>最终效果</strong><br><img src="https://upload-images.jianshu.io/upload_images/1483397-29d8508f3f70deaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客"></p>
+<h5 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h5><p><strong>如果觉得这个主题不好看请或者想要更新博客更方便、更美观，请看这里。</strong></p>
+<p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo主题</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">主题配置</a><br><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">基础配置</a><br><a href="https://hexo.io/plugins/" target="_blank" rel="noopener">hexo插件</a></p>
+<h5 id="hexo常用命令"><a href="#hexo常用命令" class="headerlink" title="hexo常用命令"></a>hexo常用命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line">hexo deploy #将.deploy目录部署到GitHub</span><br><span class="line">hexo help # 查看帮助</span><br><span class="line">hexo version #查看Hexo的版本</span><br></pre></td></tr></table></figure>
+<p><strong>踩坑记录:</strong></p>
+<p>终端报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FATAL can not read a block mapping entry; a multiline key may not be an implicit key at line 70, column 1: ...</span><br></pre></td></tr></table></figure></p>
+<p>解决办法：_config.yml中配置项的冒号后面要用空格隔开，再跟内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">出现 error deployer not found:git 或者 error deployer not found:github 的错误</span><br></pre></td></tr></table></figure>
+<p>解决办法：执行 npm install hexo-deployer-git –save</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">中文乱码问题</span><br></pre></td></tr></table></figure>
+<p>解决办法：将文件的内容编码改为UTF8格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;hexo sever&apos;能够成功运行，但是localhost:4000无法访问</span><br></pre></td></tr></table></figure>
+<p>解决办法：执行hexo s -p 5000，改用其他端口启动</p>
 
       
     </div>
@@ -496,9 +530,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Ruby/" rel="tag"># Ruby</a>
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
           
-            <a href="/tags/CocoaPods/" rel="tag"># CocoaPods</a>
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/GitHub-Page/" rel="tag"># GitHub Page</a>
           
         </div>
       
@@ -511,8 +547,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/20/内购/" rel="next" title="苹果IAP流程(2017)">
-                <i class="fa fa-chevron-left"></i> 苹果IAP流程(2017)
+              <a href="/2017/06/20/Mac安装Ruby/" rel="next" title="Mac最新安装Ruby">
+                <i class="fa fa-chevron-left"></i> Mac最新安装Ruby
               </a>
             
           </div>
@@ -520,10 +556,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/" rel="prev" title="史上最快用GitHub、Hexo搭建个人博客">
-                史上最快用GitHub、Hexo搭建个人博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -690,7 +722,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装CocoaPods第一步"><span class="nav-number">1.</span> <span class="nav-text">安装CocoaPods第一步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装RVM"><span class="nav-number">1.1.</span> <span class="nav-text">1.安装RVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-载入RVM环境"><span class="nav-number">1.2.</span> <span class="nav-text">2.载入RVM环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-检查RVM是否安装好"><span class="nav-number">1.3.</span> <span class="nav-text">3.检查RVM是否安装好</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-安装Ruby"><span class="nav-number">1.4.</span> <span class="nav-text">4.安装Ruby</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-gt-列出已知的ruby版本"><span class="nav-number">1.4.1.</span> <span class="nav-text">1&gt;列出已知的ruby版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-gt-选择2-0-0版本进行安装-其他版本也可以"><span class="nav-number">1.4.2.</span> <span class="nav-text">2&gt;选择2.0.0版本进行安装(其他版本也可以)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-gt-查询已安装的ruby"><span class="nav-number">1.4.3.</span> <span class="nav-text">3&gt;查询已安装的ruby</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-gt-卸载已安装的版本-若已经安装过ruby）"><span class="nav-number">1.4.4.</span> <span class="nav-text">4&gt;卸载已安装的版本(若已经安装过ruby）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设置Ruby版本"><span class="nav-number">1.5.</span> <span class="nav-text">4.设置Ruby版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-更换Ruby源"><span class="nav-number">1.6.</span> <span class="nav-text">5.更换Ruby源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-gt-检测Ruby源"><span class="nav-number">1.6.1.</span> <span class="nav-text">1&gt;检测Ruby源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-gt-移除-ruby-源"><span class="nav-number">1.6.2.</span> <span class="nav-text">2&gt;移除 ruby 源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-gt-移除结果："><span class="nav-number">1.6.3.</span> <span class="nav-text">3&gt;移除结果：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-gt-替换结果："><span class="nav-number">1.6.4.</span> <span class="nav-text">4&gt;替换结果：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-gt-再次检查此时的-ruby-源：（-已经变成了-ruby-china-源-）"><span class="nav-number">1.6.5.</span> <span class="nav-text">5&gt;再次检查此时的 ruby 源：（ 已经变成了 ruby-china 源 ）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-准备工作"><span class="nav-number">1.</span> <span class="nav-text">一. 准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-安装git"><span class="nav-number">2.</span> <span class="nav-text">二. 安装git</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-在-Mac-上安装-Git，官方给了有两种方式。最容易的当属使用图形化的-Git-安装工具，界面如图，下载地址在下："><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 在 Mac 上安装 Git，官方给了有两种方式。最容易的当属使用图形化的 Git 安装工具，界面如图，下载地址在下：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-另一种是通过-MacPorts-http-www-macports-org-安装。如果已经装好了-MacPorts，用下面的命令安装-Git："><span class="nav-number">2.0.2.</span> <span class="nav-text">2. 另一种是通过 MacPorts (http://www.macports.org) 安装。如果已经装好了 MacPorts，用下面的命令安装 Git：</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#三-安装Nodejs"><span class="nav-number">3.</span> <span class="nav-text">三. 安装Nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-GUI下载地址"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. GUI下载地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-终端执行命令"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 终端执行命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-创建Github域名和仓库"><span class="nav-number">4.</span> <span class="nav-text">四. 创建Github域名和仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-注册GitHub账号"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. 注册GitHub账号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-创建仓库"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. 创建仓库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-安装Hexo"><span class="nav-number">5.</span> <span class="nav-text">五. 安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-执行下方命令安装hexo"><span class="nav-number">5.0.1.</span> <span class="nav-text">1. 执行下方命令安装hexo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-配置博客设置"><span class="nav-number">5.0.2.</span> <span class="nav-text">2. 配置博客设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-编写文章"><span class="nav-number">5.0.3.</span> <span class="nav-text">3. 编写文章</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动测试"><span class="nav-number">5.0.4.</span> <span class="nav-text">4. 启动测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-安装hexo-deployer-git自动部署发布工具"><span class="nav-number">5.0.5.</span> <span class="nav-text">5. 安装hexo-deployer-git自动部署发布工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-发布"><span class="nav-number">5.0.6.</span> <span class="nav-text">6.发布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优化"><span class="nav-number">5.0.7.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hexo常用命令"><span class="nav-number">5.0.8.</span> <span class="nav-text">hexo常用命令</span></a></li></ol></li></div>
             
 
           </div>
