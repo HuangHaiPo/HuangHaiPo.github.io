@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/shizi.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/shizi.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/shizi.jpg?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="IAP,内购,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是内购？只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。使用内购需要走的流程。1,填写协议,税务和银行业务;2,填写用户和职能; 创建内购的项目3,写代码,和后台配合4,添加项目内购测试账号;检验成果具体步骤：接下来的步骤特别繁琐，请做好准备。一.填写协议,税务和银行业务配置itunesconnect  1.请">
+<meta name="keywords" content="IAP,内购">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内购">
+<meta property="og:url" content="http://yoursite.com/2017/06/20/内购/index.html">
+<meta property="og:site_name" content="leon">
+<meta property="og:description" content="什么是内购？只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。使用内购需要走的流程。1,填写协议,税务和银行业务;2,填写用户和职能; 创建内购的项目3,写代码,和后台配合4,添加项目内购测试账号;检验成果具体步骤：接下来的步骤特别繁琐，请做好准备。一.填写协议,税务和银行业务配置itunesconnect  1.请">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-13b1fe87aa3eee84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-f1e93f92b9ddcdd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-7d163d0ee067db1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-0b29e7cf66e8c0d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-ae70a53d343f74e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-23b89e17f86c18f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-6b388926f506a6eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-7b7f99e45dd56f10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-fc8de7e0e74a2a1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-f412c182b937697d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-ec10a0463f1b7a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-5319c287b2b6b7cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-b2eb27433d5e325e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-a4b9cf7307052a9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-49fab5335b6c861f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-109cce3293737fdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-b8bfd98c170f1334.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-4d672566a1379df7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-370777e83d3031fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-414e9dde31f92aeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-f97acd87269273ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-06ea76902ab8c601.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-ffcbf5a1c41574a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-b0e310196ec8b4fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-e3839ce0505643ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-24T06:45:23.315Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内购">
+<meta name="twitter:description" content="什么是内购？只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。使用内购需要走的流程。1,填写协议,税务和银行业务;2,填写用户和职能; 创建内购的项目3,写代码,和后台配合4,添加项目内购测试账号;检验成果具体步骤：接下来的步骤特别繁琐，请做好准备。一.填写协议,税务和银行业务配置itunesconnect  1.请">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1483397-13b1fe87aa3eee84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/20/内购/">
+
+
+
+
+
+  <title>内购 | leon</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">leon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/内购/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="huanghaipo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/headerPic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="leon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">内购</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T00:00:00+08:00">
+                2017-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/20/内购/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/06/20/内购/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/20/内购/" class="leancloud_visitors" data-flag-title="内购">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="什么是内购？"><a href="#什么是内购？" class="headerlink" title="什么是内购？"></a>什么是内购？</h1><h5 id="只要在iPhone-App上购买的不是实物产品-也就是虚拟产品如qq币-虎牙币-电子书……-都需要走内购流程-苹果在里面抽走三成。"><a href="#只要在iPhone-App上购买的不是实物产品-也就是虚拟产品如qq币-虎牙币-电子书……-都需要走内购流程-苹果在里面抽走三成。" class="headerlink" title="只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。"></a>只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。</h5><h1 id="使用内购需要走的流程。"><a href="#使用内购需要走的流程。" class="headerlink" title="使用内购需要走的流程。"></a>使用内购需要走的流程。</h1><h5 id="1-填写协议-税务和银行业务"><a href="#1-填写协议-税务和银行业务" class="headerlink" title="1,填写协议,税务和银行业务;"></a>1,填写协议,税务和银行业务;</h5><h5 id="2-填写用户和职能-创建内购的项目"><a href="#2-填写用户和职能-创建内购的项目" class="headerlink" title="2,填写用户和职能; 创建内购的项目"></a>2,填写用户和职能; 创建内购的项目</h5><h5 id="3-写代码-和后台配合"><a href="#3-写代码-和后台配合" class="headerlink" title="3,写代码,和后台配合"></a>3,写代码,和后台配合</h5><h5 id="4-添加项目内购测试账号-检验成果"><a href="#4-添加项目内购测试账号-检验成果" class="headerlink" title="4,添加项目内购测试账号;检验成果"></a>4,添加项目内购测试账号;检验成果</h5><h1 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h1><h3 id="接下来的步骤特别繁琐，请做好准备。"><a href="#接下来的步骤特别繁琐，请做好准备。" class="headerlink" title="接下来的步骤特别繁琐，请做好准备。"></a>接下来的步骤特别繁琐，请做好准备。</h3><h1 id="一-填写协议-税务和银行业务配置"><a href="#一-填写协议-税务和银行业务配置" class="headerlink" title="一.填写协议,税务和银行业务配置"></a>一.填写协议,税务和银行业务配置</h1><p><strong><a href="https://itunesconnect.apple.com" target="_blank" rel="noopener">itunesconnect</a></strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1483397-13b1fe87aa3eee84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="1-请求合同"><a href="#1-请求合同" class="headerlink" title="1.请求合同"></a>1.请求合同</h2><p><img src="http://upload-images.jianshu.io/upload_images/1483397-f1e93f92b9ddcdd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="填写地址信息"><a href="#填写地址信息" class="headerlink" title="填写地址信息"></a>填写地址信息</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-7d163d0ee067db1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="阅读同意协议"><a href="#阅读同意协议" class="headerlink" title="阅读同意协议"></a>阅读同意协议</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-0b29e7cf66e8c0d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="2-填写联系方式"><a href="#2-填写联系方式" class="headerlink" title="2.填写联系方式"></a>2.填写联系方式</h2><p><img src="http://upload-images.jianshu.io/upload_images/1483397-ae70a53d343f74e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="添加新的联系人"><a href="#添加新的联系人" class="headerlink" title="添加新的联系人"></a>添加新的联系人</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-23b89e17f86c18f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1483397-6b388926f506a6eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="选中联系人"><a href="#选中联系人" class="headerlink" title="选中联系人"></a>选中联系人</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-7b7f99e45dd56f10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="3-填写银行信息"><a href="#3-填写银行信息" class="headerlink" title="3.填写银行信息"></a>3.填写银行信息</h2><p><img src="http://upload-images.jianshu.io/upload_images/1483397-fc8de7e0e74a2a1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="添加银行卡"><a href="#添加银行卡" class="headerlink" title="添加银行卡"></a>添加银行卡</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-f412c182b937697d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="选择银行卡所在国家"><a href="#选择银行卡所在国家" class="headerlink" title="选择银行卡所在国家"></a>选择银行卡所在国家</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-ec10a0463f1b7a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="填写银行CNAPS-Code"><a href="#填写银行CNAPS-Code" class="headerlink" title="填写银行CNAPS Code"></a>填写银行CNAPS Code</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-5319c287b2b6b7cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>货币类型 CN</p>
+<h3 id="银行账号如果是对公的账号，需要填写公司的英文名称，如果没有的话拼音"><a href="#银行账号如果是对公的账号，需要填写公司的英文名称，如果没有的话拼音" class="headerlink" title="银行账号如果是对公的账号，需要填写公司的英文名称，如果没有的话拼音"></a>银行账号如果是对公的账号，需要填写公司的英文名称，如果没有的话拼音</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-b2eb27433d5e325e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="4-填写税务信息"><a href="#4-填写税务信息" class="headerlink" title="4.填写税务信息"></a>4.填写税务信息</h2><p>U.S Tax Forms: 美国税务<br>Australia Tax Forms：澳大利亚税务<br>Canada Tax Forms: 加拿大税务<br><img src="http://upload-images.jianshu.io/upload_images/1483397-a4b9cf7307052a9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>第一个问题如下：询问你是否是美国居民，有没有美国伙伴关系或者美国公司，如果没有直接选择No。<br><img src="http://upload-images.jianshu.io/upload_images/1483397-49fab5335b6c861f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>第二个问题如下：询问你有没有在美国的商业性活动，没有也直接选No<br><img src="http://upload-images.jianshu.io/upload_images/1483397-109cce3293737fdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###然后填写你的税务信息，包括以下几点：<br>Individual or Organization Name：个人或者组织名称<br>Country of incorporation： 所在国家<br>Type of Beneficial Owner：受益方式，独立开发者选个人<br>Permanent Residence：居住地址<br>Mailing address：邮寄地址<br>Name of Person Making this Declaration：声明人<br>Title：头衔</p>
+<h3 id="填写完这些信息后就可以提交了"><a href="#填写完这些信息后就可以提交了" class="headerlink" title="填写完这些信息后就可以提交了"></a>填写完这些信息后就可以提交了</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-b8bfd98c170f1334.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1483397-4d672566a1379df7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1483397-370777e83d3031fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="5-等待审核-时间24小时左右。"><a href="#5-等待审核-时间24小时左右。" class="headerlink" title="5.等待审核,时间24小时左右。"></a>5.等待审核,时间24小时左右。</h2><p><img src="http://upload-images.jianshu.io/upload_images/1483397-414e9dde31f92aeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h1 id="二-创建内购项目"><a href="#二-创建内购项目" class="headerlink" title="二.创建内购项目"></a>二.创建内购项目</h1><h3 id="选中你要添加内购项目的APP然后点击功能-点击-创建内购项目。"><a href="#选中你要添加内购项目的APP然后点击功能-点击-创建内购项目。" class="headerlink" title="选中你要添加内购项目的APP然后点击功能,点击+创建内购项目。"></a>选中你要添加内购项目的APP然后点击功能,点击+创建内购项目。</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-f97acd87269273ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="根据自己APP的需求选择类型"><a href="#根据自己APP的需求选择类型" class="headerlink" title="根据自己APP的需求选择类型"></a>根据自己APP的需求选择类型</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-06ea76902ab8c601.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="填写项目名称id-ps-应用在首次添加内购买项目时需要与新的应用版本一起提交审核。"><a href="#填写项目名称id-ps-应用在首次添加内购买项目时需要与新的应用版本一起提交审核。" class="headerlink" title="填写项目名称id (ps:应用在首次添加内购买项目时需要与新的应用版本一起提交审核。)"></a>填写项目名称id (ps:应用在首次添加内购买项目时需要与新的应用版本一起提交审核。)</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-ffcbf5a1c41574a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="添加沙盒技术测试员"><a href="#添加沙盒技术测试员" class="headerlink" title="添加沙盒技术测试员"></a>添加沙盒技术测试员</h3><h3 id="用户职能-gt-沙箱技术测试员"><a href="#用户职能-gt-沙箱技术测试员" class="headerlink" title="用户职能&gt;沙箱技术测试员"></a>用户职能&gt;沙箱技术测试员</h3><p><img src="http://upload-images.jianshu.io/upload_images/1483397-b0e310196ec8b4fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1483397-e3839ce0505643ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项:"></a>注意事项:</h2><h3 id="邮箱随便写但是格式要正确-test-163-com-，但是不能用已经是AppleID的邮箱"><a href="#邮箱随便写但是格式要正确-test-163-com-，但是不能用已经是AppleID的邮箱" class="headerlink" title="邮箱随便写但是格式要正确(test@163.com)，但是不能用已经是AppleID的邮箱"></a>邮箱随便写但是格式要正确(<a href="mailto:test@163.com" target="_blank" rel="noopener">test@163.com</a>)，但是不能用已经是AppleID的邮箱</h3><h3 id="App-Store-地区不要乱选。虽然随便哪个地区都可以用来测试（还没上线之前app并没有地区之分），但是在沙盒测试的时候，弹出的购买提示框会根据当前AppleID-沙盒账号-的地区显示语言的。"><a href="#App-Store-地区不要乱选。虽然随便哪个地区都可以用来测试（还没上线之前app并没有地区之分），但是在沙盒测试的时候，弹出的购买提示框会根据当前AppleID-沙盒账号-的地区显示语言的。" class="headerlink" title="App Store 地区不要乱选。虽然随便哪个地区都可以用来测试（还没上线之前app并没有地区之分），但是在沙盒测试的时候，弹出的购买提示框会根据当前AppleID(沙盒账号)的地区显示语言的。"></a>App Store 地区不要乱选。虽然随便哪个地区都可以用来测试（还没上线之前app并没有地区之分），但是在沙盒测试的时候，弹出的购买提示框会根据当前AppleID(沙盒账号)的地区显示语言的。</h3><h3 id="使用沙盒测试一定要用真机-越狱的不行"><a href="#使用沙盒测试一定要用真机-越狱的不行" class="headerlink" title="使用沙盒测试一定要用真机 (越狱的不行)"></a>使用沙盒测试一定要用真机 (越狱的不行)</h3><h3 id="沙盒账号不能直接登录AppleStore登录时会提示”不允许创建iTunes账户”"><a href="#沙盒账号不能直接登录AppleStore登录时会提示”不允许创建iTunes账户”" class="headerlink" title="沙盒账号不能直接登录AppleStore登录时会提示”不允许创建iTunes账户”"></a>沙盒账号不能直接登录AppleStore登录时会提示”不允许创建iTunes账户”</h3><h3 id="进行沙盒测试时需要退出AppleStore的账号"><a href="#进行沙盒测试时需要退出AppleStore的账号" class="headerlink" title="进行沙盒测试时需要退出AppleStore的账号"></a>进行沙盒测试时需要退出AppleStore的账号</h3><h1 id="三-代码"><a href="#三-代码" class="headerlink" title="三.代码"></a>三.代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">#import &quot;WXApi.h&quot;</span><br><span class="line"></span><br><span class="line">typedef NS_ENUM(NSInteger , Payment) &#123;</span><br><span class="line">    IAP6 = 6,</span><br><span class="line">    IAP25 = 25,</span><br><span class="line">    IAP60 = 60</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">@interface PayCenter : NSObject</span><br><span class="line"></span><br><span class="line">singleton_interface(PayCenter);</span><br><span class="line"></span><br><span class="line">- (void)startInit;</span><br><span class="line"></span><br><span class="line">- (void)payWithMoney:(NSInteger)money andType:(PayType)type dataDic:(NSDictionary *)dataDic;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) MBProgressHUD * hud;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, copy) NSString * rechargeNumber;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line">#define kProductID_IAP6 @&quot;org.qqhl.nursning.6&quot;//6</span><br><span class="line"></span><br><span class="line">#import &quot;PayCenter.h&quot;</span><br><span class="line">#import &quot;PayHttpRequest.h&quot;</span><br><span class="line">//#import &quot;Order.h&quot;</span><br><span class="line">//#import &quot;DataSigner.h&quot;</span><br><span class="line">//#import &lt;AlipaySDK/AlipaySDK.h&gt;</span><br><span class="line">#import &lt;StoreKit/StoreKit.h&gt;</span><br><span class="line"></span><br><span class="line">@interface PayCenter()&lt;SKPaymentTransactionObserver,SKProductsRequestDelegate&gt;</span><br><span class="line">&#123;</span><br><span class="line">    int buyType;</span><br><span class="line">    NSInteger _money;</span><br><span class="line">&#125;</span><br><span class="line">@property (nonatomic, strong) NSMutableDictionary * dataDic;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line">@implementation PayCenter</span><br><span class="line"></span><br><span class="line">singleton_implementation(PayCenter);</span><br><span class="line"></span><br><span class="line">- (void)startInit</span><br><span class="line">&#123;</span><br><span class="line">    [WXApi registerApp:kWeChatShareAppKey withDescription:appDefaultTilte];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)payWithMoney:(NSInteger)money andType:(PayType)type dataDic:(NSDictionary *)dataDic</span><br><span class="line">&#123;</span><br><span class="line">    _money = money;</span><br><span class="line">    self.dataDic = [NSMutableDictionary dictionaryWithDictionary:dataDic];</span><br><span class="line">    switch (type) &#123;</span><br><span class="line">        case PayTypeWX:</span><br><span class="line">            [self payTypeWXPay];</span><br><span class="line">            break;</span><br><span class="line">        case ApplePay:</span><br><span class="line">//            [self payTypeAliPay];</span><br><span class="line">            [[SKPaymentQueue defaultQueue]addTransactionObserver:self];</span><br><span class="line">           </span><br><span class="line">            if ([SKPaymentQueue canMakePayments]) &#123;</span><br><span class="line">                HULog(@&quot;允许程序内付费购买&quot;);</span><br><span class="line"></span><br><span class="line">                [self payTypeApplePay];</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                HULog(@&quot;不允许程序内付费购买&quot;);</span><br><span class="line">                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@&quot;提示&quot;</span><br><span class="line">                                                                    message:@&quot;您的手机没有打开程序内付费购买&quot;</span><br><span class="line">                                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@&quot;关闭&quot;,nil) otherButtonTitles:nil];</span><br><span class="line">               </span><br><span class="line">                [alerView show];</span><br><span class="line">               </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)payTypeApplePay&#123;</span><br><span class="line">    NSLog(@&quot;---------请求对应的产品信息------------&quot;);</span><br><span class="line">    NSArray *product = nil;</span><br><span class="line">    switch (_money) &#123;</span><br><span class="line">        case IAP6:</span><br><span class="line">        &#123;</span><br><span class="line">            product=[[NSArray alloc] initWithObjects:kProductID_IAP6,nil];</span><br><span class="line">            NSLog(@&quot;---------IAP6------------&quot;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case IAP25:</span><br><span class="line">        &#123;</span><br><span class="line">            NSLog(@&quot;---------IAP25------------&quot;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case IAP60:</span><br><span class="line">        &#123;</span><br><span class="line">            NSLog(@&quot;---------IAP60------------&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">            break;</span><br><span class="line">    </span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    NSSet *nsSet = [NSSet setWithArray:product];</span><br><span class="line">    SKProductsRequest *request = [[SKProductsRequest alloc]initWithProductIdentifiers:nsSet];</span><br><span class="line">    request.delegate = self;</span><br><span class="line">    [request start];</span><br><span class="line">&#125;</span><br><span class="line">#pragma mark -  SKProductsRequestDelegate代理</span><br><span class="line">//返回的在苹果服务器请求的产品信息</span><br><span class="line">- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response&#123;</span><br><span class="line">    HULog(@&quot;收到产品信息&quot;);</span><br><span class="line">    NSArray *myProduct = response.products;</span><br><span class="line">    HULog(@&quot;产品id %@&quot;,response.invalidProductIdentifiers);</span><br><span class="line">    NSLog(@&quot;产品付费数量%d&quot;,(int)[myProduct count]);</span><br><span class="line">//populate UI</span><br><span class="line">    for (SKProduct *product in myProduct) &#123;</span><br><span class="line">      NSLog(@&quot;product info&quot;);</span><br><span class="line">      NSLog(@&quot;SKProduct 描述信息%@&quot;, [product description]);</span><br><span class="line">      NSLog(@&quot;产品标题 %@&quot; , product.localizedTitle);</span><br><span class="line">      NSLog(@&quot;产品描述信息: %@&quot; , product.localizedDescription);</span><br><span class="line">      NSLog(@&quot;价格: %@&quot; , product.price);</span><br><span class="line">      NSLog(@&quot;Product id: %@&quot; , product.productIdentifier);</span><br><span class="line">    &#125;</span><br><span class="line">    SKPayment *payment = nil;</span><br><span class="line">    switch (_money) &#123;</span><br><span class="line">        case IAP6:</span><br><span class="line">        &#123;</span><br><span class="line">            payment = [SKPayment paymentWithProductIdentifier:kProductID_IAP6];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case IAP25:&#123;</span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    NSLog(@&quot;发起购买请求&quot;);</span><br><span class="line">    [[SKPaymentQueue defaultQueue]addPayment:payment];</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line">//实现监听方法</span><br><span class="line">- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray&lt;SKPaymentTransaction *&gt; *)transactions&#123;</span><br><span class="line">    NSLog(@&quot;调用了几次这个方法？&quot;);</span><br><span class="line">    SKPaymentTransaction *transaction = transactions.lastObject;</span><br><span class="line">    switch (transaction.transactionState) &#123;</span><br><span class="line">        case SKPaymentTransactionStatePurchased: &#123;</span><br><span class="line">            NSLog(@&quot;购买完成,向自己的服务器验证 ---- %@&quot;, transaction.payment.applicationUsername);</span><br><span class="line">            NSData *data = [NSData dataWithContentsOfFile:[[[NSBundle mainBundle] appStoreReceiptURL] path]];</span><br><span class="line">            NSString *receipt = [data base64EncodedStringWithOptions:0];</span><br><span class="line">//            [self buySuccessWithReceipt:receipt transaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStateFailed: &#123;</span><br><span class="line">            NSLog(@&quot;交易失败&quot;);</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStateRestored: &#123;</span><br><span class="line">            NSLog(@&quot;已经购买过该商品&quot;);</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStatePurchasing: &#123;</span><br><span class="line">            NSLog(@&quot;商品添加进列表&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        default: &#123;</span><br><span class="line">            NSLog(@&quot;这是什么情况啊？&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h4 id="购买成功后需要跟服务器交互验证交易是否成功"><a href="#购买成功后需要跟服务器交互验证交易是否成功" class="headerlink" title="购买成功后需要跟服务器交互验证交易是否成功"></a>购买成功后需要跟服务器交互验证交易是否成功</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">// 验证凭据，获取到苹果返回的交易凭据  </span><br><span class="line">    // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址  </span><br><span class="line">    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];  </span><br><span class="line">    // 从沙盒中获取到购买凭据  </span><br><span class="line">    NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];  </span><br><span class="line">    // 传输的是BASE64编码的字符串  </span><br><span class="line">    /** </span><br><span class="line">     BASE64 常用的编码方案，通常用于数据传输，以及加密算法的基础算法，传输过程中能够保证数据传输的稳定性 </span><br><span class="line">     BASE64是可以编码和解码的 </span><br><span class="line">     */  </span><br><span class="line">    NSDictionary *requestContents = @&#123;  </span><br><span class="line">                                      @&quot;receipt-data&quot;: [receipt base64EncodedStringWithOptions:0]  </span><br><span class="line">                                      &#125;;  </span><br><span class="line">    NSError *error;  </span><br><span class="line">    // 转换为 JSON 格式  </span><br><span class="line">    NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestContents  </span><br><span class="line">                                                          options:0  </span><br><span class="line">                                                            error:&amp;error];  </span><br><span class="line">    // 不存在  </span><br><span class="line">    if (!requestData) &#123; /* ... Handle error ... */ &#125;  </span><br><span class="line">      </span><br><span class="line">    // 发送网络POST请求，对购买凭据进行验证  </span><br><span class="line">    NSString *verifyUrlString;  </span><br><span class="line">   测试环境 verifyUrlString = @&quot;https://sandbox.itunes.apple.com/verifyReceipt&quot;;  </span><br><span class="line">    生产环境 verifyUrlString = @&quot;https://buy.itunes.apple.com/verifyReceipt&quot;;  </span><br><span class="line">    // 国内访问苹果服务器比较慢，timeoutInterval 需要长一点  </span><br><span class="line">    NSMutableURLRequest *storeRequest = [NSMutableURLRequest requestWithURL:[[NSURL alloc] initWithString:verifyUrlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];  </span><br><span class="line">      </span><br><span class="line">    [storeRequest setHTTPMethod:@&quot;POST&quot;];  </span><br><span class="line">    [storeRequest setHTTPBody:requestData];  </span><br><span class="line">      </span><br><span class="line">    // 在后台对列中提交验证请求，并获得官方的验证JSON结果  </span><br><span class="line">    NSOperationQueue *queue = [[NSOperationQueue alloc] init];  </span><br><span class="line">    [NSURLConnection sendAsynchronousRequest:storeRequest queue:queue  </span><br><span class="line">                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) &#123;  </span><br><span class="line">                               if (connectionError) &#123;  </span><br><span class="line">                                   NSLog(@&quot;链接失败&quot;);  </span><br><span class="line">                               &#125; else &#123;  </span><br><span class="line">                                   NSError *error;  </span><br><span class="line">                                   NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&amp;error];  </span><br><span class="line">                                   if (!jsonResponse) &#123;  </span><br><span class="line">                                       NSLog(@&quot;验证失败&quot;);  </span><br><span class="line">                                   &#125;  </span><br><span class="line">                                     </span><br><span class="line">                                   // 比对 jsonResponse 中以下信息基本上可以保证数据安全  </span><br><span class="line">                                   /* </span><br><span class="line">                                    bundle_id </span><br><span class="line">                                    application_version </span><br><span class="line">                                    product_id </span><br><span class="line">                                    transaction_id </span><br><span class="line">                                    */  </span><br><span class="line">                                     </span><br><span class="line">                                   NSLog(@&quot;验证成功&quot;);  </span><br><span class="line">                               &#125;  </span><br><span class="line">                           &#125;];  </span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html#//apple_ref/doc/uid/TP40010573-CH104-SW4" target="_blank" rel="noopener">苹果官方文档</a><br><a id="more"></a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IAP/" rel="tag"># IAP</a>
+          
+            <a href="/tags/内购/" rel="tag"># 内购</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/07/Mac安装Ruby/" rel="prev" title="Mac最新安装Ruby">
+                Mac最新安装Ruby <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/headerPic.png" alt="huanghaipo">
+            
+              <p class="site-author-name" itemprop="name">huanghaipo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是内购？"><span class="nav-number">1.</span> <span class="nav-text">什么是内购？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#只要在iPhone-App上购买的不是实物产品-也就是虚拟产品如qq币-虎牙币-电子书……-都需要走内购流程-苹果在里面抽走三成。"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#使用内购需要走的流程。"><span class="nav-number">2.</span> <span class="nav-text">使用内购需要走的流程。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-填写协议-税务和银行业务"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">1,填写协议,税务和银行业务;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-填写用户和职能-创建内购的项目"><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">2,填写用户和职能; 创建内购的项目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-写代码-和后台配合"><span class="nav-number">2.0.0.0.3.</span> <span class="nav-text">3,写代码,和后台配合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-添加项目内购测试账号-检验成果"><span class="nav-number">2.0.0.0.4.</span> <span class="nav-text">4,添加项目内购测试账号;检验成果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体步骤："><span class="nav-number">3.</span> <span class="nav-text">具体步骤：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接下来的步骤特别繁琐，请做好准备。"><span class="nav-number">3.0.1.</span> <span class="nav-text">接下来的步骤特别繁琐，请做好准备。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一-填写协议-税务和银行业务配置"><span class="nav-number">4.</span> <span class="nav-text">一.填写协议,税务和银行业务配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-请求合同"><span class="nav-number">4.1.</span> <span class="nav-text">1.请求合同</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#填写地址信息"><span class="nav-number">4.1.1.</span> <span class="nav-text">填写地址信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阅读同意协议"><span class="nav-number">4.1.2.</span> <span class="nav-text">阅读同意协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-填写联系方式"><span class="nav-number">4.2.</span> <span class="nav-text">2.填写联系方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加新的联系人"><span class="nav-number">4.2.1.</span> <span class="nav-text">添加新的联系人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选中联系人"><span class="nav-number">4.2.2.</span> <span class="nav-text">选中联系人</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-填写银行信息"><span class="nav-number">4.3.</span> <span class="nav-text">3.填写银行信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加银行卡"><span class="nav-number">4.3.1.</span> <span class="nav-text">添加银行卡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择银行卡所在国家"><span class="nav-number">4.3.2.</span> <span class="nav-text">选择银行卡所在国家</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填写银行CNAPS-Code"><span class="nav-number">4.3.3.</span> <span class="nav-text">填写银行CNAPS Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#银行账号如果是对公的账号，需要填写公司的英文名称，如果没有的话拼音"><span class="nav-number">4.3.4.</span> <span class="nav-text">银行账号如果是对公的账号，需要填写公司的英文名称，如果没有的话拼音</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-填写税务信息"><span class="nav-number">4.4.</span> <span class="nav-text">4.填写税务信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#填写完这些信息后就可以提交了"><span class="nav-number">4.4.1.</span> <span class="nav-text">填写完这些信息后就可以提交了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-等待审核-时间24小时左右。"><span class="nav-number">4.5.</span> <span class="nav-text">5.等待审核,时间24小时左右。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-创建内购项目"><span class="nav-number">5.</span> <span class="nav-text">二.创建内购项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选中你要添加内购项目的APP然后点击功能-点击-创建内购项目。"><span class="nav-number">5.0.1.</span> <span class="nav-text">选中你要添加内购项目的APP然后点击功能,点击+创建内购项目。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据自己APP的需求选择类型"><span class="nav-number">5.0.2.</span> <span class="nav-text">根据自己APP的需求选择类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填写项目名称id-ps-应用在首次添加内购买项目时需要与新的应用版本一起提交审核。"><span class="nav-number">5.0.3.</span> <span class="nav-text">填写项目名称id (ps:应用在首次添加内购买项目时需要与新的应用版本一起提交审核。)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加沙盒技术测试员"><span class="nav-number">5.0.4.</span> <span class="nav-text">添加沙盒技术测试员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户职能-gt-沙箱技术测试员"><span class="nav-number">5.0.5.</span> <span class="nav-text">用户职能&gt;沙箱技术测试员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">5.1.</span> <span class="nav-text">注意事项:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#邮箱随便写但是格式要正确-test-163-com-，但是不能用已经是AppleID的邮箱"><span class="nav-number">5.1.1.</span> <span class="nav-text">邮箱随便写但是格式要正确(test@163.com)，但是不能用已经是AppleID的邮箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#App-Store-地区不要乱选。虽然随便哪个地区都可以用来测试（还没上线之前app并没有地区之分），但是在沙盒测试的时候，弹出的购买提示框会根据当前AppleID-沙盒账号-的地区显示语言的。"><span class="nav-number">5.1.2.</span> <span class="nav-text">App Store 地区不要乱选。虽然随便哪个地区都可以用来测试（还没上线之前app并没有地区之分），但是在沙盒测试的时候，弹出的购买提示框会根据当前AppleID(沙盒账号)的地区显示语言的。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用沙盒测试一定要用真机-越狱的不行"><span class="nav-number">5.1.3.</span> <span class="nav-text">使用沙盒测试一定要用真机 (越狱的不行)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#沙盒账号不能直接登录AppleStore登录时会提示”不允许创建iTunes账户”"><span class="nav-number">5.1.4.</span> <span class="nav-text">沙盒账号不能直接登录AppleStore登录时会提示”不允许创建iTunes账户”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进行沙盒测试时需要退出AppleStore的账号"><span class="nav-number">5.1.5.</span> <span class="nav-text">进行沙盒测试时需要退出AppleStore的账号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-代码"><span class="nav-number">6.</span> <span class="nav-text">三.代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#购买成功后需要跟服务器交互验证交易是否成功"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">购买成功后需要跟服务器交互验证交易是否成功</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">huanghaipo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '20XmlV1tRxPiuVyf0YCapaHc-gzGzoHsz',
+        appKey: 'xKTr1qYkoX5aLRuAwCfVRIpx',
+        placeholder: '来呀!快活呀!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("20XmlV1tRxPiuVyf0YCapaHc-gzGzoHsz", "xKTr1qYkoX5aLRuAwCfVRIpx");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
