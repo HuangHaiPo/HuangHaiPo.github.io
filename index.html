@@ -257,176 +257,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/Mac安装Ruby/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="leon">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/headerPic.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="骑马纵天下">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/07/Mac安装Ruby/" itemprop="url">Mac最新安装Ruby</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">
-                2017-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/07/Mac安装Ruby/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/09/07/Mac安装Ruby/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/07/Mac安装Ruby/" class="leancloud_visitors" data-flag-title="Mac最新安装Ruby">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="安装CocoaPods第一步"><a href="#安装CocoaPods第一步" class="headerlink" title="安装CocoaPods第一步"></a>安装CocoaPods第一步</h1><p>起因:重装系统后需要重新安装CocoaPods网上搜了下发现很多都过时了，已经不能用了。而且taobao Gems源已经停止服务，现在有ruby-china提供服<br>PS：”$”开头表示需要在终端下执行</p>
-<h2 id="1-安装RVM"><a href="#1-安装RVM" class="headerlink" title="1.安装RVM"></a>1.安装RVM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L https://get.rvm.io | bash -s stable</span><br></pre></td></tr></table></figure>
-<p>期间可能需要输入密码(我安装时没有提示，密码就是开机密码输入时密码不会显示直接输入完成就可以)，等待一段时间将安装好(大概五六分钟)。<br><img src="http://upload-images.jianshu.io/upload_images/1483397-51b0b8a595a988c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装RVM"></p>
-<h2 id="2-载入RVM环境"><a href="#2-载入RVM环境" class="headerlink" title="2.载入RVM环境"></a>2.载入RVM环境</h2><p><strong>若打开新终端窗口则不用执行</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~/.rvm/scripts/rvm</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-26b650f938b479ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="载入RVM环境"></p>
-<h2 id="3-检查RVM是否安装好"><a href="#3-检查RVM是否安装好" class="headerlink" title="3.检查RVM是否安装好"></a>3.检查RVM是否安装好</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm -v</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-8e3524ac28801dbf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h2 id="4-安装Ruby"><a href="#4-安装Ruby" class="headerlink" title="4.安装Ruby"></a>4.安装Ruby</h2><h3 id="1-gt-列出已知的ruby版本"><a href="#1-gt-列出已知的ruby版本" class="headerlink" title="1&gt;列出已知的ruby版本"></a>1&gt;列出已知的ruby版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list known</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-e4c16747263e4e95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="列出已知的ruby版本"></p>
-<h3 id="2-gt-选择2-0-0版本进行安装-其他版本也可以"><a href="#2-gt-选择2-0-0版本进行安装-其他版本也可以" class="headerlink" title="2&gt;选择2.0.0版本进行安装(其他版本也可以)"></a>2&gt;选择2.0.0版本进行安装(其他版本也可以)</h3><p><strong>等待下载(途中需要按回车确定安装路径、还要输入密码)、编译。完成之后Ruby、Ruby Gems就安装好了</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm install 2.0.0</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-a0b49914b4f14a16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="选择2.0.0版本进行安装"></p>
-<h3 id="3-gt-查询已安装的ruby"><a href="#3-gt-查询已安装的ruby" class="headerlink" title="3&gt;查询已安装的ruby"></a>3&gt;查询已安装的ruby</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-cd3974a429ad4f39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查询已安装的ruby"></p>
-<h3 id="4-gt-卸载已安装的版本-若已经安装过ruby）"><a href="#4-gt-卸载已安装的版本-若已经安装过ruby）" class="headerlink" title="4&gt;卸载已安装的版本(若已经安装过ruby）"></a>4&gt;卸载已安装的版本(若已经安装过ruby）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm remove [版本号]</span><br></pre></td></tr></table></figure>
-<h2 id="4-设置Ruby版本"><a href="#4-设置Ruby版本" class="headerlink" title="4.设置Ruby版本"></a>4.设置Ruby版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm 2.0.0 —default</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-60966048cb410d23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置Ruby版本"><br><strong>检查是否安装好了</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm -v</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-9634b38d061115df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="检查"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem -v</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-a33e6c65ea475612.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="检查"></p>
-<h2 id="5-更换Ruby源"><a href="#5-更换Ruby源" class="headerlink" title="5.更换Ruby源"></a>5.更换Ruby源</h2><p><strong>我们需要来修改更换Ruby源，国内镜像源 taobao 源 已经停止维护了（由于国内被墙）所以要把源切换至ruby-china</strong></p>
-<h3 id="1-gt-检测Ruby源"><a href="#1-gt-检测Ruby源" class="headerlink" title="1&gt;检测Ruby源"></a>1&gt;检测Ruby源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources -l</span><br></pre></td></tr></table></figure>
-<p><strong>检查结果：（ 如果电脑没安装过 CocoaPods，此时应该是默认 ruby 源 ）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:~ jijiucheng$ gem sources -l</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line">https://rubygems.org/</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-gt-移除-ruby-源"><a href="#2-gt-移除-ruby-源" class="headerlink" title="2&gt;移除 ruby 源"></a>2&gt;移除 ruby 源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --remove https://rubygems.org/</span><br></pre></td></tr></table></figure>
-<h3 id="3-gt-移除结果："><a href="#3-gt-移除结果：" class="headerlink" title="3&gt;移除结果："></a>3&gt;移除结果：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:local jijiucheng$ gem sources --remove https://rubygems.org/</span><br><span class="line">https://rubygems.org/ removed from sources</span><br></pre></td></tr></table></figure>
-<p><strong>替换添加国内镜像源 ruby-china 源，因为上面已经提到国内镜像源 taobao 源 已经停止维护了，所以此处替换的是 ruby-china 源，且尽量确保只有一个 ruby-china 源</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --add https://gems.ruby-china.org</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-gt-替换结果："><a href="#4-gt-替换结果：" class="headerlink" title="4&gt;替换结果："></a>4&gt;替换结果：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:local jijiucheng$ gem sources --add https://gems.ruby-china.org</span><br><span class="line">https://gems.ruby-china.org added to sources</span><br></pre></td></tr></table></figure>
-<h3 id="5-gt-再次检查此时的-ruby-源：（-已经变成了-ruby-china-源-）"><a href="#5-gt-再次检查此时的-ruby-源：（-已经变成了-ruby-china-源-）" class="headerlink" title="5&gt;再次检查此时的 ruby 源：（ 已经变成了 ruby-china 源 ）"></a>5&gt;再次检查此时的 ruby 源：（ 已经变成了 ruby-china 源 ）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:local jijiucheng$ gem sources -l</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line">https://gems.ruby-china.org</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/07/Mac安装Ruby/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/内购/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -654,7 +484,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -676,7 +506,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
