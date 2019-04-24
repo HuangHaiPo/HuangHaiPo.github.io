@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-60966048cb410d23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-9634b38d061115df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-a33e6c65ea475612.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-24T07:46:43.805Z">
+<meta property="og:updated_time" content="2019-04-24T08:02:16.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac最新安装Ruby">
 <meta name="twitter:description" content="安装CocoaPods第一步起因:重装系统后需要重新安装CocoaPods网上搜了下发现很多都过时了，已经不能用了。而且taobao Gems源已经停止服务，现在有ruby-china提供服PS：”$”开头表示需要在终端下执行 1.安装RVM1$ curl -L https://get.rvm.io | bash -s stable 期间可能需要输入密码(我安装时没有提示，密码就是开机密码输入时密">
@@ -452,7 +452,7 @@
 <h2 id="1-安装RVM"><a href="#1-安装RVM" class="headerlink" title="1.安装RVM"></a>1.安装RVM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L https://get.rvm.io | bash -s stable</span><br></pre></td></tr></table></figure>
 <p>期间可能需要输入密码(我安装时没有提示，密码就是开机密码输入时密码不会显示直接输入完成就可以)，等待一段时间将安装好(大概五六分钟)。<br><img src="http://upload-images.jianshu.io/upload_images/1483397-51b0b8a595a988c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装RVM"></p>
 <h2 id="2-载入RVM环境"><a href="#2-载入RVM环境" class="headerlink" title="2.载入RVM环境"></a>2.载入RVM环境</h2><p><strong>若打开新终端窗口则不用执行</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~/.rvm/scripts/rvm</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483397-26b650f938b479ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="载入RVM环境"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1483397-26b650f938b479ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="载入RVM环境"><br><a id="more"></a></p>
 <h2 id="3-检查RVM是否安装好"><a href="#3-检查RVM是否安装好" class="headerlink" title="3.检查RVM是否安装好"></a>3.检查RVM是否安装好</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm -v</span><br></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/1483397-8e3524ac28801dbf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <h2 id="4-安装Ruby"><a href="#4-安装Ruby" class="headerlink" title="4.安装Ruby"></a>4.安装Ruby</h2><h3 id="1-gt-列出已知的ruby版本"><a href="#1-gt-列出已知的ruby版本" class="headerlink" title="1&gt;列出已知的ruby版本"></a>1&gt;列出已知的ruby版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list known</span><br></pre></td></tr></table></figure>
@@ -474,7 +474,7 @@
 <p><strong>替换添加国内镜像源 ruby-china 源，因为上面已经提到国内镜像源 taobao 源 已经停止维护了，所以此处替换的是 ruby-china 源，且尽量确保只有一个 ruby-china 源</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --add https://gems.ruby-china.org</span><br></pre></td></tr></table></figure></p>
 <h3 id="4-gt-替换结果："><a href="#4-gt-替换结果：" class="headerlink" title="4&gt;替换结果："></a>4&gt;替换结果：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:local jijiucheng$ gem sources --add https://gems.ruby-china.org</span><br><span class="line">https://gems.ruby-china.org added to sources</span><br></pre></td></tr></table></figure>
 <h3 id="5-gt-再次检查此时的-ruby-源：（-已经变成了-ruby-china-源-）"><a href="#5-gt-再次检查此时的-ruby-源：（-已经变成了-ruby-china-源-）" class="headerlink" title="5&gt;再次检查此时的 ruby 源：（ 已经变成了 ruby-china 源 ）"></a>5&gt;再次检查此时的 ruby 源：（ 已经变成了 ruby-china 源 ）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">huanghaipoMacBook-Pro:local jijiucheng$ gem sources -l</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line">https://gems.ruby-china.org</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<!--more-->
 
       
     </div>
