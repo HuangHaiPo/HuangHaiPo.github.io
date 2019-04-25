@@ -416,16 +416,78 @@
       
         
           
+            <p><img src="https://upload-images.jianshu.io/upload_images/1483397-61fdcdc13112b42a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信支付"></p>
+<h4 id="一-微信支付步骤"><a href="#一-微信支付步骤" class="headerlink" title="一. 微信支付步骤"></a>一. 微信支付步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 用户进入商户APP，选择商品下单、确认购买，进入支付环节。商户服务后台生成支付订单，签名后将数据传输到APP端。</span><br><span class="line">2. 用户点击后发起支付操作，进入到微信界面，调起微信支付，出现确认支付界面。</span><br><span class="line">3. 用户确认收款方和金额，点击立即支付后出现输入密码界面，可选择零钱或银行卡支付。</span><br><span class="line">4. 输入正确密码后，支付完成，用户端微信出现支付详情页面。</span><br><span class="line">5. 回跳到商户APP中，商户APP根据支付结果个性化展示订单处理结果。</span><br></pre></td></tr></table></figure>
+<h4 id="二-微信支付流程"><a href="#二-微信支付流程" class="headerlink" title="二. 微信支付流程"></a>二. 微信支付流程</h4><p><strong>下图是微信开发者文档给的流程图</strong><br><img src="https://upload-images.jianshu.io/upload_images/1483397-fb14d7180681cc0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信支付流程图"></p>
+<p><strong>流程图看着繁琐其实具体就三步：</strong></p>
+<ol>
+<li>app接入微信支付SDK，选中商品支付前调用后台给的接口接收调用微信支付需要的参数如tradeToken、orderInfo等。需要注意的是一般后台给的string字符串需要转成json。</li>
+<li>拿到参数后调用微信支付API。</li>
+<li>支付过后一般微信会有支付结果返回，但是安全起见让后台去验证支付是否成功。<br><strong>流程大概是上面三个步骤</strong></li>
+</ol>
+<h4 id="三-开发流程"><a href="#三-开发流程" class="headerlink" title="三. 开发流程"></a>三. 开发流程</h4><p><a href="https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_1" target="_blank" rel="noopener">微信支付开发者文档</a></p>
+<h5 id="1-集成微信支付SDK-SDK下载地址"><a href="#1-集成微信支付SDK-SDK下载地址" class="headerlink" title="1. 集成微信支付SDK SDK下载地址"></a>1. 集成微信支付SDK <a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419319164&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">SDK下载地址</a></h5><ul>
+<li>手动集成</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1483397-367800e8045dc5b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sdk"></p>
+<p><strong>将SDK拖到项目中点击项目选中Build Phases &gt; Link Binary With Libraries 添加依赖库。</strong><br><img src="https://upload-images.jianshu.io/upload_images/1483397-85054720604b96c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="依赖库"></p>
+<ul>
+<li>过CocoaPods集成</li>
+</ul>
+<p><strong>在工程的Podfile里面添加以下代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &apos;WechatOpenSDK&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>保存并执行pod install。</strong></p>
+<h5 id="2-设置URL-Types"><a href="#2-设置URL-Types" class="headerlink" title="2. 设置URL Types"></a>2. 设置URL Types</h5><p><strong>选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL Types“添加“URL scheme”为你所注册的应用程序id</strong><br><img src="https://upload-images.jianshu.io/upload_images/1483397-eb97f701e188fb43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="URL scheme"></p>
+<p><strong>Xcode设置URL scheme</strong></p>
+<h5 id="3-添加代码"><a href="#3-添加代码" class="headerlink" title="3. 添加代码"></a>3. 添加代码</h5><ul>
+<li>AppDelegate</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">    [WXApi registerApp:@&quot;wx12312321312312&quot;];//注册appid</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url &#123;</span><br><span class="line">    return  [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 配置系统回调接口</span><br><span class="line">- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation</span><br><span class="line">&#123;</span><br><span class="line">    BOOL result = [UMSocialSnsService handleOpenURL:url];</span><br><span class="line"></span><br><span class="line">    if (result == FALSE) &#123;</span><br><span class="line">        //调用其他SDK，例如支付宝SDK等</span><br><span class="line">        if ([url.host isEqualToString:@&quot;safepay&quot;]) &#123;</span><br><span class="line">            //跳转支付宝钱包进行支付，处理支付结果</span><br><span class="line">            [[AlipaySDK defaultService]processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">                [kNotificationCenter postNotificationName:kAlibabaPaymentStatus object:resultDic];//发起通知处理支付结果</span><br><span class="line">            &#125;];</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">// NOTE: 9.0以后使用新API接口</span><br><span class="line">- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary&lt;NSString*, id&gt; *)options</span><br><span class="line">&#123;</span><br><span class="line">    BOOL result = [UMSocialSnsService handleOpenURL:url];</span><br><span class="line">    if (result == false) &#123;</span><br><span class="line">        if ([url.host isEqualToString:@&quot;safepay&quot;]) &#123;</span><br><span class="line">            //跳转支付宝钱包进行支付，处理支付结果</span><br><span class="line">            [[AlipaySDK defaultService]processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">                [kNotificationCenter postNotificationName:kAlibabaPaymentStatus object:resultDic];//发起通知处理支付结果</span><br><span class="line">            &#125;];</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line">        return [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>delegate的类根据自己的需求可以自定义，目前我们项目时这样写的。获取到支付回调后请求后台验证接口，验证支付是否成功。需要注意的是设置过代理后需要遵守微信协议WXApiDelegate</strong><br><strong>关于集成支付宝在下篇文章<a href="https://www.jianshu.com/p/217c1033bf0" target="_blank" rel="noopener">传送门</a></strong></p>
+<ul>
+<li>回调单例类CdWeChatAPIManager</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">.h</span><br><span class="line">@protocol CdWeChatAPIManagerDelegate &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@optional</span><br><span class="line"></span><br><span class="line">- (void)managerDidRecvAuthBaseResp:(BaseResp *)response;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface CdWeChatAPIManager : NSObject &lt;WXApiDelegate&gt;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id&lt;CdWeChatAPIManagerDelegate&gt; delegate;</span><br><span class="line"></span><br><span class="line">singleton_interface(CdWeChatAPIManager);</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation CdWeChatAPIManager</span><br><span class="line"></span><br><span class="line">singleton_implementation(CdWeChatAPIManager);</span><br><span class="line"></span><br><span class="line">#pragma mark - WXApiDelegate</span><br><span class="line">- (void)onResp:(BaseResp *)resp &#123;</span><br><span class="line">    if([resp isKindOfClass:[PayResp class]])&#123;</span><br><span class="line">        if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(managerDidRecvAuthBaseResp:)]) &#123;</span><br><span class="line">            [self.delegate managerDidRecvAuthBaseResp:resp];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)onReq:(BaseReq *)req &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<ul>
+<li>处理微信支付回调结果</li>
+</ul>
+<p><strong>在需要展示的地方遵守协议</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)managerDidRecvAuthBaseResp:(BaseResp *)response&#123;</span><br><span class="line">    [[CdPaymentCenter sharedCdPaymentCenter].hud hide:YES];</span><br><span class="line">    if (response.errCode == 0) &#123;</span><br><span class="line">      //调用后台验证支付是否成功接口 验证完成后微信支付基本算完成了。</span><br><span class="line">    &#125;else if (response.errCode == -1)&#123;</span><br><span class="line">        [self paymentFailure:@&quot;支付失败&quot;];</span><br><span class="line">    &#125;else if(response.errCode  == -2)&#123;</span><br><span class="line">        [self paymentFailure:@&quot;支付取消&quot;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>回调中errCode值列表：</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>成功</td>
+<td>展示成功页面</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>错误</td>
+<td>可能的原因：签名错误、未注册APPID、项目设置APPID不正确、注册的APPID与设置的不匹配、其他异常等。</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>用户取消</td>
+<td>无需处理。发生场景：用户不支付了，点击取消，返回APP。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h4><ul>
+<li>关于掉单问题目前我们的解决办法是每调起支付会创建一个事件放到数据库中，如果正常情况支付完成了会把数据删了如果发生断网，关机等情况，有网时或者开机。会检测数据库是否有未完成的订单去后台查询支付是否完成，商品是否购买成功。</li>
+<li>关于签名问题最好是让后台去做不要APP端完成，不然风险太大。</li>
+<li>关于调微信支付的参数：签名APPID等是根据某个字符分开的，取到后需要自己拼。</li>
+<li>关于注册APPID问题产品或者运营一般都弄好了如果自己申请<a href="https://open.weixin.qq.com/" target="_blank" rel="noopener">网站</a>申请后需要微信审核。</li>
+</ul>
+
           
-一. 微信支付步骤123451. 用户进入商户APP，选择商品下单、确认购买，进入支付环节。商户服务后台生成支付订单，签名后将数据传输到APP端。2. 用户点击后发起支付操作，进入到微信界面，调起微信支付，出现确认支付界面。3. 用户确认收款方和金额，点击立即支付后出现输入密码界面，可选择零钱或银
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/14/iOS支付三部曲之集成微信支/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -586,18 +648,26 @@
       
         
           
-          
-每次在点击时先取消之前的操作
+            <ul>
+<li>每次在点击时先取消之前的操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)buttonClick:(UIButton *)violenceBtn&#123;</span><br><span class="line">    //点击按钮后先取消之前的操作，再进行需要进行的操作</span><br><span class="line">    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(handleClickEvent:) object:violenceBtn];</span><br><span class="line">    [self performSelector:@selector(handleClickEvent:) withObject:violenceBtn afterDelay:0.5f];//时间0.5</span><br><span class="line">&#125;</span><br><span class="line">//点击事件的处理方法</span><br><span class="line">- (void)handleClickEvent:(UIButton *)btn&#123;</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot; %s &quot;,__FUNCTION__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>点击后设为不可被点击的状态，几秒后恢复</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-(void)buttonClick:(UIButton*)violenceBtn&#123;</span><br><span class="line">    violenceBtn.enabled =NO;</span><br><span class="line">    NSLog(@&quot; %s &quot;,__FUNCTION__);</span><br><span class="line">    [self performSelector:@selector(changeButtonStatus) withObject:nil afterDelay:1.0f];//防止重复点击</span><br><span class="line">&#125;</span><br><span class="line">-(void)changeButtonStatus&#123;</span><br><span class="line">    _btn.enabled =YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过点击间隔时间防止暴力点击</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-(void)buttonClick:(UIButton*)violenceBtn&#123;</span><br><span class="line">    static NSTimeInterval time = 0.0;</span><br><span class="line">    NSTimeInterval currentTime = [NSDate date].timeIntervalSince1970;//防止暴力点击 两秒内只能点击一次</span><br><span class="line">    if (currentTime - time &gt; 2) &#123;//限制用户点击按钮的时间间隔大于2秒钟</span><br><span class="line">        NSLog(@&quot; %s &quot;,__FUNCTION__);</span><br><span class="line">    &#125;</span><br><span class="line">    time = currentTime;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用runtime,把按钮的点击方法进行替换来设置时间间隔。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 防止按钮重复暴力点击</span><br><span class="line"> */</span><br><span class="line">@interface UIButton (ViolenceBtn)</span><br><span class="line">//点击间隔</span><br><span class="line">@property (nonatomic, assign) NSTimeInterval timeInterval;</span><br><span class="line">//用于设置单个按钮不需要被hook (设为yes说明可以重复点击)</span><br><span class="line">@property (nonatomic, assign) BOOL isIgnore;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#import &quot;UIButton+ViolenceBtn.h&quot;</span><br><span class="line">#import &lt;objc/runtime.h&gt;</span><br><span class="line"></span><br><span class="line">//默认时间间隔</span><br><span class="line">#define defaultInterval 1</span><br><span class="line">@implementation UIButton (ViolenceBtn)</span><br><span class="line"></span><br><span class="line">+ (void)load &#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        Class class = [self class];</span><br><span class="line">        SEL orginalSel = @selector(sendAction:to:forEvent:);</span><br><span class="line">        SEL swizzledSel = @selector(sure_SendAction:to:forEvent:);</span><br><span class="line">        //原有方法</span><br><span class="line">        Method originalMethod = class_getInstanceMethod(class, orginalSel);</span><br><span class="line">        //替换原有方法的新方法</span><br><span class="line">        Method swizzledMethod = class_getInstanceMethod(class, swizzledSel);</span><br><span class="line">        //先尝试給源SEL添加IMP，这里是为了避免源SEL没有实现IMP的情况</span><br><span class="line">        //将methodB的实现添加到系统方法中也就是说将methodA方法指针添加成方法methodB的返回值表示是否添加成功</span><br><span class="line">        BOOL didAddMethod = class_addMethod(class, orginalSel,</span><br><span class="line">                                            method_getImplementation(swizzledMethod),</span><br><span class="line">                                            method_getTypeEncoding(swizzledMethod));</span><br><span class="line">        //添加成功了说明本类中不存在methodB所以此时必须将方法b的实现指针换成方法A的，否则b方法将没有实现。</span><br><span class="line">        if (didAddMethod) &#123; //添加成功：说明源SEL没有实现IMP，将源SEL的IMP替换到交换SEL的IMP</span><br><span class="line">            class_replaceMethod(class, swizzledSel,</span><br><span class="line">                                method_getImplementation(originalMethod),</span><br><span class="line">                                method_getTypeEncoding(originalMethod));</span><br><span class="line">        &#125; else &#123; //添加失败：说明源SEL已经有IMP，直接将两个SEL的IMP交换即可</span><br><span class="line">            //添加失败了说明本类中有methodB的实现，此时只需要将methodA和methodB的IMP互换一下即可。</span><br><span class="line">            method_exchangeImplementations(originalMethod, swizzledMethod);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSTimeInterval)timeInterval &#123;</span><br><span class="line">    return [objc_getAssociatedObject(self, _cmd) doubleValue];</span><br><span class="line">&#125;</span><br><span class="line">- (void)setTimeInterval:(NSTimeInterval)timeInterval &#123;</span><br><span class="line">    objc_setAssociatedObject(self, @selector(timeInterval), @(timeInterval), OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span><br><span class="line">&#125;</span><br><span class="line">//当按钮点击事件sendAction 时将会执行sure_SendAction</span><br><span class="line">- (void)sure_SendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event &#123;</span><br><span class="line">    if (self.isIgnore) &#123;</span><br><span class="line">        //不需要被hook</span><br><span class="line">        [self sure_SendAction:action to:target forEvent:event];</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if ([NSStringFromClass(self.class) isEqualToString:@&quot;UIButton&quot;]) &#123;</span><br><span class="line">        self.timeInterval = self.timeInterval == 0 ? defaultInterval : self.timeInterval;</span><br><span class="line">        if (self.isIgnoreEvent) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125; else if (self.timeInterval &gt; 0) &#123;</span><br><span class="line">            [self performSelector:@selector(resetState) withObject:nil afterDelay:self.timeInterval];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //此处 methodA和methodB方法IMP互换了，实际上执行 sendAction；所以不会死循环</span><br><span class="line">    self.isIgnoreEvent = YES;</span><br><span class="line">    [self sure_SendAction:action to:target forEvent:event];</span><br><span class="line">&#125;</span><br><span class="line">//runtime 动态绑定 属性</span><br><span class="line">- (void)setIsIgnoreEvent:(BOOL)isIgnoreEvent &#123;</span><br><span class="line">    // 注意BOOL类型 需要用OBJC_ASSOCIATION_RETAIN_NONATOMIC 不要用错，否则set方法会赋值出错</span><br><span class="line">    objc_setAssociatedObject(self, @selector(isIgnoreEvent), @(isIgnoreEvent), OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)isIgnoreEvent &#123;</span><br><span class="line">    //_cmd == @select(isIgnore); 和set方法里一致</span><br><span class="line">    return [objc_getAssociatedObject(self, _cmd) boolValue];</span><br><span class="line">&#125;</span><br><span class="line">- (void)setIsIgnore:(BOOL)isIgnore &#123;</span><br><span class="line">    // 注意BOOL类型 需要用OBJC_ASSOCIATION_RETAIN_NONATOMIC 不要用错，否则set方法会赋值出错</span><br><span class="line">    objc_setAssociatedObject(self, @selector(isIgnore), @(isIgnore), OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)isIgnore&#123;</span><br><span class="line">    //_cmd == @select(isIgnore); 和set方法里一致</span><br><span class="line">    return [objc_getAssociatedObject(self, _cmd) boolValue];</span><br><span class="line">&#125;</span><br><span class="line">- (void)resetState&#123;</span><br><span class="line">    [self setIsIgnoreEvent:NO];</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1483397-d489bb365afdcfb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间间隔"></p>
+<p>目前来说通过runtime最方便，但是如果是不同按钮同时点击情况还会发生，所以可以使用最合适的方法。</p>
 
-12345678910- (void)buttonClick:(UIButton *)violenceBtn&#123;    //点击按钮后先取消之前的操作，再进行需要进行的操作    [[self class] cancelPreviousPerformRequ
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/14/iOS 防止UIButton暴力点击/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -758,15 +828,31 @@
       
         
           
-          开发项目时会有一些文件一直自动更新但是不必提交的文件如版本管理文件,如果不忽略提交代码时会遇到下方报错。比如xcuserstate文件,这个文件会实时更新不管有没有更改过代码等，此文件保存的是项目的状态之类的，不需要提交。123The working copy “项目名称” has uncommit
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/22/iOS 设置.gitignore文件 忽略.DS_Store 、xcuserstate等文件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>开发项目时会有一些文件一直自动更新但是不必提交的文件如版本管理文件,如果不忽略提交代码时会遇到下方报错。比如<code>xcuserstate</code>文件,这个文件会实时更新不管有没有更改过代码等，此文件保存的是项目的状态之类的，不需要提交。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The working copy “项目名称” has uncommitted changes.</span><br><span class="line"></span><br><span class="line">Commit or discard the changes and try again.</span><br></pre></td></tr></table></figure></p>
+<p>此时需要配置git的<code>.gitignore</code>文件忽略掉不需要提交的文件。</p>
+<h4 id="1-设置项目中的-gitignore文件。"><a href="#1-设置项目中的-gitignore文件。" class="headerlink" title="1. 设置项目中的.gitignore文件。"></a>1. 设置项目中的<code>.gitignore</code>文件。</h4><p><code>.gitignore</code>文件是隐藏文件需要显示隐藏文件才能看到，终端执行下方命令可以显示隐藏文件。有没有大神知道显示隐藏文件的快捷键。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder</span><br></pre></td></tr></table></figure>
+<p>创建<code>.gitignore</code>文件，首先进入到项目目录下执行下面终端命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch .gitignore</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1483397-d478ba73e5bfe20c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".gitignore"><br>打开编辑忽略配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open .gitignore</span><br></pre></td></tr></table></figure></p>
+<p>直接通过命令打开或者找到此文件直接双击打开用文本编辑器或者其他编辑器都可以，然后把下面代码(需要忽略的文件)粘贴进去保存提交到远端就OK了。以后提交就不会出现上面的问题。<br>或者点击 <a href="https://github.com/github/gitignore/blob/master/Objective-C.gitignore" target="_blank" rel="noopener">GitHub Objective-C.gitignore项目地址 </a>  objc-c项目在GitHub上.gitignore地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"> # ---&gt; Objective-C</span><br><span class="line"># Xcode</span><br><span class="line">#</span><br><span class="line"># gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore &amp; Swift.gitignore</span><br><span class="line"></span><br><span class="line">##file</span><br><span class="line">*.app.dSYM.zip</span><br><span class="line">.DS_Store</span><br><span class="line"></span><br><span class="line">## Build generated</span><br><span class="line">build/</span><br><span class="line">DerivedData</span><br><span class="line"></span><br><span class="line">## .DS_store</span><br><span class="line">*.DS_Store</span><br><span class="line">.DS_Store</span><br><span class="line">.DS_Store?</span><br><span class="line">*.swp</span><br><span class="line">*.swo</span><br><span class="line"></span><br><span class="line">## Various settings</span><br><span class="line">*.pbxuser</span><br><span class="line">!default.pbxuser</span><br><span class="line">*.mode1v3</span><br><span class="line">!default.mode1v3</span><br><span class="line">*.mode2v3</span><br><span class="line">!default.mode2v3</span><br><span class="line">*.perspectivev3</span><br><span class="line">!default.perspectivev3</span><br><span class="line">xcuserdata</span><br><span class="line"></span><br><span class="line">## Other</span><br><span class="line">*.xccheckout</span><br><span class="line">*.moved-aside</span><br><span class="line">*.xcuserstate</span><br><span class="line">*.xcscmblueprint</span><br><span class="line"></span><br><span class="line">## Obj-C/Swift specific</span><br><span class="line">*.hmap</span><br><span class="line">*.ipa</span><br><span class="line"></span><br><span class="line"># CocoaPods</span><br><span class="line">#</span><br><span class="line"># We recommend against adding the Pods directory to your .gitignore. However</span><br><span class="line"># you should judge for yourself, the pros and cons are mentioned at:</span><br><span class="line"># http://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control</span><br><span class="line">#</span><br><span class="line">#Pods/</span><br><span class="line"></span><br><span class="line"># Carthage</span><br><span class="line">#</span><br><span class="line"># Add this line if you want to avoid checking in source code from Carthage dependencies.</span><br><span class="line"># Carthage/Checkouts</span><br><span class="line"></span><br><span class="line">Carthage/Build</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-在SourceTree中设置-gitignore文件。"><a href="#2-在SourceTree中设置-gitignore文件。" class="headerlink" title="2. 在SourceTree中设置.gitignore文件。"></a>2. 在SourceTree中设置<code>.gitignore</code>文件。</h4><p>SourceTree的偏好设置里面有一个可以设置<code>.gitignore</code>文件选项，可以直接在里面设置忽略文件，优点是只要是使用SourceTree提交代码就可以自动忽略，不用每个项目在设置忽略文件。<br><img src="https://upload-images.jianshu.io/upload_images/1483397-9a306167d145e918.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="SourceTree"></p>
+<p><strong>写在最后</strong></p>
+<h4 id="Git忽略规则-gitignore配置）不生效原因和解决"><a href="#Git忽略规则-gitignore配置）不生效原因和解决" class="headerlink" title="Git忽略规则(.gitignore配置）不生效原因和解决"></a>Git忽略规则(.gitignore配置）不生效原因和解决</h4><ul>
+<li>第一种方法:<br>.gitignore中已经标明忽略的文件目录下的文件，git push的时候还会出现在push的目录中，或者用git status查看状态，想要忽略的文件还是显示被追踪状态。<br>原因是因为在git忽略目录中，新建的文件在git中会有缓存，如果某些文件已经被纳入了版本管理中，就算是在.gitignore中已经声明了忽略路径也是不起作用的，<br>这时候我们就应该先把本地缓存删除，然后再进行git的提交，这样就不会出现忽略的文件了。</li>
+</ul>
+<p>解决方法: 进入项目对应路径清除git本地缓存（改变成未track状态），然后再提交:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;update .gitignore&apos;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>需要特别注意的是：</p>
+<ol>
+<li>gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</li>
+<li>想要.gitignore起作用，必须要在这些文件不在暂存区中才可以，.gitignore文件只是忽略没有被staged(cached)文件，<br>对于已经被staged文件，加入ignore文件时一定要先从staged移除，才可以忽略。</li>
+</ol>
+<ul>
+<li>第二种方法:（推荐）<br>在每个clone下来的仓库中手动设置不要检查特定文件的更改情况。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git update-index --assume-unchanged PATH  //在PATH处输入要忽略的文件</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -927,15 +1013,17 @@
       
         
           
-          在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/30/iOS 后台返回json解析出现的null的解决办法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p><strong>在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。</strong><br><img src="http://upload-images.jianshu.io/upload_images/1483397-3c0a94b9a652e437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="null"><br><strong>解析成对象之后，如果直接向这个对象发送消息(length,count 等等)就会直接崩溃。提示错误为</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-[NSNull length]: unrecognized selector sent to instance 0x388a4a70</span><br></pre></td></tr></table></figure></p>
+<p>##解决办法<br><strong>1.对取值对象类型判断。缺点是太过繁琐，每次都要写。</strong><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#define kDictIsEmpty(dic) ([dic isKindOfClass:[NSNull class]])//宏</span><br><span class="line"> if (![@&quot;你要取的值&quot; isKindOfClass:[NSNull class]])&#123;</span><br><span class="line">//数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.字符串匹配。在获取到服务器返回的Json时(返回结果是string对象)通过stringByReplacingOccurrencesOfString方法，替换”null”为”空字符”，然后解析。不过通过这个方法也有可能导致数据无法解析</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json = [jsonStr  stringByReplacingOccurrencesOfString:@&quot;:null&quot; withString:@&quot;&quot;];</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.解析时把null 类型替换成nil。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//有返回值的宏</span><br><span class="line">#define isToNull(value) \</span><br><span class="line">(&#123;\</span><br><span class="line">   id tmp;\</span><br><span class="line">    if (![value isKindOfClass:[NSNull class]])\</span><br><span class="line">        tmp = value;\</span><br><span class="line">    else</span><br><span class="line">        tmp = nil;\ </span><br><span class="line">    (tmp);\</span><br><span class="line">&#125;)\</span><br><span class="line"></span><br><span class="line">//调用方法</span><br><span class="line">label.text = isToNull(dic[@&quot;data&quot;]);</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.如果使用是AFNetwork做网络请求的话，可以用以下代码，会自动去除空值</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];</span><br><span class="line">AFJSONResponseSerializer *response = [AFJSONResponseSerializer serializer];</span><br><span class="line">response.removesKeysWithNullValues = YES;//去除空值</span><br><span class="line">manager.responseSerializer = response;//申明返回的结果是json类</span><br></pre></td></tr></table></figure></p>
+<p><strong>去除前</strong><br><img src="http://upload-images.jianshu.io/upload_images/1483397-67d6a5590ad792e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="去除前"><br><strong>去除后 所有为空的键值对都会被自动去除</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1483397-6db2b68c52a68a9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="去除后"></p>
+<p><strong>5.最有效而且简单的方法。使用国外一位大牛写的Category，叫做NullSafe ，在运行时操作，把空值置为nil，而nil是安全的，可以向nil对象发送任何message而不会奔溃。</strong><br><strong>具体使用方法项目有说明</strong></p>
+<p><strong><a href="https://github.com/nicklockwood/NullSafe" target="_blank" rel="noopener">NullSafe链接</a></strong></p>
+
+          
         
       
     </div>
@@ -1096,17 +1184,102 @@
       
         
           
-          ####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复
-#####原因:当使用内购购买过商品后没有把这个交易事件关，所以当我们再次去购买商品后就会调用以前已经购买成功的交易事件去购买因为已经购买过，才会有这个提示
-##
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/24/iOS 内购遇到的坑/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复<br><img src="http://upload-images.jianshu.io/upload_images/1483397-83002380a533c4e8.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="您以购买过此APP内购项目，此项目将免费恢复.PNG"></p>
+<p>#####原因:<br><strong>当使用内购购买过商品后没有把这个交易事件关，所以当我们再次去购买商品后就会调用以前已经购买成功的交易事件去购买因为已经购买过，才会有这个提示</strong></p>
+<p>#####解决方法：<br><strong>1.当我们使用[[SKPaymentQueue defaultQueue] addPayment:payment];这个方法进行支付请求后，因为我们已经把支付所需要的信息都添加到苹果的支付队列，苹果会自动完成后续的购买请求。</strong><br><strong>在用户购买成功或者点击取消购买的后会回调- (void)paymentQueue:(SKPaymentQueue <em>)queue updatedTransactions:(NSArray </em>)transaction;方法返回响应的结果信息，在该方法内除了得到响应的支付信息编写自身的业务的代码外还要记得调用[[SKPaymentQueue defaultQueue] finishTransaction:transaction];方法通知苹果的支付队列该交易已经完成，否者就会调用已经购买成功的支付队列，就会出现<em>您以购买过此APP内购项目，此项目将免费恢复</em>这句提示。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray&lt;SKPaymentTransaction *&gt; *)transactions&#123;</span><br><span class="line">    NSLog(@&quot;调用了几次这个方法？&quot;);</span><br><span class="line">    SKPaymentTransaction *transaction = transactions.lastObject;</span><br><span class="line">    switch (transaction.transactionState) &#123;</span><br><span class="line">        case SKPaymentTransactionStatePurchased: &#123;</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];//记得关闭交易事件</span><br><span class="line"></span><br><span class="line">            NSLog(@&quot;购买完成,向自己的服务器验证 ---- %@&quot;, transaction.payment.applicationUsername);</span><br><span class="line">            NSData *data = [NSData dataWithContentsOfFile:[[[NSBundle mainBundle] appStoreReceiptURL] path]];</span><br><span class="line">            NSString *receipt = [data base64EncodedStringWithOptions:0];</span><br><span class="line">//            [self buySuccessWithReceipt:receipt transaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStateFailed: &#123;</span><br><span class="line">            NSLog(@&quot;交易失败&quot;);</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStateRestored: &#123;</span><br><span class="line">            NSLog(@&quot;已经购买过该商品&quot;);</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStatePurchasing: &#123;</span><br><span class="line">            NSLog(@&quot;商品添加进列表&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        default: &#123;</span><br><span class="line">            NSLog(@&quot;这是什么情况啊？&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>######2.在买次购买之前检测是否有未完成的交易如果有就关闭。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NSArray* transactions = [SKPaymentQueue defaultQueue].transactions;</span><br><span class="line">    if (transactions.count &gt; 0) &#123;</span><br><span class="line">        //检测是否有未完成的交易</span><br><span class="line">        SKPaymentTransaction* transaction = [transactions firstObject];</span><br><span class="line">        if (transaction.transactionState == SKPaymentTransactionStatePurchased) &#123;</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">            return;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>####二.内购 元数据丢失</p>
+<p>######一般情况下是需要填的选项没有填写完整，还有要填写完整不然审核内购项目可能会不通过。</p>
+<p>####三.iOS 内购 您已经购买了此项目，您想免费再获取一次吗<br><strong>这个是内购选择类型不匹配原因导致。<br>非消耗型就是消耗一次后在该appid下都能使用。<br>消耗型比如一些直播平台的货币 使用完以后可以在充值。<br>我有这个问题是 最开始我们的项目是购买完产品以后可以永久使用，后来修改成充值余额购买，但是我没有去修改类型才导致的这个错误，</strong></p>
+<p>####四.测试时记得把App Store上的账号注销，不然会出现购买失败，注销账号后，在进行内购时登录沙盒测试账号。</p>
+<p>####五.In-App Purchase二次验证<br><strong>IOS在沙箱环境下购买成功之后，向苹果进行二次验证，确认用户是否购买成功。<br>当应用向Apple服务器请求购买，成功之后，Apple会返回以下四个数据给应用</strong></p>
+<ol>
+<li>产品标识符: product Identifier[在itunes store应用内定义的产品ID，例如com.公司名.产品名.道具名(com.xxxx.317hu.66)]</li>
+<li>交易状态: state</li>
+<li>Receipt:很长的一段字符串，大概49行，作为二次验证的重要依据</li>
+<li>交易标识符: transaction Identifier 我们需要把Receipt发送給苹果的苹果的服务器验证，用户的购买信息是否真实</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>交易状态</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purchased</td>
+<td>购买成功  </td>
+</tr>
+<tr>
+<td>Restored</td>
+<td>恢复购买  </td>
+</tr>
+<tr>
+<td>Failed</td>
+<td>失败</td>
+<td></td>
+</tr>
+<tr>
+<td>Deferred</td>
+<td>等待确认，儿童模式需要询问家长同意    </td>
+</tr>
+</tbody>
+</table>
+<p><strong>苹果返回状态码</strong> <a href="https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html" target="_blank" rel="noopener">状态码</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>21000</td>
+<td>App Store不能读取你提供的JSON对象 </td>
+</tr>
+<tr>
+<td></td>
+<td>21002</td>
+<td>receipt-data域的数据有问题 </td>
+</tr>
+<tr>
+<td></td>
+<td>21003</td>
+<td>receipt无法通过验证 </td>
+</tr>
+<tr>
+<td></td>
+<td>21004</td>
+<td>提供的shared secret不匹配你账号中的shared secret </td>
+</tr>
+<tr>
+<td></td>
+<td>21005</td>
+<td>receipt服务器当前不可用 </td>
+</tr>
+<tr>
+<td></td>
+<td>21006</td>
+<td>receipt合法，但是订阅已过期。服务器接收到这个状态码时，receipt数据仍然会解码并一起发送 </td>
+</tr>
+<tr>
+<td></td>
+<td>21007</td>
+<td>receipt是Sandbox receipt，但却发送至生产系统的验证服务 </td>
+</tr>
+<tr>
+<td></td>
+<td>21008</td>
+<td>receipt是生产receipt，但却发送至Sandbox环境的验证服务 </td>
+</tr>
+</tbody>
+</table>
+
+          
         
       
     </div>
@@ -1267,14 +1440,208 @@
       
         
           
-          #什么是内购？
-   ######只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。
-#使用内购需要走的流程。
-1,填写协议,税务和银行业务;2,填写用户和职能; 创建内购的项目3,写代码,和后台配合4,添加项目内购测
-          ...
+            <p>#什么是内购？</p>
+<p>   ######只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。</p>
+<p>#使用内购需要走的流程。</p>
+<h5 id="1-填写协议-税务和银行业务"><a href="#1-填写协议-税务和银行业务" class="headerlink" title="1,填写协议,税务和银行业务;"></a>1,填写协议,税务和银行业务;</h5><h5 id="2-填写用户和职能-创建内购的项目"><a href="#2-填写用户和职能-创建内购的项目" class="headerlink" title="2,填写用户和职能; 创建内购的项目"></a>2,填写用户和职能; 创建内购的项目</h5><h5 id="3-写代码-和后台配合"><a href="#3-写代码-和后台配合" class="headerlink" title="3,写代码,和后台配合"></a>3,写代码,和后台配合</h5><h5 id="4-添加项目内购测试账号-检验成果"><a href="#4-添加项目内购测试账号-检验成果" class="headerlink" title="4,添加项目内购测试账号;检验成果"></a>4,添加项目内购测试账号;检验成果</h5><p>#具体步骤：</p>
+<p>###接下来的步骤特别繁琐，请做好准备。</p>
+<h1 id="一-填写协议-税务和银行业务配置-https-itunesconnect-apple-com"><a href="#一-填写协议-税务和银行业务配置-https-itunesconnect-apple-com" class="headerlink" title="一.填写协议,税务和银行业务配置  https://itunesconnect.apple.com"></a>一.填写协议,税务和银行业务配置  <a href="https://itunesconnect.apple.com" target="_blank" rel="noopener">https://itunesconnect.apple.com</a></h1><p><img src="http://upload-images.jianshu.io/upload_images/1483397-13b1fe87aa3eee84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>##1.请求合同<br><img src="http://upload-images.jianshu.io/upload_images/1483397-f1e93f92b9ddcdd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###填写地址信息<br><img src="http://upload-images.jianshu.io/upload_images/1483397-7d163d0ee067db1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###阅读同意协议<br><img src="http://upload-images.jianshu.io/upload_images/1483397-0b29e7cf66e8c0d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>##2.填写联系方式<br><img src="http://upload-images.jianshu.io/upload_images/1483397-ae70a53d343f74e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###添加新的联系人<br><img src="http://upload-images.jianshu.io/upload_images/1483397-23b89e17f86c18f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1483397-6b388926f506a6eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###选中联系人<br><img src="http://upload-images.jianshu.io/upload_images/1483397-7b7f99e45dd56f10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>##3.填写银行信息<br><img src="http://upload-images.jianshu.io/upload_images/1483397-fc8de7e0e74a2a1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###添加银行卡<br><img src="http://upload-images.jianshu.io/upload_images/1483397-f412c182b937697d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###选择银行卡所在国家<br><img src="http://upload-images.jianshu.io/upload_images/1483397-ec10a0463f1b7a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> ###填写银行CNAPS Code<img src="http://upload-images.jianshu.io/upload_images/1483397-5319c287b2b6b7cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>货币类型 CN###银行账号如果是对公的账号，需要填写公司的英文名称，如果没有的话拼音<br><img src="http://upload-images.jianshu.io/upload_images/1483397-b2eb27433d5e325e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>##4.填写税务信息<br>U.S Tax Forms: 美国税务<br>Australia Tax Forms：澳大利亚税务<br>Canada Tax Forms: 加拿大税务<br><img src="http://upload-images.jianshu.io/upload_images/1483397-a4b9cf7307052a9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>第一个问题如下：询问你是否是美国居民，有没有美国伙伴关系或者美国公司，如果没有直接选择No。<br><img src="http://upload-images.jianshu.io/upload_images/1483397-49fab5335b6c861f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>第二个问题如下：询问你有没有在美国的商业性活动，没有也直接选No<br><img src="http://upload-images.jianshu.io/upload_images/1483397-109cce3293737fdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###然后填写你的税务信息，包括以下几点：<br>Individual or Organization Name：个人或者组织名称<br>Country of incorporation： 所在国家<br>Type of Beneficial Owner：受益方式，独立开发者选个人<br>Permanent Residence：居住地址<br>Mailing address：邮寄地址<br>Name of Person Making this Declaration：声明人<br>Title：头衔</p>
+<p>###填写完这些信息后就可以提交了<br><img src="http://upload-images.jianshu.io/upload_images/1483397-b8bfd98c170f1334.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1483397-4d672566a1379df7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1483397-370777e83d3031fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>##5.等待审核,时间24小时左右。<br><img src="http://upload-images.jianshu.io/upload_images/1483397-414e9dde31f92aeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>#二.创建内购项目</p>
+<p>###选中你要添加内购项目的APP然后点击功能,点击+创建内购项目。<br><img src="http://upload-images.jianshu.io/upload_images/1483397-f97acd87269273ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> ###根据自己APP的需求选择类型<img src="http://upload-images.jianshu.io/upload_images/1483397-06ea76902ab8c601.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###填写项目名称id    (ps:应用在首次添加内购买项目时需要与新的应用版本一起提交审核。)<br><img src="http://upload-images.jianshu.io/upload_images/1483397-ffcbf5a1c41574a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###添加沙盒技术测试员</p>
+<p>###用户职能&gt;沙箱技术测试员<br><img src="http://upload-images.jianshu.io/upload_images/1483397-b0e310196ec8b4fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>  <img src="http://upload-images.jianshu.io/upload_images/1483397-e3839ce0505643ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>##注意事项:</p>
+<p> ###邮箱随便写但是格式要正确(<a href="mailto:test@163.com" target="_blank" rel="noopener">test@163.com</a>)，但是不能用已经是AppleID的邮箱</p>
+<p>###App Store 地区不要乱选。虽然随便哪个地区都可以用来测试（还没上线之前app并没有地区之分），但是在沙盒测试的时候，弹出的购买提示框会根据当前AppleID(沙盒账号)的地区显示语言的。</p>
+<p>###使用沙盒测试一定要用真机 (越狱的不行)</p>
+<p>###沙盒账号不能直接登录AppleStore登录时会提示”不允许创建iTunes账户”</p>
+<p>###进行沙盒测试时需要退出AppleStore的账号</p>
+<p>#三.代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">#import &quot;WXApi.h&quot;</span><br><span class="line"></span><br><span class="line">typedef NS_ENUM(NSInteger , Payment) &#123;</span><br><span class="line">    IAP6 = 6,</span><br><span class="line">    IAP25 = 25,</span><br><span class="line">    IAP60 = 60</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">@interface PayCenter : NSObject</span><br><span class="line"></span><br><span class="line">singleton_interface(PayCenter);</span><br><span class="line"></span><br><span class="line">- (void)startInit;</span><br><span class="line"></span><br><span class="line">- (void)payWithMoney:(NSInteger)money andType:(PayType)type dataDic:(NSDictionary *)dataDic;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) MBProgressHUD * hud;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, copy) NSString * rechargeNumber;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line">#define kProductID_IAP6 @&quot;org.qqhl.nursning.6&quot;//6</span><br><span class="line"></span><br><span class="line">#import &quot;PayCenter.h&quot;</span><br><span class="line">#import &quot;PayHttpRequest.h&quot;</span><br><span class="line">//#import &quot;Order.h&quot;</span><br><span class="line">//#import &quot;DataSigner.h&quot;</span><br><span class="line">//#import &lt;AlipaySDK/AlipaySDK.h&gt;</span><br><span class="line">#import &lt;StoreKit/StoreKit.h&gt;</span><br><span class="line"></span><br><span class="line">@interface PayCenter()&lt;SKPaymentTransactionObserver,SKProductsRequestDelegate&gt;</span><br><span class="line">&#123;</span><br><span class="line">    int buyType;</span><br><span class="line">    NSInteger _money;</span><br><span class="line">&#125;</span><br><span class="line">@property (nonatomic, strong) NSMutableDictionary * dataDic;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line">@implementation PayCenter</span><br><span class="line"></span><br><span class="line">singleton_implementation(PayCenter);</span><br><span class="line"></span><br><span class="line">- (void)startInit</span><br><span class="line">&#123;</span><br><span class="line">    [WXApi registerApp:kWeChatShareAppKey withDescription:appDefaultTilte];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)payWithMoney:(NSInteger)money andType:(PayType)type dataDic:(NSDictionary *)dataDic</span><br><span class="line">&#123;</span><br><span class="line">    _money = money;</span><br><span class="line">    self.dataDic = [NSMutableDictionary dictionaryWithDictionary:dataDic];</span><br><span class="line">    switch (type) &#123;</span><br><span class="line">        case PayTypeWX:</span><br><span class="line">            [self payTypeWXPay];</span><br><span class="line">            break;</span><br><span class="line">        case ApplePay:</span><br><span class="line">//            [self payTypeAliPay];</span><br><span class="line">            [[SKPaymentQueue defaultQueue]addTransactionObserver:self];</span><br><span class="line">           </span><br><span class="line">            if ([SKPaymentQueue canMakePayments]) &#123;</span><br><span class="line">                HULog(@&quot;允许程序内付费购买&quot;);</span><br><span class="line"></span><br><span class="line">                [self payTypeApplePay];</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                HULog(@&quot;不允许程序内付费购买&quot;);</span><br><span class="line">                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@&quot;提示&quot;</span><br><span class="line">                                                                    message:@&quot;您的手机没有打开程序内付费购买&quot;</span><br><span class="line">                                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@&quot;关闭&quot;,nil) otherButtonTitles:nil];</span><br><span class="line">               </span><br><span class="line">                [alerView show];</span><br><span class="line">               </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)payTypeApplePay&#123;</span><br><span class="line">    NSLog(@&quot;---------请求对应的产品信息------------&quot;);</span><br><span class="line">    NSArray *product = nil;</span><br><span class="line">    switch (_money) &#123;</span><br><span class="line">        case IAP6:</span><br><span class="line">        &#123;</span><br><span class="line">            product=[[NSArray alloc] initWithObjects:kProductID_IAP6,nil];</span><br><span class="line">            NSLog(@&quot;---------IAP6------------&quot;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case IAP25:</span><br><span class="line">        &#123;</span><br><span class="line">            NSLog(@&quot;---------IAP25------------&quot;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case IAP60:</span><br><span class="line">        &#123;</span><br><span class="line">            NSLog(@&quot;---------IAP60------------&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">            break;</span><br><span class="line">    </span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    NSSet *nsSet = [NSSet setWithArray:product];</span><br><span class="line">    SKProductsRequest *request = [[SKProductsRequest alloc]initWithProductIdentifiers:nsSet];</span><br><span class="line">    request.delegate = self;</span><br><span class="line">    [request start];</span><br><span class="line">&#125;</span><br><span class="line">#pragma mark -  SKProductsRequestDelegate代理</span><br><span class="line">//返回的在苹果服务器请求的产品信息</span><br><span class="line">- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response&#123;</span><br><span class="line">    HULog(@&quot;收到产品信息&quot;);</span><br><span class="line">    NSArray *myProduct = response.products;</span><br><span class="line">    HULog(@&quot;产品id %@&quot;,response.invalidProductIdentifiers);</span><br><span class="line">    NSLog(@&quot;产品付费数量%d&quot;,(int)[myProduct count]);</span><br><span class="line">//populate UI</span><br><span class="line">    for (SKProduct *product in myProduct) &#123;</span><br><span class="line">      NSLog(@&quot;product info&quot;);</span><br><span class="line">      NSLog(@&quot;SKProduct 描述信息%@&quot;, [product description]);</span><br><span class="line">      NSLog(@&quot;产品标题 %@&quot; , product.localizedTitle);</span><br><span class="line">      NSLog(@&quot;产品描述信息: %@&quot; , product.localizedDescription);</span><br><span class="line">      NSLog(@&quot;价格: %@&quot; , product.price);</span><br><span class="line">      NSLog(@&quot;Product id: %@&quot; , product.productIdentifier);</span><br><span class="line">    &#125;</span><br><span class="line">    SKPayment *payment = nil;</span><br><span class="line">    switch (_money) &#123;</span><br><span class="line">        case IAP6:</span><br><span class="line">        &#123;</span><br><span class="line">            payment = [SKPayment paymentWithProductIdentifier:kProductID_IAP6];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case IAP25:&#123;</span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    NSLog(@&quot;发起购买请求&quot;);</span><br><span class="line">    [[SKPaymentQueue defaultQueue]addPayment:payment];</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line">//实现监听方法</span><br><span class="line">- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray&lt;SKPaymentTransaction *&gt; *)transactions&#123;</span><br><span class="line">    NSLog(@&quot;调用了几次这个方法？&quot;);</span><br><span class="line">    SKPaymentTransaction *transaction = transactions.lastObject;</span><br><span class="line">    switch (transaction.transactionState) &#123;</span><br><span class="line">        case SKPaymentTransactionStatePurchased: &#123;</span><br><span class="line">            NSLog(@&quot;购买完成,向自己的服务器验证 ---- %@&quot;, transaction.payment.applicationUsername);</span><br><span class="line">            NSData *data = [NSData dataWithContentsOfFile:[[[NSBundle mainBundle] appStoreReceiptURL] path]];</span><br><span class="line">            NSString *receipt = [data base64EncodedStringWithOptions:0];</span><br><span class="line">//            [self buySuccessWithReceipt:receipt transaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStateFailed: &#123;</span><br><span class="line">            NSLog(@&quot;交易失败&quot;);</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStateRestored: &#123;</span><br><span class="line">            NSLog(@&quot;已经购买过该商品&quot;);</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStatePurchasing: &#123;</span><br><span class="line">            NSLog(@&quot;商品添加进列表&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        default: &#123;</span><br><span class="line">            NSLog(@&quot;这是什么情况啊？&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>####购买成功后需要跟服务器交互验证交易是否成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">// 验证凭据，获取到苹果返回的交易凭据  </span><br><span class="line">    // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址  </span><br><span class="line">    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];  </span><br><span class="line">    // 从沙盒中获取到购买凭据  </span><br><span class="line">    NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];  </span><br><span class="line">    // 传输的是BASE64编码的字符串  </span><br><span class="line">    /** </span><br><span class="line">     BASE64 常用的编码方案，通常用于数据传输，以及加密算法的基础算法，传输过程中能够保证数据传输的稳定性 </span><br><span class="line">     BASE64是可以编码和解码的 </span><br><span class="line">     */  </span><br><span class="line">    NSDictionary *requestContents = @&#123;  </span><br><span class="line">                                      @&quot;receipt-data&quot;: [receipt base64EncodedStringWithOptions:0]  </span><br><span class="line">                                      &#125;;  </span><br><span class="line">    NSError *error;  </span><br><span class="line">    // 转换为 JSON 格式  </span><br><span class="line">    NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestContents  </span><br><span class="line">                                                          options:0  </span><br><span class="line">                                                            error:&amp;error];  </span><br><span class="line">    // 不存在  </span><br><span class="line">    if (!requestData) &#123; /* ... Handle error ... */ &#125;  </span><br><span class="line">      </span><br><span class="line">    // 发送网络POST请求，对购买凭据进行验证  </span><br><span class="line">    NSString *verifyUrlString;  </span><br><span class="line">   测试环境 verifyUrlString = @&quot;https://sandbox.itunes.apple.com/verifyReceipt&quot;;  </span><br><span class="line">    生产环境 verifyUrlString = @&quot;https://buy.itunes.apple.com/verifyReceipt&quot;;  </span><br><span class="line">    // 国内访问苹果服务器比较慢，timeoutInterval 需要长一点  </span><br><span class="line">    NSMutableURLRequest *storeRequest = [NSMutableURLRequest requestWithURL:[[NSURL alloc] initWithString:verifyUrlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];  </span><br><span class="line">      </span><br><span class="line">    [storeRequest setHTTPMethod:@&quot;POST&quot;];  </span><br><span class="line">    [storeRequest setHTTPBody:requestData];  </span><br><span class="line">      </span><br><span class="line">    // 在后台对列中提交验证请求，并获得官方的验证JSON结果  </span><br><span class="line">    NSOperationQueue *queue = [[NSOperationQueue alloc] init];  </span><br><span class="line">    [NSURLConnection sendAsynchronousRequest:storeRequest queue:queue  </span><br><span class="line">                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) &#123;  </span><br><span class="line">                               if (connectionError) &#123;  </span><br><span class="line">                                   NSLog(@&quot;链接失败&quot;);  </span><br><span class="line">                               &#125; else &#123;  </span><br><span class="line">                                   NSError *error;  </span><br><span class="line">                                   NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&amp;error];  </span><br><span class="line">                                   if (!jsonResponse) &#123;  </span><br><span class="line">                                       NSLog(@&quot;验证失败&quot;);  </span><br><span class="line">                                   &#125;  </span><br><span class="line">                                     </span><br><span class="line">                                   // 比对 jsonResponse 中以下信息基本上可以保证数据安全  </span><br><span class="line">                                   /* </span><br><span class="line">                                    bundle_id </span><br><span class="line">                                    application_version </span><br><span class="line">                                    product_id </span><br><span class="line">                                    transaction_id </span><br><span class="line">                                    */  </span><br><span class="line">                                     </span><br><span class="line">                                   NSLog(@&quot;验证成功&quot;);  </span><br><span class="line">                               &#125;  </span><br><span class="line">                           &#125;];  </span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html#//apple_ref/doc/uid/TP40010573-CH104-SW4" target="_blank" rel="noopener">苹果官方文档</a><br><code>刚接触内购如有不足之处请指教</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/内购/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="leon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/headerPic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑马纵天下">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/20/内购/" itemprop="url">苹果IAP流程(2017)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T00:00:00+08:00">
+                2017-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/苹果内购/" itemprop="url" rel="index">
+                    <span itemprop="name">苹果内购</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/20/内购/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/06/20/内购/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/20/内购/" class="leancloud_visitors" data-flag-title="苹果IAP流程(2017)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="什么是内购？"><a href="#什么是内购？" class="headerlink" title="什么是内购？"></a>什么是内购？</h1><h5 id="只要在iPhone-App上购买的不是实物产品-也就是虚拟产品如qq币-虎牙币-电子书……-都需要走内购流程-苹果在里面抽走三成。"><a href="#只要在iPhone-App上购买的不是实物产品-也就是虚拟产品如qq币-虎牙币-电子书……-都需要走内购流程-苹果在里面抽走三成。" class="headerlink" title="只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。"></a>只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。</h5><h1 id="使用内购需要走的流程。"><a href="#使用内购需要走的流程。" class="headerlink" title="使用内购需要走的流程。"></a>使用内购需要走的流程。</h1><h5 id="1-填写协议-税务和银行业务"><a href="#1-填写协议-税务和银行业务" class="headerlink" title="1,填写协议,税务和银行业务;"></a>1,填写协议,税务和银行业务;</h5><h5 id="2-填写用户和职能-创建内购的项目"><a href="#2-填写用户和职能-创建内购的项目" class="headerlink" title="2,填写用户和职能; 创建内购的项目"></a>2,填写用户和职能; 创建内购的项目</h5>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/20/iOS内购图文流程(2017)/#more" rel="contents">
+            <a class="btn" href="/2017/06/20/内购/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1449,173 +1816,6 @@
         
       
     </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/内购/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="leon">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/headerPic.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="骑马纵天下">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/20/内购/" itemprop="url">苹果IAP流程(2017)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T00:00:00+08:00">
-                2017-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/苹果内购/" itemprop="url" rel="index">
-                    <span itemprop="name">苹果内购</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/20/内购/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/06/20/内购/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/20/内购/" class="leancloud_visitors" data-flag-title="苹果IAP流程(2017)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="什么是内购？"><a href="#什么是内购？" class="headerlink" title="什么是内购？"></a>什么是内购？</h1><h5 id="只要在iPhone-App上购买的不是实物产品-也就是虚拟产品如qq币-虎牙币-电子书……-都需要走内购流程-苹果在里面抽走三成。"><a href="#只要在iPhone-App上购买的不是实物产品-也就是虚拟产品如qq币-虎牙币-电子书……-都需要走内购流程-苹果在里面抽走三成。" class="headerlink" title="只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。"></a>只要在iPhone App上购买的不是实物产品(也就是虚拟产品如qq币.虎牙币.电子书……) 都需要走内购流程,苹果在里面抽走三成。</h5><h1 id="使用内购需要走的流程。"><a href="#使用内购需要走的流程。" class="headerlink" title="使用内购需要走的流程。"></a>使用内购需要走的流程。</h1><h5 id="1-填写协议-税务和银行业务"><a href="#1-填写协议-税务和银行业务" class="headerlink" title="1,填写协议,税务和银行业务;"></a>1,填写协议,税务和银行业务;</h5><h5 id="2-填写用户和职能-创建内购的项目"><a href="#2-填写用户和职能-创建内购的项目" class="headerlink" title="2,填写用户和职能; 创建内购的项目"></a>2,填写用户和职能; 创建内购的项目</h5>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/20/内购/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
     
     
     
