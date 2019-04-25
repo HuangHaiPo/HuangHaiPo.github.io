@@ -80,7 +80,7 @@
 <meta name="description" content="进步的攻城狮!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="骑马纵天下">
-<meta property="og:url" content="http://yoursite.com/tags/Hexo/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/hexo/index.html">
 <meta property="og:site_name" content="骑马纵天下">
 <meta property="og:description" content="进步的攻城狮!">
 <meta property="og:locale" content="zh-Hans">
@@ -116,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Hexo/">
+  <link rel="canonical" href="http://yoursite.com/tags/hexo/">
 
 
 
 
 
-  <title>标签: Hexo | 骑马纵天下</title>
+  <title>标签: hexo | 骑马纵天下</title>
   
 
 
@@ -294,7 +294,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Hexo<small>标签</small>
+        <h1>hexo<small>标签</small>
         </h1>
       </div>
 
@@ -306,68 +306,16 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/" itemprop="url">
+            <a class="post-title-link" href="/2019/04/22/hexo博客不蒜子统计不显示问题/" itemprop="url">
               
-                <span itemprop="name">史上最快用GitHub、Hexo搭建个人博客</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-24T00:00:00+08:00" content="2019-04-24">
-          04-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/23/hexo博客集成评论、文章阅读量功能/" itemprop="url">
-              
-                <span itemprop="name">hexo博客集成评论、文章阅读量功能</span>
+                <span itemprop="name">hexo博客不蒜子统计不显示问题</span>
               
             </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-23T11:00:28+08:00" content="2019-04-23">
-          04-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/Hexo 添加分类及标签/" itemprop="url">
-              
-                <span itemprop="name">Hexo 添加分类及标签</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T11:00:23+08:00" content="2019-04-22">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T11:35:14+08:00" content="2019-04-22">
           04-22
         </time>
       </div>
@@ -430,7 +378,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -441,7 +389,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -452,7 +400,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1119,6 +1067,64 @@
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+ailed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
