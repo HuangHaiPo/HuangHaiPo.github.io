@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="UIView阴影,">
 
 
 
@@ -77,16 +77,21 @@
 
 
 
-<meta name="description" content="进步的攻城狮!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="骑马纵天下">
-<meta property="og:url" content="http://yoursite.com/tags/Hexo/index.html">
+<meta name="description" content="一般情况下设置阴影只需要设置layer就行，但是如果只是单边阴影，只设置layer效果不是多好，可以用贝塞尔曲线实现。 1. 直接设置layer阴影效果123456789101112UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(100, 400, 50, 50)];imageView.layer.shad">
+<meta name="keywords" content="UIView阴影">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS UIView添加阴影效果 四周或者单边阴影">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/iOS UIView添加阴影效果 四周或者单边阴影/index.html">
 <meta property="og:site_name" content="骑马纵天下">
-<meta property="og:description" content="进步的攻城狮!">
+<meta property="og:description" content="一般情况下设置阴影只需要设置layer就行，但是如果只是单边阴影，只设置layer效果不是多好，可以用贝塞尔曲线实现。 1. 直接设置layer阴影效果123456789101112UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(100, 400, 50, 50)];imageView.layer.shad">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-1e99da5a83dea858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-300c8943a91f3ee4.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-04-25T03:02:08.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="骑马纵天下">
-<meta name="twitter:description" content="进步的攻城狮!">
+<meta name="twitter:title" content="iOS UIView添加阴影效果 四周或者单边阴影">
+<meta name="twitter:description" content="一般情况下设置阴影只需要设置layer就行，但是如果只是单边阴影，只设置layer效果不是多好，可以用贝塞尔曲线实现。 1. 直接设置layer阴影效果123456789101112UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(100, 400, 50, 50)];imageView.layer.shad">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1483397-1e99da5a83dea858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -116,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Hexo/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/iOS UIView添加阴影效果 四周或者单边阴影/">
 
 
 
 
 
-  <title>标签: Hexo | 骑马纵天下</title>
+  <title>iOS UIView添加阴影效果 四周或者单边阴影 | 骑马纵天下</title>
   
 
 
@@ -141,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,104 +292,229 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Hexo<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/iOS UIView添加阴影效果 四周或者单边阴影/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="leon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/headerPic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑马纵天下">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/04/24/史上最快用GitHub、Hexo搭建个人博客/" itemprop="url">
-              
-                <span itemprop="name">史上最快用GitHub、Hexo搭建个人博客</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">iOS UIView添加阴影效果 四周或者单边阴影</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-24T00:00:00+08:00" content="2019-04-24">
-          04-24
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T00:00:00+08:00">
+                2019-04-22
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/阴影效果/" itemprop="url" rel="index">
+                    <span itemprop="name">阴影效果</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/22/iOS UIView添加阴影效果 四周或者单边阴影/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/iOS UIView添加阴影效果 四周或者单边阴影/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/22/iOS UIView添加阴影效果 四周或者单边阴影/" class="leancloud_visitors" data-flag-title="iOS UIView添加阴影效果 四周或者单边阴影">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/23/hexo博客集成评论、文章阅读量功能/" itemprop="url">
-              
-                <span itemprop="name">hexo博客集成评论、文章阅读量功能</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-23T11:00:28+08:00" content="2019-04-23">
-          04-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/Hexo 添加分类及标签/" itemprop="url">
-              
-                <span itemprop="name">Hexo 添加分类及标签</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T11:00:23+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>一般情况下设置阴影只需要设置layer就行，但是如果只是单边阴影，只设置layer效果不是多好，可以用贝塞尔曲线实现。</p>
+<h5 id="1-直接设置layer阴影效果"><a href="#1-直接设置layer阴影效果" class="headerlink" title="1. 直接设置layer阴影效果"></a>1. 直接设置layer阴影效果</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(100, 400, 50, 50)];</span><br><span class="line">imageView.layer.shadowColor = [UIColor redColor].CGColor;</span><br><span class="line">//剪切边界 如果视图上的子视图layer超出视图layer部分就截取掉 如果添加阴影这个属性必须是NO 不然会把阴影切掉</span><br><span class="line">imageView.layer.masksToBounds = NO;</span><br><span class="line">//阴影半径，默认3</span><br><span class="line">imageView.layer.shadowRadius = 3;</span><br><span class="line">//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用</span><br><span class="line">imageView.layer.shadowOffset = CGSizeMake(0.0f,0.0f);</span><br><span class="line">// 阴影透明度，默认0</span><br><span class="line">imageView.layer.shadowOpacity = 0.9f;</span><br><span class="line">imageView.backgroundColor = [UIColor greenColor];</span><br><span class="line">[self.view addSubview:imageView];</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1483397-1e99da5a83dea858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="阴影效果"></p>
+<h5 id="2-利用贝塞尔曲线实现"><a href="#2-利用贝塞尔曲线实现" class="headerlink" title="2. 利用贝塞尔曲线实现"></a>2. 利用贝塞尔曲线实现</h5><p>主要代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewShadowPathWithColor:(UIColor *)shadowColor shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius shadowPathType:(LeShadowPathType)shadowPathType shadowPathWidth:(CGFloat)shadowPathWidth&#123;</span><br><span class="line">    </span><br><span class="line">    self.layer.masksToBounds = NO;//必须要等于NO否则会把阴影切割隐藏掉</span><br><span class="line">    self.layer.shadowColor = shadowColor.CGColor;// 阴影颜色</span><br><span class="line">    self.layer.shadowOpacity = shadowOpacity;// 阴影透明度，默认0</span><br><span class="line">    self.layer.shadowOffset = CGSizeZero;//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用</span><br><span class="line">    self.layer.shadowRadius = shadowRadius;//阴影半径，默认3</span><br><span class="line">    CGRect shadowRect = CGRectZero;</span><br><span class="line">    CGFloat originX,originY,sizeWith,sizeHeight;</span><br><span class="line">    originX = 0;</span><br><span class="line">    originY = 0;</span><br><span class="line">    sizeWith = self.bounds.size.width;</span><br><span class="line">    sizeHeight = self.bounds.size.height;</span><br><span class="line">    </span><br><span class="line">    if (shadowPathType == LeShadowPathTop) &#123;</span><br><span class="line">        shadowRect = CGRectMake(originX, originY-shadowPathWidth/2, sizeWith, shadowPathWidth);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathBottom)&#123;</span><br><span class="line">        shadowRect = CGRectMake(originY, sizeHeight-shadowPathWidth/2, sizeWith, shadowPathWidth);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathLeft)&#123;</span><br><span class="line">        shadowRect = CGRectMake(originX-shadowPathWidth/2, originY, shadowPathWidth, sizeHeight);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathRight)&#123;</span><br><span class="line">        shadowRect = CGRectMake(sizeWith-shadowPathWidth/2, originY, shadowPathWidth, sizeHeight);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathCommon)&#123;</span><br><span class="line">        shadowRect = CGRectMake(originX-shadowPathWidth/2, 2, sizeWith+shadowPathWidth, sizeHeight+shadowPathWidth/2);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathAround)&#123;</span><br><span class="line">        shadowRect = CGRectMake(originX-shadowPathWidth/2, originY-shadowPathWidth/2, sizeWith+shadowPathWidth, sizeHeight+shadowPathWidth);</span><br><span class="line">    &#125;</span><br><span class="line">    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:shadowRect];</span><br><span class="line">    self.layer.shadowPath = bezierPath.CGPath;//阴影路径</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1483397-300c8943a91f3ee4.gif?imageMogr2/auto-orient/strip" alt="阴影效果.gif"></p>
+<p><a href="[https://github.com/HuangHaiPo/LeViewShadow](https://github.com/HuangHaiPo/LeViewShadow">移步到GitHub项目地址</a><br>)</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/IMG_1049.JPG" alt="leon 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/IMG_1050.JPG" alt="leon 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UIView阴影/" rel="tag"># UIView阴影</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/20/Mac安装Ruby/" rel="next" title="Mac最新安装Ruby">
+                <i class="fa fa-chevron-left"></i> Mac最新安装Ruby
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/Hexo 添加分类及标签/" rel="prev" title="Hexo 添加分类及标签">
+                Hexo 添加分类及标签 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -392,6 +522,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -412,8 +549,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,6 +651,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-直接设置layer阴影效果"><span class="nav-number">1.</span> <span class="nav-text">1. 直接设置layer阴影效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-利用贝塞尔曲线实现"><span class="nav-number">2.</span> <span class="nav-text">2. 利用贝塞尔曲线实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -666,6 +828,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

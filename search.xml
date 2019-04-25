@@ -8,9 +8,55 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>个人博客</tag>
         <tag>Hexo</tag>
+        <tag>个人博客</tag>
         <tag>GitHub Page</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo博客集成评论、文章阅读量功能]]></title>
+    <url>%2F2019%2F04%2F23%2Fhexo%E5%8D%9A%E5%AE%A2%E9%9B%86%E6%88%90%E8%AF%84%E8%AE%BA%E3%80%81%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E5%8A%9F%E8%83%BD%2F</url>
+    <content type="text"><![CDATA[神器:Valine 如果读者用的是Next主题同时是v5.1.4版本，那么很简单只需注册Valine账号生成id添加到主题配置文件中提交就OK。如果不是请结合这本篇文章看这篇就看我 这篇是集成文章阅读功能 目前大部分评论系统要么关闭服务要么是国外的服务会被墙，出现了Valine这个神器。 评论功能集成流程:1. 注册账号创建应用点击我去注册创建应用 Valine官网 2. 应用创建成功后点击存储 &gt; 创建Class 至于名字随自己喜好。 3. 所有的完成后，选择刚刚创建的应用&gt;设置&gt;选择应用 Key，然后你就能看到你的APP ID和APP KEY了，参考下图 4. 为了数据安全，请填写应用 &gt; 设置 &gt; 安全设置中的Web 安全域名，如下图： 如果想要加载速度更快把除了数据存储其他服务都关了。 主题_config配置12345678910111213# Valine.# You can get your appid and appkey from https://leancloud.cn# more info please open https://valine.js.orgvaline: enable: true //false改为true appid: &apos;Your APP ID&apos;, // 这里填写上面得到的APP ID appkey: &apos;Your APP KEY&apos;, // 这里填写上面得到的APP KEY notify: false # mail notifier , https://github.com/xCss/Valine/wiki verify: false # Verification code placeholder: Just go go # comment box placeholder//留言框占位提示文字 avatar: mm # gravatar style guest_info: nick,mail,link # custom comment header pageSize: 10 # pagination size 关于评论功能邮件通知请看他Valine 评论系统中的邮件提醒设置 或者访问Valine官网 文章阅读量集成文章阅读量更简单。 如果在配置文件开启了阅读量统计，Valine 会自动检测 leancloud 应用中是否存在Counter类，如果不存在会自动创建，无需手动创建~。 或者自己手动创建Counter类然后把把app_id和app_key粘贴到主题配置文件中提交就OK了。 1234leancloud_visitors: enable: true app_id: &apos;Your APP ID&apos;, // 这里填写上面得到的APP ID app_key: &apos;Your APP KEY&apos;, // 这里填写上面得到的APP KEY PS:如果有问题给我留言]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>个人博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo博客不蒜子统计不显示问题]]></title>
+    <url>%2F2019%2F04%2F22%2Fhexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E8%92%9C%E5%AD%90%E7%BB%9F%E8%AE%A1%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[新版的next主题已经把不蒜子集成进去，只需要打开开关即可，很方便如果不知道怎么设置请点击这个链接 里面有流程 不显示原因:不蒜子的域名跟换了但是next主题里面写进去的域名还是以前的，导致打开不蒜子统计，但是其实没有统计。 不蒜子官网 解决方法: 替换掉集成到next的失效域名，改为新的。路径为/theme/next/layout/_third-party/analytics/busuanzi-counter.swig 将失效域名替换为新的域名提交就OK了。新的域名&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>不蒜子</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo 添加分类及标签]]></title>
+    <url>%2F2019%2F04%2F22%2FHexo%20%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE%2F</url>
+    <content type="text"><![CDATA[生成的新文件夹都在source下也就是和放文章的文件夹一块以下所有命令都是在博客文件目录下执行 1. 创建“分类”选项生成“分类”页并添加tpye属性,进入博客目录。执行命令下方命令 1$ hexo new page categories categories文件夹下会有index.md这个文件，打开后默认内容是这样的： 1234---title: categoriesdate: 2019-04-22 14:47:40--- 添加type: “categories”到内容中，添加后是这样的： 12345---title: 分类date: 2019-04-24 15:30:30type: categories--- 保存并关闭文件。 给文章添加“categories”属性 打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。 12345---title: Hexo 添加分类及标签date: 2017-05-26 12:12:57categories: Hexo--- 至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。 2. 创建“标签”选项生成“标签”页并添加tpye属性 1$ hexo new page tags 在tags文件夹下，找到index.md这个文件，打开后默认内容是这样的： 1234---title: 标签date: 2019-04-22 14:22:08--- 添加type: “tags”到内容中，添加后是这样的： 12345---title: 标签date: 2019-04-24 15:40:24type: tags--- 保存并关闭文件。 给文章添加“tags”属性,打开需要添加标签的文章，为其添加tags属性。 12345678---title: Hexo 添加分类及标签date: 2019-04-24 15:40:24categories: - Hexotags: - 博客---]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[iOS UIView添加阴影效果 四周或者单边阴影]]></title>
+    <url>%2F2019%2F04%2F22%2FiOS%20UIView%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C%20%E5%9B%9B%E5%91%A8%E6%88%96%E8%80%85%E5%8D%95%E8%BE%B9%E9%98%B4%E5%BD%B1%2F</url>
+    <content type="text"><![CDATA[一般情况下设置阴影只需要设置layer就行，但是如果只是单边阴影，只设置layer效果不是多好，可以用贝塞尔曲线实现。 1. 直接设置layer阴影效果123456789101112UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(100, 400, 50, 50)];imageView.layer.shadowColor = [UIColor redColor].CGColor;//剪切边界 如果视图上的子视图layer超出视图layer部分就截取掉 如果添加阴影这个属性必须是NO 不然会把阴影切掉imageView.layer.masksToBounds = NO;//阴影半径，默认3imageView.layer.shadowRadius = 3;//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用imageView.layer.shadowOffset = CGSizeMake(0.0f,0.0f);// 阴影透明度，默认0imageView.layer.shadowOpacity = 0.9f;imageView.backgroundColor = [UIColor greenColor];[self.view addSubview:imageView]; 2. 利用贝塞尔曲线实现主要代码 123456789101112131415161718192021222324252627282930- (void)viewShadowPathWithColor:(UIColor *)shadowColor shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius shadowPathType:(LeShadowPathType)shadowPathType shadowPathWidth:(CGFloat)shadowPathWidth&#123; self.layer.masksToBounds = NO;//必须要等于NO否则会把阴影切割隐藏掉 self.layer.shadowColor = shadowColor.CGColor;// 阴影颜色 self.layer.shadowOpacity = shadowOpacity;// 阴影透明度，默认0 self.layer.shadowOffset = CGSizeZero;//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用 self.layer.shadowRadius = shadowRadius;//阴影半径，默认3 CGRect shadowRect = CGRectZero; CGFloat originX,originY,sizeWith,sizeHeight; originX = 0; originY = 0; sizeWith = self.bounds.size.width; sizeHeight = self.bounds.size.height; if (shadowPathType == LeShadowPathTop) &#123; shadowRect = CGRectMake(originX, originY-shadowPathWidth/2, sizeWith, shadowPathWidth); &#125;else if (shadowPathType == LeShadowPathBottom)&#123; shadowRect = CGRectMake(originY, sizeHeight-shadowPathWidth/2, sizeWith, shadowPathWidth); &#125;else if (shadowPathType == LeShadowPathLeft)&#123; shadowRect = CGRectMake(originX-shadowPathWidth/2, originY, shadowPathWidth, sizeHeight); &#125;else if (shadowPathType == LeShadowPathRight)&#123; shadowRect = CGRectMake(sizeWith-shadowPathWidth/2, originY, shadowPathWidth, sizeHeight); &#125;else if (shadowPathType == LeShadowPathCommon)&#123; shadowRect = CGRectMake(originX-shadowPathWidth/2, 2, sizeWith+shadowPathWidth, sizeHeight+shadowPathWidth/2); &#125;else if (shadowPathType == LeShadowPathAround)&#123; shadowRect = CGRectMake(originX-shadowPathWidth/2, originY-shadowPathWidth/2, sizeWith+shadowPathWidth, sizeHeight+shadowPathWidth); &#125; UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:shadowRect]; self.layer.shadowPath = bezierPath.CGPath;//阴影路径&#125; 移步到GitHub项目地址)]]></content>
+      <categories>
+        <category>阴影效果</category>
+      </categories>
+      <tags>
+        <tag>UIView阴影</tag>
       </tags>
   </entry>
   <entry>
