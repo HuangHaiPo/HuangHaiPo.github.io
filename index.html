@@ -588,30 +588,19 @@
 
       
         
-          
-            <p>神器:Valine</p>
+          <p>神器:Valine</p>
 <p>如果读者用的是Next主题同时是v5.1.4版本，那么很简单只需注册Valine账号生成id添加到主题配置文件中提交就OK。如果不是请结合这本篇文章看这篇<a href="https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html" target="_blank" rel="noopener">就看我 这篇是集成文章阅读功能</a></p>
-<p>目前大部分评论系统要么关闭服务要么是国外的服务会被墙，出现了Valine这个神器。</p>
-<h3 id="评论功能"><a href="#评论功能" class="headerlink" title="评论功能"></a>评论功能</h3><h4 id="集成流程"><a href="#集成流程" class="headerlink" title="集成流程:"></a>集成流程:</h4><h5 id="1-注册账号创建应用"><a href="#1-注册账号创建应用" class="headerlink" title="1. 注册账号创建应用"></a>1. 注册账号创建应用</h5><p><a href="https://leancloud.cn/" target="_blank" rel="noopener">点击我去注册创建应用 Valine官网</a></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1483397-581f2231bc32fb31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Valine官网"></p>
-<h5 id="2-应用创建成功后点击存储-gt-创建Class-至于名字随自己喜好。"><a href="#2-应用创建成功后点击存储-gt-创建Class-至于名字随自己喜好。" class="headerlink" title="2. 应用创建成功后点击存储 &gt; 创建Class 至于名字随自己喜好。"></a>2. 应用创建成功后点击存储 &gt; 创建Class 至于名字随自己喜好。</h5><p><img src="https://upload-images.jianshu.io/upload_images/1483397-2aef3a5b413477a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建class"></p>
-<h5 id="3-所有的完成后，选择刚刚创建的应用-gt-设置-gt-选择应用-Key，然后你就能看到你的APP-ID和APP-KEY了，参考下图"><a href="#3-所有的完成后，选择刚刚创建的应用-gt-设置-gt-选择应用-Key，然后你就能看到你的APP-ID和APP-KEY了，参考下图" class="headerlink" title="3. 所有的完成后，选择刚刚创建的应用&gt;设置&gt;选择应用 Key，然后你就能看到你的APP ID和APP KEY了，参考下图"></a>3. 所有的完成后，选择刚刚创建的应用&gt;设置&gt;选择应用 Key，然后你就能看到你的APP ID和APP KEY了，参考下图</h5><p><img src="https://upload-images.jianshu.io/upload_images/1483397-211ef15b3993d75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ID和秘钥"></p>
-<h5 id="4-为了数据安全，请填写应用-gt-设置-gt-安全设置中的Web-安全域名，如下图："><a href="#4-为了数据安全，请填写应用-gt-设置-gt-安全设置中的Web-安全域名，如下图：" class="headerlink" title="4. 为了数据安全，请填写应用 &gt; 设置 &gt; 安全设置中的Web 安全域名，如下图："></a>4. 为了数据安全，请填写应用 &gt; 设置 &gt; 安全设置中的Web 安全域名，如下图：</h5><p><img src="https://upload-images.jianshu.io/upload_images/1483397-75ecced3bb88fb1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安全域名"></p>
-<ol start="5">
-<li>如果想要加载速度更快把除了数据存储其他服务都关了。<br><img src="https://upload-images.jianshu.io/upload_images/1483397-0e274c5f17adc0eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据服务"></li>
-</ol>
-<h4 id="主题-config配置"><a href="#主题-config配置" class="headerlink" title="主题_config配置"></a>主题_config配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Valine.</span><br><span class="line"># You can get your appid and appkey from https://leancloud.cn</span><br><span class="line"># more info please open https://valine.js.org</span><br><span class="line">valine:</span><br><span class="line">  enable: true //false改为true</span><br><span class="line">  appid:  &apos;Your APP ID&apos;, // 这里填写上面得到的APP ID</span><br><span class="line">  appkey:  &apos;Your APP KEY&apos;, // 这里填写上面得到的APP KEY</span><br><span class="line">  notify: false # mail notifier , https://github.com/xCss/Valine/wiki</span><br><span class="line">  verify: false # Verification code</span><br><span class="line">  placeholder: Just go go # comment box placeholder//留言框占位提示文字</span><br><span class="line">  avatar: mm # gravatar style</span><br><span class="line">  guest_info: nick,mail,link # custom comment header</span><br><span class="line">  pageSize: 10 # pagination size</span><br></pre></td></tr></table></figure>
-<p>关于评论功能邮件通知请看他<a href="https://github.com/xCss/Valine/wiki/Valine-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E8%AE%BE%E7%BD%AE" target="_blank" rel="noopener">Valine 评论系统中的邮件提醒设置</a> 或者访问<a href="https://valine.js.org/quickstart.html" target="_blank" rel="noopener">Valine官网</a></p>
-<h3 id="文章阅读量"><a href="#文章阅读量" class="headerlink" title="文章阅读量"></a>文章阅读量</h3><p>集成文章阅读量更简单。</p>
-<p>如果在配置文件开启了阅读量统计，Valine 会自动检测 leancloud 应用中是否存在Counter类，如果不存在会自动创建，无需手动创建~。</p>
-<p>或者自己手动创建Counter类然后把把app_id和app_key粘贴到主题配置文件中提交就OK了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">leancloud_visitors:</span><br><span class="line">  enable: true</span><br><span class="line">  app_id:  &apos;Your APP ID&apos;, // 这里填写上面得到的APP ID</span><br><span class="line">  app_key: &apos;Your APP KEY&apos;, // 这里填写上面得到的APP KEY</span><br></pre></td></tr></table></figure>
-<p>PS:如果有问题给我留言</p>
-
-          
+<p>目前大部分评论系统要么关闭服务要么是国外的服务会被墙，出现了Valine这个神器。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/23/hexo博客集成评论、文章阅读量功能/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -768,19 +757,19 @@
 
       
         
-          
-            <p>新版的next主题已经把不蒜子集成进去，只需要打开开关即可，很方便如果不知道怎么设置请点击<a href="http://theme-next.iissnan.com/third-party-services.html#analytics-busuanzi" target="_blank" rel="noopener">这个链接 里面有流程</a></p>
+          <p>新版的next主题已经把不蒜子集成进去，只需要打开开关即可，很方便如果不知道怎么设置请点击<a href="http://theme-next.iissnan.com/third-party-services.html#analytics-busuanzi" target="_blank" rel="noopener">这个链接 里面有流程</a></p>
 <p><strong>不显示原因:不蒜子的域名跟换了但是next主题里面写进去的域名还是以前的，导致打开不蒜子统计，但是其实没有统计。</strong></p>
-<p><a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子官网</a><br><img src="https://upload-images.jianshu.io/upload_images/1483397-1e858daf831e0a9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="不蒜子官网"></p>
-<p><strong>解决方法:</strong></p>
-<p>替换掉集成到next的失效域名，改为新的。路径为<code>/theme/next/layout/_third-party/analytics/busuanzi-counter.swig</code></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1483397-96b6a06f4bb4dce8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="失效域名"></p>
-<p>将失效域名替换为新的域名提交就OK了。<br>新的域名<code>&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;</code></p>
-
-          
+<p><a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子官网</a><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/22/hexo博客不蒜子统计不显示问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -937,31 +926,18 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>生成的新文件夹都在source下也就是和放文章的文件夹一块<br>以下所有命令都是在博客文件目录下执行</p>
 </blockquote>
 <h4 id="1-创建“分类”选项"><a href="#1-创建“分类”选项" class="headerlink" title="1. 创建“分类”选项"></a>1. 创建“分类”选项</h4><p>生成“分类”页并添加tpye属性,进入博客目录。执行命令下方命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page categories</span><br></pre></td></tr></table></figure>
-<p>categories文件夹下会有index.md这个文件，打开后默认内容是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2019-04-22 14:47:40</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>添加type: “categories”到内容中，添加后是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2019-04-24 15:30:30</span><br><span class="line">type: categories</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>保存并关闭文件。</p>
-<p>给文章添加“categories”属性</p>
-<p>打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories: Hexo</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
-<h4 id="2-创建“标签”选项"><a href="#2-创建“标签”选项" class="headerlink" title="2. 创建“标签”选项"></a>2. 创建“标签”选项</h4><p>生成“标签”页并添加tpye属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
-<p>在tags文件夹下，找到index.md这个文件，打开后默认内容是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-22 14:22:08</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>添加type: “tags”到内容中，添加后是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>保存并关闭文件。</p>
-<p>给文章添加“tags”属性,打开需要添加标签的文章，为其添加tags属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">categories: </span><br><span class="line">           - Hexo</span><br><span class="line">tags:</span><br><span class="line">           - 博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/22/Hexo 添加分类及标签/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1121,16 +1097,15 @@
 
       
         
-          
-            <p>一般情况下设置阴影只需要设置layer就行，但是如果只是单边阴影，只设置layer效果不是多好，可以用贝塞尔曲线实现。</p>
+          <p>一般情况下设置阴影只需要设置layer就行，但是如果只是单边阴影，只设置layer效果不是多好，可以用贝塞尔曲线实现。</p>
 <h5 id="1-直接设置layer阴影效果"><a href="#1-直接设置layer阴影效果" class="headerlink" title="1. 直接设置layer阴影效果"></a>1. 直接设置layer阴影效果</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(100, 400, 50, 50)];</span><br><span class="line">imageView.layer.shadowColor = [UIColor redColor].CGColor;</span><br><span class="line">//剪切边界 如果视图上的子视图layer超出视图layer部分就截取掉 如果添加阴影这个属性必须是NO 不然会把阴影切掉</span><br><span class="line">imageView.layer.masksToBounds = NO;</span><br><span class="line">//阴影半径，默认3</span><br><span class="line">imageView.layer.shadowRadius = 3;</span><br><span class="line">//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用</span><br><span class="line">imageView.layer.shadowOffset = CGSizeMake(0.0f,0.0f);</span><br><span class="line">// 阴影透明度，默认0</span><br><span class="line">imageView.layer.shadowOpacity = 0.9f;</span><br><span class="line">imageView.backgroundColor = [UIColor greenColor];</span><br><span class="line">[self.view addSubview:imageView];</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/1483397-1e99da5a83dea858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="阴影效果"></p>
-<h5 id="2-利用贝塞尔曲线实现"><a href="#2-利用贝塞尔曲线实现" class="headerlink" title="2. 利用贝塞尔曲线实现"></a>2. 利用贝塞尔曲线实现</h5><p>主要代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewShadowPathWithColor:(UIColor *)shadowColor shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius shadowPathType:(LeShadowPathType)shadowPathType shadowPathWidth:(CGFloat)shadowPathWidth&#123;</span><br><span class="line">    </span><br><span class="line">    self.layer.masksToBounds = NO;//必须要等于NO否则会把阴影切割隐藏掉</span><br><span class="line">    self.layer.shadowColor = shadowColor.CGColor;// 阴影颜色</span><br><span class="line">    self.layer.shadowOpacity = shadowOpacity;// 阴影透明度，默认0</span><br><span class="line">    self.layer.shadowOffset = CGSizeZero;//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用</span><br><span class="line">    self.layer.shadowRadius = shadowRadius;//阴影半径，默认3</span><br><span class="line">    CGRect shadowRect = CGRectZero;</span><br><span class="line">    CGFloat originX,originY,sizeWith,sizeHeight;</span><br><span class="line">    originX = 0;</span><br><span class="line">    originY = 0;</span><br><span class="line">    sizeWith = self.bounds.size.width;</span><br><span class="line">    sizeHeight = self.bounds.size.height;</span><br><span class="line">    </span><br><span class="line">    if (shadowPathType == LeShadowPathTop) &#123;</span><br><span class="line">        shadowRect = CGRectMake(originX, originY-shadowPathWidth/2, sizeWith, shadowPathWidth);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathBottom)&#123;</span><br><span class="line">        shadowRect = CGRectMake(originY, sizeHeight-shadowPathWidth/2, sizeWith, shadowPathWidth);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathLeft)&#123;</span><br><span class="line">        shadowRect = CGRectMake(originX-shadowPathWidth/2, originY, shadowPathWidth, sizeHeight);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathRight)&#123;</span><br><span class="line">        shadowRect = CGRectMake(sizeWith-shadowPathWidth/2, originY, shadowPathWidth, sizeHeight);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathCommon)&#123;</span><br><span class="line">        shadowRect = CGRectMake(originX-shadowPathWidth/2, 2, sizeWith+shadowPathWidth, sizeHeight+shadowPathWidth/2);</span><br><span class="line">    &#125;else if (shadowPathType == LeShadowPathAround)&#123;</span><br><span class="line">        shadowRect = CGRectMake(originX-shadowPathWidth/2, originY-shadowPathWidth/2, sizeWith+shadowPathWidth, sizeHeight+shadowPathWidth);</span><br><span class="line">    &#125;</span><br><span class="line">    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:shadowRect];</span><br><span class="line">    self.layer.shadowPath = bezierPath.CGPath;//阴影路径</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/1483397-300c8943a91f3ee4.gif?imageMogr2/auto-orient/strip" alt="阴影效果.gif"></p>
-<p><a href="[https://github.com/HuangHaiPo/LeViewShadow](https://github.com/HuangHaiPo/LeViewShadow">移步到GitHub项目地址</a><br>)</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/22/iOS UIView添加阴影效果 四周或者单边阴影/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1290,20 +1265,18 @@
 
       
         
-          
-            <p>七牛目前只支持单张图片长传，多张图片上传的逻辑需要自己完成。</p>
-<p><a href="https://github.com/HuangHaiPo/QNUpload" target="_blank" rel="noopener">代码：GitHub项目地址</a></p>
-<p>效果<br><img src="https://upload-images.jianshu.io/upload_images/1483397-dcc4ffe76677f56c.gif?imageMogr2/auto-orient/strip" alt="七牛上传图片.gif"></p>
-<p>使用方法:</p>
-<ol>
-<li>传入获取token的URL；</li>
-<li>获取到token后传给上传图片的方法中，成功后拼接图片链接，域名后台会给。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> [HuUploadImgManage qiNiuUploadToken:@&quot;请求七牛token的URL&quot; success:^(NSString * _Nonnull token) &#123;</span><br><span class="line">    [HuUploadImgManage uploadMuchImage:_pictureArray view:self.view token:kToken success:^(NSArray * _Nonnull imgArrayUrl) &#123;</span><br><span class="line">        NSLog(@&quot;图片上传成功:%@&quot;,imgArrayUrl);</span><br><span class="line">    &#125; failure:^(NSString * _Nonnull message) &#123;</span><br><span class="line">        NSLog(@&quot;%@&quot;,message);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-          
+          <p>七牛目前只支持单张图片长传，多张图片上传的逻辑需要自己完成。</p>
+<p><a href="https://github.com/HuangHaiPo/QNUpload" target="_blank" rel="noopener">代码：GitHub项目地址</a><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/19/iOS 七牛批量、单张上传图片/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -1460,15 +1433,14 @@
 
       
         
-          
-            <p><code>时间字符串就是当前日期加时间，时间戳是从1970年到现在的秒数</code><br>一、获取当前时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//获取当前时间</span><br><span class="line">- (NSString *)currentDateStr&#123;</span><br><span class="line">    NSDate *currentDate = [NSDate date];//获取当前时间，日期</span><br><span class="line">    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];// 创建一个时间格式化对象</span><br><span class="line">    [dateFormatter setDateFormat:@&quot;YYYY/MM/dd hh:mm:ss&quot;];//设定时间格式,这里可以设置成自己需要的格式</span><br><span class="line">    NSString *dateString = [dateFormatter stringFromDate:currentDate];//将时间转化成字符串</span><br><span class="line">    return dateString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>二、获取当前时间戳</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//获取当前时间戳</span><br><span class="line">- (NSString *)currentTimeStr&#123;</span><br><span class="line">    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];//获取当前时间0秒后的时间</span><br><span class="line">    NSTimeInterval time=[date timeIntervalSince1970]*1000;// *1000 是精确到毫秒，不乘就是精确到秒</span><br><span class="line">    NSString *timeString = [NSString stringWithFormat:@&quot;%.0f&quot;, time];</span><br><span class="line">    return timeString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>三、时间戳转时间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 时间戳转时间,时间戳为13位是精确到毫秒的，10位精确到秒</span><br><span class="line">- (NSString *)getDateStringWithTimeStr:(NSString *)str&#123;</span><br><span class="line">    NSTimeInterval time=[str doubleValue]/1000;//传入的时间戳str如果是精确到毫秒的记得要/1000</span><br><span class="line">    NSDate *detailDate=[NSDate dateWithTimeIntervalSince1970:time];</span><br><span class="line">    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; //实例化一个NSDateFormatter对象</span><br><span class="line">    //设定时间格式,这里可以设置成自己需要的格式</span><br><span class="line">        [dateFormatter setDateFormat:@&quot;yyyy-MM-dd HH:mm:ss SS&quot;];</span><br><span class="line">    NSString *currentDateStr = [dateFormatter stringFromDate: detailDate];</span><br><span class="line">    return currentDateStr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>四、字符串转时间戳</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//字符串转时间戳 如：2017-4-10 17:15:10</span><br><span class="line">- (NSString *)getTimeStrWithString:(NSString *)str&#123;</span><br><span class="line">    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];// 创建一个时间格式化对象</span><br><span class="line">    [dateFormatter setDateFormat:@&quot;YYYY-MM-dd HH:mm:ss&quot;]; //设定时间的格式</span><br><span class="line">    NSDate *tempDate = [dateFormatter dateFromString:str];//将字符串转换为时间对象</span><br><span class="line">    NSString *timeStr = [NSString stringWithFormat:@&quot;%ld&quot;, (long)[tempDate timeIntervalSince1970]*1000];//字符串转成时间戳,精确到毫秒*1000</span><br><span class="line">    return timeStr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <p><code>时间字符串就是当前日期加时间，时间戳是从1970年到现在的秒数</code><br>一、获取当前时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//获取当前时间</span><br><span class="line">- (NSString *)currentDateStr&#123;</span><br><span class="line">    NSDate *currentDate = [NSDate date];//获取当前时间，日期</span><br><span class="line">    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];// 创建一个时间格式化对象</span><br><span class="line">    [dateFormatter setDateFormat:@&quot;YYYY/MM/dd hh:mm:ss&quot;];//设定时间格式,这里可以设置成自己需要的格式</span><br><span class="line">    NSString *dateString = [dateFormatter stringFromDate:currentDate];//将时间转化成字符串</span><br><span class="line">    return dateString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/22/iOS 时间字符串和时间戳使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1628,12 +1600,14 @@
 
       
         
-          
-            <p><code>iOS 7.0之后sizeWithFont计算字符串的方法被弃用了</code><br><strong>用下面的方法代替</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont ipad_customFontWithName:@&quot;PingFangSC-Regular&quot; size:16.0f],NSFontAttributeName, nil];</span><br><span class="line">CGRect rect = [@&quot;宣教分类&quot; boundingRectWithSize:CGSizeMake(kTitleLabeW, kBtnWH) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];</span><br><span class="line">NSLog(@&quot;%f==%f&quot;,rect.size.width,rect.size.height);</span><br></pre></td></tr></table></figure></p>
-<p><strong>这是字符串的的实例方法，通过字符串调用该方法，会得到一个CGRect类型的对象，这个对象的的size就是计算的字符串显示成文本的宽高。</strong><br><strong>CGSizeMake(kTitleLabeW, kBtnWH)<code>(限制尺寸)</code>用于计算文本绘制时占据的矩形块 kTitleLabeW 如果计算宽度 这个给个最大宽度 比如不说不能超过100.0f kTitleLabeW 值就是100.0f  kBtnWH因为是计算宽度这个给个所计算控件的初始高度比如20.0f 反之如果计算高度 高度最大100.0f  kBtnWH = 100.0f kTitleLabeW 就是默认不能超过的宽度，比如占全屏 去掉左右间隔就是最大宽度减去30 maxWidth-20 不过一般设置MAXFLOAT保证显示完整数据</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">options 枚举值 文本绘制时的选项</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSInteger</span>, <span class="built_in">NSStringDrawingOptions</span>) &#123;</span><br><span class="line">        <span class="comment">//通常使用NSStringDrawingUsesLineFragmentOrigin</span></span><br><span class="line">        <span class="built_in">NSStringDrawingUsesLineFragmentOrigin</span> = <span class="number">1</span> &lt;&lt; <span class="number">0</span>,</span><br><span class="line">        <span class="comment">// 整个文本将以每行组成的矩形为单位计算整个文本的尺寸</span></span><br><span class="line">        <span class="comment">// The specified origin is the line fragment origin, not the base line origin</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSStringDrawingUsesFontLeading</span> = <span class="number">1</span> &lt;&lt; <span class="number">1</span>,</span><br><span class="line">        <span class="comment">// 使用字体的行间距来计算文本占用的范围，即每一行的底部到下一行的底部的距离计算</span></span><br><span class="line">        <span class="comment">// Uses the font leading for calculating line heights</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSStringDrawingUsesDeviceMetrics</span> = <span class="number">1</span> &lt;&lt; <span class="number">3</span>,</span><br><span class="line">        <span class="comment">// 将文字以图像符号计算文本占用范围，而不是以字符计算。也即是以每一个字体所占用的空间来计算文本范围</span></span><br><span class="line">        <span class="comment">// Uses image glyph bounds instead of typographic bounds</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSStringDrawingTruncatesLastVisibleLine</span></span><br><span class="line">        <span class="comment">// 当文本不能适合的放进指定的边界之内，则自动在最后一行添加省略符号。如果NSStringDrawingUsesLineFragmentOrigin没有设置，则该选项不生效</span></span><br><span class="line">        <span class="comment">// Truncates and adds the ellipsis character to the last visible line if the text doesn't fit into the bounds specified. Ignored if NSStringDrawingUsesLineFragmentOrigin is not also set.</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>attributes字符串字体大小字体格式</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSDictionary</span> *dic= @&#123;[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">14</span>]: <span class="built_in">NSFontAttributeName</span>&#125;;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <p><code>iOS 7.0之后sizeWithFont计算字符串的方法被弃用了</code><br><strong>用下面的方法代替</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont ipad_customFontWithName:@&quot;PingFangSC-Regular&quot; size:16.0f],NSFontAttributeName, nil];</span><br><span class="line">CGRect rect = [@&quot;宣教分类&quot; boundingRectWithSize:CGSizeMake(kTitleLabeW, kBtnWH) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];</span><br><span class="line">NSLog(@&quot;%f==%f&quot;,rect.size.width,rect.size.height);</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/31/计算字符串宽度/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1794,7 +1768,7 @@
       
         
           
-            <h4 id="1-字符串截取"><a href="#1-字符串截取" class="headerlink" title="1. 字符串截取"></a>1. 字符串截取</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *tempStr = <span class="string">@"123456789"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *tempStr1 = [tempStr substringToIndex:<span class="number">5</span>];<span class="comment">//截取下标5之前的字符串</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"截取值为 == %@"</span>,tempStr1);</span><br><span class="line"><span class="built_in">NSString</span> *tempStr2 = [tempStr substringFromIndex:<span class="number">5</span>];<span class="comment">//截取下标5之后的字符串</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"截取值为 == %@"</span>,tempStr2);</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-29</span> <span class="number">15</span>:<span class="number">24</span>:<span class="number">44.734291</span>+<span class="number">0800</span> compareDic[<span class="number">9389</span>:<span class="number">721614</span>] 截取值为 == <span class="number">12345</span></span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-29</span> <span class="number">15</span>:<span class="number">24</span>:<span class="number">44.734425</span>+<span class="number">0800</span> compareDic[<span class="number">9389</span>:<span class="number">721614</span>] 截取值为 == <span class="number">6789</span></span><br><span class="line"></span><br><span class="line">处理字符串，使其首字母大写 字符串删除替换</span><br><span class="line"><span class="built_in">NSString</span> *tempStr = <span class="string">@"abcdefghijklmn"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *resultStr;</span><br><span class="line"><span class="keyword">if</span> (tempStr &amp;&amp; tempStr.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//取字符串第一个 让其变成大写</span></span><br><span class="line">    resultStr = [tempStr stringByReplacingCharactersInRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>,<span class="number">1</span>) withString:[[tempStr substringToIndex:<span class="number">1</span>] capitalizedString]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, resultStr);</span><br><span class="line">输出</span><br><span class="line"><span class="number">2019</span><span class="number">-04</span><span class="number">-17</span> <span class="number">14</span>:<span class="number">59</span>:<span class="number">03.950001</span>+<span class="number">0800</span> PICC[<span class="number">16043</span>:<span class="number">778206</span>] Abcdefghijklmn</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *tempStr = <span class="string">@"abcdefghijklmn"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *resultStr;</span><br><span class="line"><span class="keyword">if</span> (tempStr &amp;&amp; tempStr.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//取最后一个字符串 删除 字母n</span></span><br><span class="line">resultStr = [tempStr stringByReplacingCharactersInRange:<span class="built_in">NSMakeRange</span>(tempStr.length<span class="number">-1</span>,<span class="number">1</span>) withString:<span class="string">@""</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, resultStr);</span><br><span class="line">输出</span><br><span class="line"><span class="number">2019</span><span class="number">-04</span><span class="number">-17</span> <span class="number">14</span>:<span class="number">57</span>:<span class="number">21.395348</span>+<span class="number">0800</span> PICC[<span class="number">15986</span>:<span class="number">769010</span>] abcdefghijklm</span><br><span class="line"></span><br><span class="line"><span class="comment">//替换最后两个字符串</span></span><br><span class="line"><span class="built_in">NSString</span> *tempStr = <span class="string">@"abcdefghijklmn"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *resultStr;</span><br><span class="line"><span class="keyword">if</span> (tempStr &amp;&amp; tempStr.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//取字符串第一个 让其变成大写</span></span><br><span class="line">resultStr = [tempStr stringByReplacingCharactersInRange:<span class="built_in">NSMakeRange</span>(tempStr.length<span class="number">-2</span>,<span class="number">2</span>) withString:<span class="string">@"替换"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, resultStr);</span><br><span class="line">输出</span><br><span class="line"><span class="number">2019</span><span class="number">-04</span><span class="number">-17</span> <span class="number">15</span>:<span class="number">00</span>:<span class="number">29.474159</span>+<span class="number">0800</span> PICC[<span class="number">16075</span>:<span class="number">786095</span>] abcdefghijkl替换</span><br><span class="line">解释：<span class="built_in">NSMakeRange</span>(tempStr.length<span class="number">-1</span>, <span class="number">1</span>),将字符串tempStr.length定位到倒数第二个即‘m’，取长度为<span class="number">1</span>的字符串，即m后第一个字符串 ‘n’，用字符串@“”替代‘n’，即所得的结果为“abcdefghijklm”</span><br></pre></td></tr></table></figure>
+            <h4 id="1-字符串截取"><a href="#1-字符串截取" class="headerlink" title="1. 字符串截取"></a>1. 字符串截取</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *tempStr = <span class="string">@"123456789"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *tempStr1 = [tempStr substringToIndex:<span class="number">5</span>];<span class="comment">//截取下标5之前的字符串</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"截取值为 == %@"</span>,tempStr1);</span><br><span class="line"><span class="built_in">NSString</span> *tempStr2 = [tempStr substringFromIndex:<span class="number">5</span>];<span class="comment">//截取下标5之后的字符串</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"截取值为 == %@"</span>,tempStr2);</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">输出：</span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-29</span> <span class="number">15</span>:<span class="number">24</span>:<span class="number">44.734291</span>+<span class="number">0800</span> compareDic[<span class="number">9389</span>:<span class="number">721614</span>] 截取值为 == <span class="number">12345</span></span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-29</span> <span class="number">15</span>:<span class="number">24</span>:<span class="number">44.734425</span>+<span class="number">0800</span> compareDic[<span class="number">9389</span>:<span class="number">721614</span>] 截取值为 == <span class="number">6789</span></span><br><span class="line"></span><br><span class="line">处理字符串，使其首字母大写 字符串删除替换</span><br><span class="line"><span class="built_in">NSString</span> *tempStr = <span class="string">@"abcdefghijklmn"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *resultStr;</span><br><span class="line"><span class="keyword">if</span> (tempStr &amp;&amp; tempStr.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//取字符串第一个 让其变成大写</span></span><br><span class="line">    resultStr = [tempStr stringByReplacingCharactersInRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>,<span class="number">1</span>) withString:[[tempStr substringToIndex:<span class="number">1</span>] capitalizedString]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, resultStr);</span><br><span class="line">输出</span><br><span class="line"><span class="number">2019</span><span class="number">-04</span><span class="number">-17</span> <span class="number">14</span>:<span class="number">59</span>:<span class="number">03.950001</span>+<span class="number">0800</span> PICC[<span class="number">16043</span>:<span class="number">778206</span>] Abcdefghijklmn</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *tempStr = <span class="string">@"abcdefghijklmn"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *resultStr;</span><br><span class="line"><span class="keyword">if</span> (tempStr &amp;&amp; tempStr.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//取最后一个字符串 删除 字母n</span></span><br><span class="line">resultStr = [tempStr stringByReplacingCharactersInRange:<span class="built_in">NSMakeRange</span>(tempStr.length<span class="number">-1</span>,<span class="number">1</span>) withString:<span class="string">@""</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, resultStr);</span><br><span class="line">输出</span><br><span class="line"><span class="number">2019</span><span class="number">-04</span><span class="number">-17</span> <span class="number">14</span>:<span class="number">57</span>:<span class="number">21.395348</span>+<span class="number">0800</span> PICC[<span class="number">15986</span>:<span class="number">769010</span>] abcdefghijklm</span><br><span class="line"></span><br><span class="line"><span class="comment">//替换最后两个字符串</span></span><br><span class="line"><span class="built_in">NSString</span> *tempStr = <span class="string">@"abcdefghijklmn"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *resultStr;</span><br><span class="line"><span class="keyword">if</span> (tempStr &amp;&amp; tempStr.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//取字符串第一个 让其变成大写</span></span><br><span class="line">resultStr = [tempStr stringByReplacingCharactersInRange:<span class="built_in">NSMakeRange</span>(tempStr.length<span class="number">-2</span>,<span class="number">2</span>) withString:<span class="string">@"替换"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, resultStr);</span><br><span class="line">输出</span><br><span class="line"><span class="number">2019</span><span class="number">-04</span><span class="number">-17</span> <span class="number">15</span>:<span class="number">00</span>:<span class="number">29.474159</span>+<span class="number">0800</span> PICC[<span class="number">16075</span>:<span class="number">786095</span>] abcdefghijkl替换</span><br><span class="line">解释：<span class="built_in">NSMakeRange</span>(tempStr.length<span class="number">-1</span>, <span class="number">1</span>),将字符串tempStr.length定位到倒数第二个即‘m’，取长度为<span class="number">1</span>的字符串，即m后第一个字符串 ‘n’，用字符串@“”替代‘n’，即所得的结果为“abcdefghijklm”</span><br></pre></td></tr></table></figure>
 <h4 id="2-字符串匹配或查找"><a href="#2-字符串匹配或查找" class="headerlink" title="2. 字符串匹配或查找"></a>2. 字符串匹配或查找</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *tempStr3 = <span class="string">@"https://www.jianshu.com"</span>;</span><br><span class="line"><span class="built_in">NSRange</span> range = [tempStr3 rangeOfString:<span class="string">@"www.ji"</span>];<span class="comment">//</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"range = %@"</span>,<span class="built_in">NSStringFromRange</span>(range));</span><br><span class="line">tempStr3 = [tempStr3 substringWithRange:range];<span class="comment">//匹配当前字符串是否有要查询</span></span><br><span class="line">的字符</span><br><span class="line">tempStr3 = [tempStr3 substringWithRange:<span class="built_in">NSMakeRange</span>(<span class="number">3</span>, <span class="number">5</span>)];<span class="comment">//或者可以从第三个字符截取，截取到第五个字符</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"匹配值为 == %@"</span>,tempStr3);</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-29</span> <span class="number">15</span>:<span class="number">58</span>:<span class="number">06.719612</span>+<span class="number">0800</span> compareDic[<span class="number">9830</span>:<span class="number">831378</span>] range = &#123;<span class="number">8</span>, <span class="number">6</span>&#125;</span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-29</span> <span class="number">15</span>:<span class="number">58</span>:<span class="number">11.307964</span>+<span class="number">0800</span> compareDic[<span class="number">9830</span>:<span class="number">831378</span>] 匹配值为 == www.ji</span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-29</span> <span class="number">16</span>:<span class="number">12</span>:<span class="number">20.274156</span>+<span class="number">0800</span> compareDic[<span class="number">10003</span>:<span class="number">886465</span>] 匹配值为 == ps:<span class="comment">//</span></span><br></pre></td></tr></table></figure>
 <p><code>rangeOfString</code>方法意思:<br>当前字符串<code>https://www.jianshu.com</code>是否包含某个字符<code>www.ji</code>，返回的是<code>NSRange</code>结构体。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _NSRange &#123;</span><br><span class="line">    NSUInteger location;</span><br><span class="line">    NSUInteger length;</span><br><span class="line">&#125; NSRange;</span><br></pre></td></tr></table></figure></p>
 <p>其中<code>location</code>意思是在<code>www.ji</code>中的第一个字符<code>w</code>在<code>https://www.jianshu.com</code>第几个位置答案是<code>8</code>。<br><code>length</code>意思是<code>www.ji</code>这个要查的字符串的长度，所以是<code>6</code>。</p>
@@ -1964,107 +1938,20 @@
 
       
         
-          
-            <p><img src="https://upload-images.jianshu.io/upload_images/1483397-cc454ab62726247c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="支付宝支付"></p>
+          <p><img src="https://upload-images.jianshu.io/upload_images/1483397-cc454ab62726247c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="支付宝支付"></p>
 <h4 id="一-开发前的准备"><a href="#一-开发前的准备" class="headerlink" title="一. 开发前的准备"></a>一. 开发前的准备</h4><ul>
 <li>创建应用&gt;申请开通APP支付&gt;签约&gt;审核,等待时间大概一天左右。</li>
-<li>秘钥:不过一般用不到(支付时后台会返回)，如果要试支付宝的demo可以找后台或者产品要。</li>
-</ul>
-<h4 id="二-支付宝支付流程"><a href="#二-支付宝支付流程" class="headerlink" title="二. 支付宝支付流程"></a>二. 支付宝支付流程</h4><ul>
-<li><p>安装支付宝支付流程</p>
-<ol>
-<li>用户在商家App中选择商品下单、确认购买，进入支付环节，选择支付宝，用户点击确认支付；</li>
-<li>进入到支付宝页面，调起支付宝支付，出现确认支付界面；</li>
-<li>用户确认收款方和金额，点击立即支付后出现输入密码界面；</li>
-<li>输入正确密码后，支付宝端显示支付结果；</li>
-<li>自动回跳到商家App中，商家根据付款结果个性化展示订单处理结果。</li>
-</ol>
-</li>
-<li><p>用户未安装支付宝支付流程</p>
-<ol>
-<li>用户在商家App中选择商品下单、确认购买，进入支付环节，选择支付宝，用户点击确认支付；</li>
-<li>用户未安装支付宝客户端，则调起支付宝网页支付收银台，用户登录支付宝账户；</li>
-<li>登录成功后，进入确认付款页面；</li>
-<li>用户点击确认付款，进入支付密码页面；</li>
-<li>用户输入密码，完成支付，展示支付结果。</li>
-</ol>
-</li>
-<li>系统交互流程:</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/1483397-a321b4a30f0ba8d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="系统交互流程"></p>
-<h4 id="三-App支付iOS集成流程"><a href="#三-App支付iOS集成流程" class="headerlink" title="三. App支付iOS集成流程"></a>三. App支付iOS集成流程</h4><h5 id="1-导入支付宝SDK"><a href="#1-导入支付宝SDK" class="headerlink" title="1. 导入支付宝SDK:"></a>1. 导入支付宝SDK:</h5><ul>
-<li>通过CocoaPods导入，在工程的Podfile里面添加以下代码：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &apos;AlipaySDK-iOS&apos;</span><br></pre></td></tr></table></figure>
-<p>保存并执行 pod install</p>
-<ul>
-<li>手动导入SDK</li>
-</ul>
-<p><a href="https://docs.open.alipay.com/54/104509" target="_blank" rel="noopener">支付宝SDK下载地址 新版本</a><br>下载完成后，把下面的文件拷贝到项目文件夹下，导入到项目中，并添加依赖库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AlipaySDK.bundle</span><br><span class="line">AlipaySDK.framework</span><br></pre></td></tr></table></figure>
-<p>选择你的工程设置项，选中“TARGETS”一栏，在“Build Phases”标签栏的“Link Binary With Libraries“添加以下依赖库：<br><img src="https://upload-images.jianshu.io/upload_images/1483397-0cb3c2691d41fb0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="依赖库"></p>
-<p>关于设置URL Types在上篇文章微信支付有写<a href="https://www.jianshu.com/p/a360c903f454" target="_blank" rel="noopener">传送门</a>。<br>到此，项目集成SDK完成下面进入代码环节。</p>
-<h5 id="2-代码"><a href="#2-代码" class="headerlink" title="2. 代码"></a>2. 代码</h5><p><strong>代码仅供参考 有所删减</strong></p>
-<ul>
-<li>在调用支付宝之前需要创建订单创建订单成功后后台会把调用支付宝的参数返回，如密码APPID等，目前新版是，拿到后台的返回数据后只需全部给支付宝就OK，同时还需要把Scheme传给支付宝。</li>
-<li>注意点:支付宝的调用接口有一个支付回调，只有网页支付才会触发，APP走appdelegate。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">//点击支付调的方法其中有微信支付</span><br><span class="line">- (void)cd_paymentMeetingTicketsWithPaymentType:(CDPayFeePayStyle)paymentType</span><br><span class="line">                                   paymentState:(CDPaymentState)paymentState</span><br><span class="line">                                        buyType:(CDPaymentType)buyType</span><br><span class="line">                                           view:(UIView *)view</span><br><span class="line">                                     parameters:(NSDictionary *)parameters</span><br><span class="line">                                   successBlock:(void(^)(NSDictionary * resultStatusDic,BOOL flage))successBlock&#123;</span><br><span class="line">      WS(weakSelf);//这个方法是创建订单 返回调用SDK所需参数</span><br><span class="line">    [CdPaymentHttpRequest cd_payInfoWithPayState:paymentState paymentType:paymentType buyType:buyType view:nil parameter:parameters success:^(NSString *payOrderStr) &#123;</span><br><span class="line">            if (paymentType == CDPayFeePayStyleAlibaba) &#123;//支付宝支付 拿到参数调用支付API</span><br><span class="line">                [[AlipaySDK defaultService]payOrder:payOrderStr fromScheme:ZWYJY_SCHEME callback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">                //注意这个回调是在没有装支付宝APP使用的网页支付才会走的回调，通过APP支付会走appdelegate</span><br><span class="line">                    successBlock(resultDic,YES);</span><br><span class="line">                &#125;];</span><br><span class="line">            &#125;else&#123;//微信支付</span><br><span class="line">                if ([payOrderStr isKindOfClass:[NSString class]]) &#123;</span><br><span class="line">                    NSData *data = [payOrderStr mj_JSONData];</span><br><span class="line">                    NSDictionary *weChatDic = [data mj_JSONObject];</span><br><span class="line">                    if (weChatDic != nil) &#123;</span><br><span class="line">                        ////调起微信支付</span><br><span class="line">                        PayReq *weChatReq = [[PayReq alloc]init];</span><br><span class="line">                        weChatReq.openID = weChatDic[@&quot;appid&quot;];</span><br><span class="line">                        weChatReq.partnerId = weChatDic[@&quot;partnerid&quot;];</span><br><span class="line">                        weChatReq.prepayId = weChatDic[@&quot;prepayid&quot;];</span><br><span class="line">                        weChatReq.nonceStr = weChatDic[@&quot;noncestr&quot;];</span><br><span class="line">                        weChatReq.timeStamp = [weChatDic[@&quot;timestamp&quot;] integerValue];</span><br><span class="line">                        weChatReq.package = weChatDic[@&quot;package&quot;];</span><br><span class="line">                        weChatReq.sign = weChatDic[@&quot;sign&quot;];</span><br><span class="line">                        [WXApi sendReq:weChatReq];</span><br><span class="line">                        successBlock(@&#123;&#125;,YES);</span><br><span class="line">                    &#125;else&#123;</span><br><span class="line">                        [[CdPaymentCenter sharedCdPaymentCenter].hud hide:YES];</span><br><span class="line">                        [MBProgressHUD showMessage:@&quot;服务器返回错误&quot;];</span><br><span class="line">                    &#125;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            successBlock(@&#123;&#125;,NO);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125; errBlock:^(NSString *errMsg) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>支付回调 使用支付宝APP才会走的回调</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url &#123;</span><br><span class="line">    return  [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 配置系统回调接口</span><br><span class="line">- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation</span><br><span class="line">&#123;</span><br><span class="line">    BOOL result = [UMSocialSnsService handleOpenURL:url];</span><br><span class="line">    </span><br><span class="line">    if (result == FALSE) &#123;</span><br><span class="line">        //调用其他SDK，例如支付宝SDK等</span><br><span class="line">        if ([url.host isEqualToString:@&quot;safepay&quot;]) &#123;</span><br><span class="line">            //跳转支付宝钱包进行支付，处理支付结果</span><br><span class="line">            [[AlipaySDK defaultService]processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) &#123;//这个方法是支付宝支付结果回调</span><br><span class="line">                [kNotificationCenter postNotificationName:kAlibabaPaymentStatus object:resultDic];//发起通知处理支付结果</span><br><span class="line">            &#125;];</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">// NOTE: 9.0以后使用新API接口</span><br><span class="line">- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary&lt;NSString*, id&gt; *)options</span><br><span class="line">&#123;</span><br><span class="line">    BOOL result = [UMSocialSnsService handleOpenURL:url];</span><br><span class="line">    if (result == false) &#123;</span><br><span class="line">        if ([url.host isEqualToString:@&quot;safepay&quot;]) &#123;</span><br><span class="line">            //跳转支付宝钱包进行支付，处理支付结果</span><br><span class="line">            [[AlipaySDK defaultService]processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">                [kNotificationCenter postNotificationName:kAlibabaPaymentStatus object:resultDic];//发起通知处理支付结果</span><br><span class="line">            &#125;];</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line">        return [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>支付宝resultStatus结果码含义</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>返回码</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>9000</td>
-<td>订单支付成功</td>
-</tr>
-<tr>
-<td>8000</td>
-<td>正在处理中，支付结果未知（有可能已经支付成功），请查询商户订单列表中订单的支付状态</td>
-</tr>
-<tr>
-<td>4000</td>
-<td>订单支付失败</td>
-</tr>
-<tr>
-<td>5000</td>
-<td>重复请求</td>
-</tr>
-<tr>
-<td>6001</td>
-<td>用户中途取消</td>
-</tr>
-<tr>
-<td>6002</td>
-<td>网络连接出错</td>
-</tr>
-<tr>
-<td>6004</td>
-<td>支付结果未知（有可能已经支付成功），请查询商户订单列表中订单的支付状态</td>
-</tr>
-<tr>
-<td>其它</td>
-<td>其它支付错误</td>
-</tr>
-</tbody>
-</table>
-<p>关于处理支付结果根据需求来写，这里就不写了。</p>
-
-          
+<li>秘钥:不过一般用不到(支付时后台会返回)，如果要试支付宝的demo可以找后台或者产品要。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/14/iOS支付三部曲之集成支付宝支付/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </li></ul></div>
     
     
     
@@ -2147,7 +2034,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2158,7 +2045,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

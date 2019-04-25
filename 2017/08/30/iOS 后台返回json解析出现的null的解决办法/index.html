@@ -77,21 +77,21 @@
 
 
 
-<meta name="description" content="在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。解析成对象之后，如果直接向这个对象发送消息(length,count 等等)就会直接">
+<meta name="description" content="在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。">
 <meta name="keywords" content="json">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 后台返回json解析出现的null的解决办法">
 <meta property="og:url" content="http://yoursite.com/2017/08/30/iOS 后台返回json解析出现的null的解决办法/index.html">
 <meta property="og:site_name" content="骑马纵天下">
-<meta property="og:description" content="在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。解析成对象之后，如果直接向这个对象发送消息(length,count 等等)就会直接">
+<meta property="og:description" content="在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-3c0a94b9a652e437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-67d6a5590ad792e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-6db2b68c52a68a9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-25T03:31:52.927Z">
+<meta property="og:updated_time" content="2019-04-25T03:38:55.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 后台返回json解析出现的null的解决办法">
-<meta name="twitter:description" content="在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。解析成对象之后，如果直接向这个对象发送消息(length,count 等等)就会直接">
+<meta name="twitter:description" content="在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1483397-3c0a94b9a652e437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -417,7 +417,8 @@
       
 
       
-        <p><strong>在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。</strong><br><img src="http://upload-images.jianshu.io/upload_images/1483397-3c0a94b9a652e437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="null"><br><strong>解析成对象之后，如果直接向这个对象发送消息(length,count 等等)就会直接崩溃。提示错误为</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-[NSNull length]: unrecognized selector sent to instance 0x388a4a70</span><br></pre></td></tr></table></figure></p>
+        <p><strong>在后台返回值为Null为空时，我们代码没有判断时，程序就会崩溃。当时一直很疑惑是为啥，后来发现是数据问题，由于服务器的数据库中有些字段为空，然后以Json形式返回给客户端时就会出现这样的数据。当我们通过一些第三方数据解析库解析数据后，就会是下图这种数据格式。null既不是字符串也不是nil所以我们有些判断是没用的。</strong><br><a id="more"></a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1483397-3c0a94b9a652e437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="null"><br><strong>解析成对象之后，如果直接向这个对象发送消息(length,count 等等)就会直接崩溃。提示错误为</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-[NSNull length]: unrecognized selector sent to instance 0x388a4a70</span><br></pre></td></tr></table></figure></p>
 <p>##解决办法<br><strong>1.对取值对象类型判断。缺点是太过繁琐，每次都要写。</strong><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#define kDictIsEmpty(dic) ([dic isKindOfClass:[NSNull class]])//宏</span><br><span class="line"> if (![@&quot;你要取的值&quot; isKindOfClass:[NSNull class]])&#123;</span><br><span class="line">//数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>2.字符串匹配。在获取到服务器返回的Json时(返回结果是string对象)通过stringByReplacingOccurrencesOfString方法，替换”null”为”空字符”，然后解析。不过通过这个方法也有可能导致数据无法解析</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json = [jsonStr  stringByReplacingOccurrencesOfString:@&quot;:null&quot; withString:@&quot;&quot;];</span><br></pre></td></tr></table></figure></p>
 <p><strong>3.解析时把null 类型替换成nil。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//有返回值的宏</span><br><span class="line">#define isToNull(value) \</span><br><span class="line">(&#123;\</span><br><span class="line">   id tmp;\</span><br><span class="line">    if (![value isKindOfClass:[NSNull class]])\</span><br><span class="line">        tmp = value;\</span><br><span class="line">    else</span><br><span class="line">        tmp = nil;\ </span><br><span class="line">    (tmp);\</span><br><span class="line">&#125;)\</span><br><span class="line"></span><br><span class="line">//调用方法</span><br><span class="line">label.text = isToNull(dic[@&quot;data&quot;]);</span><br></pre></td></tr></table></figure></p>
@@ -570,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -581,7 +582,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

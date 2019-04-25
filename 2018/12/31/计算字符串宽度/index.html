@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="骑马纵天下">
 <meta property="og:description" content="iOS 7.0之后sizeWithFont计算字符串的方法被弃用了用下面的方法代替123NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont ipad_customFontWithName:@&amp;quot;PingFangSC-Regular&amp;quot; size:16.0f],NSFontAttr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-25T03:16:20.251Z">
+<meta property="og:updated_time" content="2019-04-25T03:39:56.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算字符串宽度">
 <meta name="twitter:description" content="iOS 7.0之后sizeWithFont计算字符串的方法被弃用了用下面的方法代替123NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont ipad_customFontWithName:@&amp;quot;PingFangSC-Regular&amp;quot; size:16.0f],NSFontAttr">
@@ -414,6 +414,7 @@
 
       
         <p><code>iOS 7.0之后sizeWithFont计算字符串的方法被弃用了</code><br><strong>用下面的方法代替</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont ipad_customFontWithName:@&quot;PingFangSC-Regular&quot; size:16.0f],NSFontAttributeName, nil];</span><br><span class="line">CGRect rect = [@&quot;宣教分类&quot; boundingRectWithSize:CGSizeMake(kTitleLabeW, kBtnWH) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];</span><br><span class="line">NSLog(@&quot;%f==%f&quot;,rect.size.width,rect.size.height);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p><strong>这是字符串的的实例方法，通过字符串调用该方法，会得到一个CGRect类型的对象，这个对象的的size就是计算的字符串显示成文本的宽高。</strong><br><strong>CGSizeMake(kTitleLabeW, kBtnWH)<code>(限制尺寸)</code>用于计算文本绘制时占据的矩形块 kTitleLabeW 如果计算宽度 这个给个最大宽度 比如不说不能超过100.0f kTitleLabeW 值就是100.0f  kBtnWH因为是计算宽度这个给个所计算控件的初始高度比如20.0f 反之如果计算高度 高度最大100.0f  kBtnWH = 100.0f kTitleLabeW 就是默认不能超过的宽度，比如占全屏 去掉左右间隔就是最大宽度减去30 maxWidth-20 不过一般设置MAXFLOAT保证显示完整数据</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">options 枚举值 文本绘制时的选项</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSInteger</span>, <span class="built_in">NSStringDrawingOptions</span>) &#123;</span><br><span class="line">        <span class="comment">//通常使用NSStringDrawingUsesLineFragmentOrigin</span></span><br><span class="line">        <span class="built_in">NSStringDrawingUsesLineFragmentOrigin</span> = <span class="number">1</span> &lt;&lt; <span class="number">0</span>,</span><br><span class="line">        <span class="comment">// 整个文本将以每行组成的矩形为单位计算整个文本的尺寸</span></span><br><span class="line">        <span class="comment">// The specified origin is the line fragment origin, not the base line origin</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSStringDrawingUsesFontLeading</span> = <span class="number">1</span> &lt;&lt; <span class="number">1</span>,</span><br><span class="line">        <span class="comment">// 使用字体的行间距来计算文本占用的范围，即每一行的底部到下一行的底部的距离计算</span></span><br><span class="line">        <span class="comment">// Uses the font leading for calculating line heights</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSStringDrawingUsesDeviceMetrics</span> = <span class="number">1</span> &lt;&lt; <span class="number">3</span>,</span><br><span class="line">        <span class="comment">// 将文字以图像符号计算文本占用范围，而不是以字符计算。也即是以每一个字体所占用的空间来计算文本范围</span></span><br><span class="line">        <span class="comment">// Uses image glyph bounds instead of typographic bounds</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSStringDrawingTruncatesLastVisibleLine</span></span><br><span class="line">        <span class="comment">// 当文本不能适合的放进指定的边界之内，则自动在最后一行添加省略符号。如果NSStringDrawingUsesLineFragmentOrigin没有设置，则该选项不生效</span></span><br><span class="line">        <span class="comment">// Truncates and adds the ellipsis character to the last visible line if the text doesn't fit into the bounds specified. Ignored if NSStringDrawingUsesLineFragmentOrigin is not also set.</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>attributes字符串字体大小字体格式</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSDictionary</span> *dic= @&#123;[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">14</span>]: <span class="built_in">NSFontAttributeName</span>&#125;;</span><br></pre></td></tr></table></figure></p>
 
@@ -560,7 +561,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -571,7 +572,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

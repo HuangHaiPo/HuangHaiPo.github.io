@@ -77,19 +77,19 @@
 
 
 
-<meta name="description" content="####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复 #####原因:当使用内购购买过商品后没有把这个交易事件关，所以当我们再次去购买商品后就会调用以前已经购买成功的交易事件去购买因为已经购买过，才会有这个提示 #####解决方法：1.当我们使用[[SKPaymentQueue defaultQueue] addP">
+<meta name="description" content="####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复">
 <meta name="keywords" content="内购,IAP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 内购遇到的坑">
 <meta property="og:url" content="http://yoursite.com/2017/07/24/iOS 内购遇到的坑/index.html">
 <meta property="og:site_name" content="骑马纵天下">
-<meta property="og:description" content="####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复 #####原因:当使用内购购买过商品后没有把这个交易事件关，所以当我们再次去购买商品后就会调用以前已经购买成功的交易事件去购买因为已经购买过，才会有这个提示 #####解决方法：1.当我们使用[[SKPaymentQueue defaultQueue] addP">
+<meta property="og:description" content="####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483397-83002380a533c4e8.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-25T03:23:01.517Z">
+<meta property="og:updated_time" content="2019-04-25T03:38:49.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 内购遇到的坑">
-<meta name="twitter:description" content="####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复 #####原因:当使用内购购买过商品后没有把这个交易事件关，所以当我们再次去购买商品后就会调用以前已经购买成功的交易事件去购买因为已经购买过，才会有这个提示 #####解决方法：1.当我们使用[[SKPaymentQueue defaultQueue] addP">
+<meta name="twitter:description" content="####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1483397-83002380a533c4e8.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -415,7 +415,7 @@
       
 
       
-        <p>####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复<br><img src="http://upload-images.jianshu.io/upload_images/1483397-83002380a533c4e8.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="您以购买过此APP内购项目，此项目将免费恢复.PNG"></p>
+        <p>####一.内购沙盒测试账号在支付成功后，再次购买相同 ID 的物品，会提示如下内容的弹窗。您以购买过此APP内购项目，此项目将免费恢复<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/1483397-83002380a533c4e8.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="您以购买过此APP内购项目，此项目将免费恢复.PNG"></p>
 <p>#####原因:<br><strong>当使用内购购买过商品后没有把这个交易事件关，所以当我们再次去购买商品后就会调用以前已经购买成功的交易事件去购买因为已经购买过，才会有这个提示</strong></p>
 <p>#####解决方法：<br><strong>1.当我们使用[[SKPaymentQueue defaultQueue] addPayment:payment];这个方法进行支付请求后，因为我们已经把支付所需要的信息都添加到苹果的支付队列，苹果会自动完成后续的购买请求。</strong><br><strong>在用户购买成功或者点击取消购买的后会回调- (void)paymentQueue:(SKPaymentQueue <em>)queue updatedTransactions:(NSArray </em>)transaction;方法返回响应的结果信息，在该方法内除了得到响应的支付信息编写自身的业务的代码外还要记得调用[[SKPaymentQueue defaultQueue] finishTransaction:transaction];方法通知苹果的支付队列该交易已经完成，否者就会调用已经购买成功的支付队列，就会出现<em>您以购买过此APP内购项目，此项目将免费恢复</em>这句提示。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray&lt;SKPaymentTransaction *&gt; *)transactions&#123;</span><br><span class="line">    NSLog(@&quot;调用了几次这个方法？&quot;);</span><br><span class="line">    SKPaymentTransaction *transaction = transactions.lastObject;</span><br><span class="line">    switch (transaction.transactionState) &#123;</span><br><span class="line">        case SKPaymentTransactionStatePurchased: &#123;</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];//记得关闭交易事件</span><br><span class="line"></span><br><span class="line">            NSLog(@&quot;购买完成,向自己的服务器验证 ---- %@&quot;, transaction.payment.applicationUsername);</span><br><span class="line">            NSData *data = [NSData dataWithContentsOfFile:[[[NSBundle mainBundle] appStoreReceiptURL] path]];</span><br><span class="line">            NSString *receipt = [data base64EncodedStringWithOptions:0];</span><br><span class="line">//            [self buySuccessWithReceipt:receipt transaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStateFailed: &#123;</span><br><span class="line">            NSLog(@&quot;交易失败&quot;);</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStateRestored: &#123;</span><br><span class="line">            NSLog(@&quot;已经购买过该商品&quot;);</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        case SKPaymentTransactionStatePurchasing: &#123;</span><br><span class="line">            NSLog(@&quot;商品添加进列表&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        default: &#123;</span><br><span class="line">            NSLog(@&quot;这是什么情况啊？&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>######2.在买次购买之前检测是否有未完成的交易如果有就关闭。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NSArray* transactions = [SKPaymentQueue defaultQueue].transactions;</span><br><span class="line">    if (transactions.count &gt; 0) &#123;</span><br><span class="line">        //检测是否有未完成的交易</span><br><span class="line">        SKPaymentTransaction* transaction = [transactions firstObject];</span><br><span class="line">        if (transaction.transactionState == SKPaymentTransactionStatePurchased) &#123;</span><br><span class="line">            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];</span><br><span class="line">            return;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
@@ -655,7 +655,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -666,7 +666,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
