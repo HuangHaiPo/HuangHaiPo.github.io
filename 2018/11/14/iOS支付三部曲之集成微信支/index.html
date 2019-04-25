@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="集成微信支付,第三方支付,">
 
 
 
@@ -77,16 +77,24 @@
 
 
 
-<meta name="description" content="进步的攻城狮!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="骑马纵天下">
-<meta property="og:url" content="http://yoursite.com/categories/时间字符串/index.html">
+<meta name="description" content="一. 微信支付步骤123451. 用户进入商户APP，选择商品下单、确认购买，进入支付环节。商户服务后台生成支付订单，签名后将数据传输到APP端。2. 用户点击后发起支付操作，进入到微信界面，调起微信支付，出现确认支付界面。3. 用户确认收款方和金额，点击立即支付后出现输入密码界面，可选择零钱或银行卡支付。4. 输入正确密码后，支付完成，用户端微信出现支付详情页面。5. 回跳到商户APP中，商户">
+<meta name="keywords" content="集成微信支付,第三方支付">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS支付三部曲之集成微信支付">
+<meta property="og:url" content="http://yoursite.com/2018/11/14/iOS支付三部曲之集成微信支/index.html">
 <meta property="og:site_name" content="骑马纵天下">
-<meta property="og:description" content="进步的攻城狮!">
+<meta property="og:description" content="一. 微信支付步骤123451. 用户进入商户APP，选择商品下单、确认购买，进入支付环节。商户服务后台生成支付订单，签名后将数据传输到APP端。2. 用户点击后发起支付操作，进入到微信界面，调起微信支付，出现确认支付界面。3. 用户确认收款方和金额，点击立即支付后出现输入密码界面，可选择零钱或银行卡支付。4. 输入正确密码后，支付完成，用户端微信出现支付详情页面。5. 回跳到商户APP中，商户">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-61fdcdc13112b42a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-fb14d7180681cc0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-367800e8045dc5b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-85054720604b96c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1483397-eb97f701e188fb43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-25T03:30:47.539Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="骑马纵天下">
-<meta name="twitter:description" content="进步的攻城狮!">
+<meta name="twitter:title" content="iOS支付三部曲之集成微信支付">
+<meta name="twitter:description" content="一. 微信支付步骤123451. 用户进入商户APP，选择商品下单、确认购买，进入支付环节。商户服务后台生成支付订单，签名后将数据传输到APP端。2. 用户点击后发起支付操作，进入到微信界面，调起微信支付，出现确认支付界面。3. 用户确认收款方和金额，点击立即支付后出现输入密码界面，可选择零钱或银行卡支付。4. 输入正确密码后，支付完成，用户端微信出现支付详情页面。5. 回跳到商户APP中，商户">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1483397-61fdcdc13112b42a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -116,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/时间字符串/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/14/iOS支付三部曲之集成微信支/">
 
 
 
 
 
-  <title>分类: 时间字符串 | 骑马纵天下</title>
+  <title>iOS支付三部曲之集成微信支付 | 骑马纵天下</title>
   
 
 
@@ -141,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,53 +295,294 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>时间字符串<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/iOS支付三部曲之集成微信支/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="leon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/headerPic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑马纵天下">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/22/iOS 时间字符串和时间戳使用/" itemprop="url">
-              
-                <span itemprop="name">iOS 时间字符串和时间戳使用</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">iOS支付三部曲之集成微信支付</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-22T11:09:29+08:00" content="2019-03-22">
-          03-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T12:18:00+08:00">
+                2018-11-14
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信支付/" itemprop="url" rel="index">
+                    <span itemprop="name">微信支付</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/14/iOS支付三部曲之集成微信支/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/14/iOS支付三部曲之集成微信支/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/14/iOS支付三部曲之集成微信支/" class="leancloud_visitors" data-flag-title="iOS支付三部曲之集成微信支付">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/1483397-61fdcdc13112b42a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信支付"></p>
+<h4 id="一-微信支付步骤"><a href="#一-微信支付步骤" class="headerlink" title="一. 微信支付步骤"></a>一. 微信支付步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 用户进入商户APP，选择商品下单、确认购买，进入支付环节。商户服务后台生成支付订单，签名后将数据传输到APP端。</span><br><span class="line">2. 用户点击后发起支付操作，进入到微信界面，调起微信支付，出现确认支付界面。</span><br><span class="line">3. 用户确认收款方和金额，点击立即支付后出现输入密码界面，可选择零钱或银行卡支付。</span><br><span class="line">4. 输入正确密码后，支付完成，用户端微信出现支付详情页面。</span><br><span class="line">5. 回跳到商户APP中，商户APP根据支付结果个性化展示订单处理结果。</span><br></pre></td></tr></table></figure>
+<h4 id="二-微信支付流程"><a href="#二-微信支付流程" class="headerlink" title="二. 微信支付流程"></a>二. 微信支付流程</h4><p><strong>下图是微信开发者文档给的流程图</strong><br><img src="https://upload-images.jianshu.io/upload_images/1483397-fb14d7180681cc0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信支付流程图"></p>
+<p><strong>流程图看着繁琐其实具体就三步：</strong></p>
+<ol>
+<li>app接入微信支付SDK，选中商品支付前调用后台给的接口接收调用微信支付需要的参数如tradeToken、orderInfo等。需要注意的是一般后台给的string字符串需要转成json。</li>
+<li>拿到参数后调用微信支付API。</li>
+<li>支付过后一般微信会有支付结果返回，但是安全起见让后台去验证支付是否成功。<br><strong>流程大概是上面三个步骤</strong></li>
+</ol>
+<h4 id="三-开发流程"><a href="#三-开发流程" class="headerlink" title="三. 开发流程"></a>三. 开发流程</h4><p><a href="https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_1" target="_blank" rel="noopener">微信支付开发者文档</a></p>
+<h5 id="1-集成微信支付SDK-SDK下载地址"><a href="#1-集成微信支付SDK-SDK下载地址" class="headerlink" title="1. 集成微信支付SDK SDK下载地址"></a>1. 集成微信支付SDK <a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419319164&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">SDK下载地址</a></h5><ul>
+<li>手动集成</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1483397-367800e8045dc5b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sdk"></p>
+<p><strong>将SDK拖到项目中点击项目选中Build Phases &gt; Link Binary With Libraries 添加依赖库。</strong><br><img src="https://upload-images.jianshu.io/upload_images/1483397-85054720604b96c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="依赖库"></p>
+<ul>
+<li>过CocoaPods集成</li>
+</ul>
+<p><strong>在工程的Podfile里面添加以下代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &apos;WechatOpenSDK&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>保存并执行pod install。</strong></p>
+<h5 id="2-设置URL-Types"><a href="#2-设置URL-Types" class="headerlink" title="2. 设置URL Types"></a>2. 设置URL Types</h5><p><strong>选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL Types“添加“URL scheme”为你所注册的应用程序id</strong><br><img src="https://upload-images.jianshu.io/upload_images/1483397-eb97f701e188fb43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="URL scheme"></p>
+<p><strong>Xcode设置URL scheme</strong></p>
+<h5 id="3-添加代码"><a href="#3-添加代码" class="headerlink" title="3. 添加代码"></a>3. 添加代码</h5><ul>
+<li>AppDelegate</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">    [WXApi registerApp:@&quot;wx12312321312312&quot;];//注册appid</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url &#123;</span><br><span class="line">    return  [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 配置系统回调接口</span><br><span class="line">- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation</span><br><span class="line">&#123;</span><br><span class="line">    BOOL result = [UMSocialSnsService handleOpenURL:url];</span><br><span class="line"></span><br><span class="line">    if (result == FALSE) &#123;</span><br><span class="line">        //调用其他SDK，例如支付宝SDK等</span><br><span class="line">        if ([url.host isEqualToString:@&quot;safepay&quot;]) &#123;</span><br><span class="line">            //跳转支付宝钱包进行支付，处理支付结果</span><br><span class="line">            [[AlipaySDK defaultService]processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">                [kNotificationCenter postNotificationName:kAlibabaPaymentStatus object:resultDic];//发起通知处理支付结果</span><br><span class="line">            &#125;];</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">// NOTE: 9.0以后使用新API接口</span><br><span class="line">- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary&lt;NSString*, id&gt; *)options</span><br><span class="line">&#123;</span><br><span class="line">    BOOL result = [UMSocialSnsService handleOpenURL:url];</span><br><span class="line">    if (result == false) &#123;</span><br><span class="line">        if ([url.host isEqualToString:@&quot;safepay&quot;]) &#123;</span><br><span class="line">            //跳转支付宝钱包进行支付，处理支付结果</span><br><span class="line">            [[AlipaySDK defaultService]processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">                [kNotificationCenter postNotificationName:kAlibabaPaymentStatus object:resultDic];//发起通知处理支付结果</span><br><span class="line">            &#125;];</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line">        return [WXApi handleOpenURL:url delegate:[CdWeChatAPIManager sharedCdWeChatAPIManager]];</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>delegate的类根据自己的需求可以自定义，目前我们项目时这样写的。获取到支付回调后请求后台验证接口，验证支付是否成功。需要注意的是设置过代理后需要遵守微信协议WXApiDelegate</strong><br><strong>关于集成支付宝在下篇文章<a href="https://www.jianshu.com/p/217c1033bf0" target="_blank" rel="noopener">传送门</a></strong></p>
+<ul>
+<li>回调单例类CdWeChatAPIManager</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">.h</span><br><span class="line">@protocol CdWeChatAPIManagerDelegate &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@optional</span><br><span class="line"></span><br><span class="line">- (void)managerDidRecvAuthBaseResp:(BaseResp *)response;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface CdWeChatAPIManager : NSObject &lt;WXApiDelegate&gt;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id&lt;CdWeChatAPIManagerDelegate&gt; delegate;</span><br><span class="line"></span><br><span class="line">singleton_interface(CdWeChatAPIManager);</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation CdWeChatAPIManager</span><br><span class="line"></span><br><span class="line">singleton_implementation(CdWeChatAPIManager);</span><br><span class="line"></span><br><span class="line">#pragma mark - WXApiDelegate</span><br><span class="line">- (void)onResp:(BaseResp *)resp &#123;</span><br><span class="line">    if([resp isKindOfClass:[PayResp class]])&#123;</span><br><span class="line">        if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(managerDidRecvAuthBaseResp:)]) &#123;</span><br><span class="line">            [self.delegate managerDidRecvAuthBaseResp:resp];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)onReq:(BaseReq *)req &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<ul>
+<li>处理微信支付回调结果</li>
+</ul>
+<p><strong>在需要展示的地方遵守协议</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)managerDidRecvAuthBaseResp:(BaseResp *)response&#123;</span><br><span class="line">    [[CdPaymentCenter sharedCdPaymentCenter].hud hide:YES];</span><br><span class="line">    if (response.errCode == 0) &#123;</span><br><span class="line">      //调用后台验证支付是否成功接口 验证完成后微信支付基本算完成了。</span><br><span class="line">    &#125;else if (response.errCode == -1)&#123;</span><br><span class="line">        [self paymentFailure:@&quot;支付失败&quot;];</span><br><span class="line">    &#125;else if(response.errCode  == -2)&#123;</span><br><span class="line">        [self paymentFailure:@&quot;支付取消&quot;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>回调中errCode值列表：</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>成功</td>
+<td>展示成功页面</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>错误</td>
+<td>可能的原因：签名错误、未注册APPID、项目设置APPID不正确、注册的APPID与设置的不匹配、其他异常等。</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>用户取消</td>
+<td>无需处理。发生场景：用户不支付了，点击取消，返回APP。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h4><ul>
+<li>关于掉单问题目前我们的解决办法是每调起支付会创建一个事件放到数据库中，如果正常情况支付完成了会把数据删了如果发生断网，关机等情况，有网时或者开机。会检测数据库是否有未完成的订单去后台查询支付是否完成，商品是否购买成功。</li>
+<li>关于签名问题最好是让后台去做不要APP端完成，不然风险太大。</li>
+<li>关于调微信支付的参数：签名APPID等是根据某个字符分开的，取到后需要自己拼。</li>
+<li>关于注册APPID问题产品或者运营一般都弄好了如果自己申请<a href="https://open.weixin.qq.com/" target="_blank" rel="noopener">网站</a>申请后需要微信审核。</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/IMG_1049.JPG" alt="leon 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/IMG_1050.JPG" alt="leon 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/集成微信支付/" rel="tag"># 集成微信支付</a>
+          
+            <a href="/tags/第三方支付/" rel="tag"># 第三方支付</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/14/iOS 防止UIButton暴力点击/" rel="next" title="iOS 防止UIButton暴力点击">
+                <i class="fa fa-chevron-left"></i> iOS 防止UIButton暴力点击
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/29/字符串操作截取匹配分割替换..../" rel="prev" title="字符串操作截取匹配分割替换....">
+                字符串操作截取匹配分割替换.... <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -341,6 +590,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -361,8 +617,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -454,6 +719,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-微信支付步骤"><span class="nav-number">1.</span> <span class="nav-text">一. 微信支付步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-微信支付流程"><span class="nav-number">2.</span> <span class="nav-text">二. 微信支付流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-开发流程"><span class="nav-number">3.</span> <span class="nav-text">三. 开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-集成微信支付SDK-SDK下载地址"><span class="nav-number">3.1.</span> <span class="nav-text">1. 集成微信支付SDK SDK下载地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-设置URL-Types"><span class="nav-number">3.2.</span> <span class="nav-text">2. 设置URL Types</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-添加代码"><span class="nav-number">3.3.</span> <span class="nav-text">3. 添加代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写在最后"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -615,6 +896,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
