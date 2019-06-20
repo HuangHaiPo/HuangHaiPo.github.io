@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[安装VPN(jjqqkk)后 不能访问内网]]></title>
+    <url>%2F2019%2F06%2F20%2F%E5%AE%89%E8%A3%85VPN(jjqqkk)%E5%90%8E%20%E4%B8%8D%E8%83%BD%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%20git%E6%8A%A5%E9%94%99%2F</url>
+    <content type="text"><![CDATA[原因：在GitHub上下载的VPN(jjqqkk)下载后打开使用，接下来使用git就一直报错，在本来以为是ssh文件失效了，重新生成了多次都没用，还试了GitHub、码云都可以访问，只有在公司内网搭建的gitlab不能访问。后来才发现是因为内网无法访问导致的，想到应该是VPN把网络设置的DNS修改了。解决办法：找了公司运维修改了DNS，保存重启，内网可以访问。]]></content>
+      <categories>
+        <category>VPN</category>
+      </categories>
+      <tags>
+        <tag>VPN</tag>
+        <tag>git报错</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[MWeb集成七牛云图床服务、上传图片]]></title>
     <url>%2F2019%2F04%2F25%2FMWeb%E9%9B%86%E6%88%90%E4%B8%83%E7%89%9B%E4%BA%91%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1%E3%80%81%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%2F</url>
     <content type="text"><![CDATA[打开MWeb进入偏好设置,点击七牛云存储. 名称: 随自己喜好 API地址: 点击右边下拉框选择自己所属区域,不知道自己所在区域的百度或者看七牛上自己建的空间所属区域,作者在杭州,属于华东区域. 空间名称: 在七牛云上建的空间名称 AccessKey和SecretKey:在个人中心的秘钥管理 域名:[http:// + 外链默认域名 + /] 也就是图片的前缀外链域名,点击存储空间&gt;内容管理. 或者上传一张图片后看官网帮助文档 复制下来的链接如下,只需域名,后面的名称不要,也就是http://pp071.bkt.clddn.com/这些将这些全部填写到MWeb里面点击验证,上传一张图片,上传成功后给图片链接,证明成功. 上传图片至七牛云点击编辑框右上角一个分享按钮,里面有上传图床选项.上传成功后点击复制Markdown可以放到博客之类的分享。]]></content>
