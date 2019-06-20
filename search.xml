@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[iOS UITableViewCell宽度始终是320问题]]></title>
+    <url>%2F2019%2F06%2F20%2FiOS-UITableViewCell%E5%AE%BD%E5%BA%A6%E5%A7%8B%E7%BB%88%E6%98%AF320%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[问题：cell宽度一直是320。原因: 初始化cell是会先找xib中找cell有就返回，xib cell默认宽度就是320。没有创建一个空白cell宽度也是320，这些都是在cell初始化前，初始化前cell的宽高默认就是320，44。cell的实际宽高需要在cell显示之后比如:或者是启动图没有设置正确，检车启动图123456789101112131415- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier&#123; self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]; if (self) &#123; NSLog(@&quot;size == %@&quot;,NSStringFromCGSize(self.frame.size)); &#125; return self;&#125;2019-06-06 14:13:22.503870+0800 PICC[19304:516844] size == &#123;320, 44&#125;- (void)layoutSubviews&#123; [super layoutSubviews]; NSLog(@&quot;size == %@&quot;,NSStringFromCGSize(self.frame.size));&#125;2019-06-06 14:13:22.544332+0800 PICC[19304:516844] size == &#123;414, 44&#125; 解决办法:1. 在layoutSubviews方法中写代码约束，更新坐标等。2. 或者在cell初始化时修改cell宽度12345678910- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier&#123; self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]; if (self) &#123; self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 44); NSLog(@&quot;size == %@&quot;,NSStringFromCGSize(self.frame.size)); &#125; return self;&#125;2019-06-06 14:24:18.725489+0800 PICC[19425:561276] size == &#123;414, 44&#125; 3. 重写cell的frame方法1234-(void)setFrame:(CGRect)frame&#123; frame.size.width = SCREEN_WIDTH; [super setFrame:frame];&#125;]]></content>
+      <tags>
+        <tag>UITableViewCell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[安装VPN(jjqqkk)后 不能访问内网]]></title>
     <url>%2F2019%2F06%2F20%2F%E5%AE%89%E8%A3%85VPN(jjqqkk)%E5%90%8E%20%E4%B8%8D%E8%83%BD%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%20git%E6%8A%A5%E9%94%99%2F</url>
     <content type="text"><![CDATA[原因：在GitHub上下载的VPN(jjqqkk)下载后打开使用，接下来使用git就一直报错，在本来以为是ssh文件失效了，重新生成了多次都没用，还试了GitHub、码云都可以访问，只有在公司内网搭建的gitlab不能访问。后来才发现是因为内网无法访问导致的，想到应该是VPN把网络设置的DNS修改了。解决办法：找了公司运维修改了DNS，保存重启，内网可以访问。]]></content>
